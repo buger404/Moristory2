@@ -1138,6 +1138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetScene: GameMenu_Role
   IsMenuDoor: 1
+  DoNotFade: 0
+  HotKey: 27
 --- !u!61 &2138738113
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetScene: GameMenu_Role
   IsMenuDoor: 0
+  DoNotFade: 1
 --- !u!1 &141408950
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetScene: GameMenu_Items
   IsMenuDoor: 0
+  DoNotFade: 1
 --- !u!1 &1157891119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetScene: StartupLOGO
   IsMenuDoor: 0
+  DoNotFade: 0
 --- !u!1 &1976237620
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,10 +13,7 @@ public class DialogComplete : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyUp(KeyCode.Z)){
-			dialogShowing.CarryConversation();
-		}
-		if(Input.GetKeyUp(KeyCode.Return)){
+		if(Input.GetKeyUp(KeyCode.Z) || Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Space)){
 			dialogShowing.CarryConversation();
 		}
 	}
