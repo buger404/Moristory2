@@ -10,7 +10,8 @@ public class SceneDoor : MonoBehaviour {
 	public KeyCode HotKey = KeyCode.Print;
 	// Use this for initialization
 	void OnMouseUp() {
-		if(SceneManager.GetActiveScene().name != TargetScene){
+		if(GameVars.FadeState == 1){return;}
+		if(GameVars.ActiveScene != TargetScene){
 			if(IsMenuDoor){
 				GameVars.MenuBackScene = SceneManager.GetActiveScene().name;
 			}

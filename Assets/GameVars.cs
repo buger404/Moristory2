@@ -6,6 +6,9 @@ public class GameVars{
     public static string MenuBackScene = "";
     public static int FadeState = 0;
     public static bool DialogLoaded = false;
+    public static AudioSource BGM;
+    public static GlobalEvents BGMController;
+    public static string ActiveScene;
     public static bool IsFading(){
         if(FadeState == 0){
             return true;

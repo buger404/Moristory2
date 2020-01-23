@@ -56,6 +56,7 @@
      <Compile Include="Assets\FadeController.cs" />
      <Compile Include="Assets\FadeControlPad.cs" />
      <Compile Include="Assets\GameVars.cs" />
+     <Compile Include="Assets\GlobalUI\GlobalEvents.cs" />
      <Compile Include="Assets\GlobalUI\ItemStateLoader.cs" />
      <Compile Include="Assets\GlobalUI\MenuBackBtn.cs" />
      <Compile Include="Assets\SceneDoor.cs" />

@@ -7,7 +7,6 @@ public class StartBtn : MonoBehaviour {
 
 	// Use this for initialization
 	void OnMouseUp() {
-		Random r = new Random();
 		int l = Random.Range(3,9);
 		if(l >= 5){
 			dialogShowing.StartConversation("Welcome","随机对话" + l,"StartupLOGO");

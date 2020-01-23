@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +16,7 @@ public class dialogShowing : MonoBehaviour {
 	private static Animator RoleAni;
 	private static RectTransform RoleRect;
 	private static Transform flower;
+	private static RectTransform PadR;
 	public static void PlayText(string text,bool resets){
 		//使指示灯消失
 		button = 0;
@@ -29,7 +30,7 @@ public class dialogShowing : MonoBehaviour {
 		Sprite sp = (Sprite)Resources.Load("Role/" + name + "_" + face, typeof(Sprite));
 		Role.sprite = sp;
 		int w,h;
-		h = (int)(Screen.height * 0.55);
+		h = (int)(Screen.height * 0.5);
 		w = (int)(sp.rect.width * (h / sp.rect.height));
 		RoleRect.sizeDelta = new Vector2(w,h);
 	}
@@ -82,6 +83,7 @@ public class dialogShowing : MonoBehaviour {
 		Role = GameObject.Find("Role").GetComponent<Image>();
 		RoleRect = GameObject.Find("Role").GetComponent<RectTransform>();
 		RoleAni = GameObject.Find("Role").GetComponent<Animator>();
+		PadR = GameObject.Find("Canvas").GetComponent<RectTransform>();
 		basex = flower.localPosition.x;
 		basey = flower.localPosition.y;
 	}
@@ -125,10 +127,15 @@ public class dialogShowing : MonoBehaviour {
 				}else{
 					FadeControlPad.FadeToScene(backS);
 				}
+				return;
 			}
 			cmd = ConverCode[ConverLine];
 			ConverLine++;
 			if(cmd.Length <= 1){goto loophead;}
+			if(cmd[0]=='♪'){
+				GameVars.BGMController.PlayBGM(cmd.Split('♪')[1]);
+				goto loophead;
+			}
 			if(cmd[cmd.Length-2]=='：'){
 				if(neverConver==false){
 					PlayText("",cmd.Split('：')[0],"常态");

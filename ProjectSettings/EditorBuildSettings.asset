@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameMenu_Items.unity
     guid: 1ac0eb1881036df4e98c23918d793749
+  - enabled: 1
+    path: Assets/SizeDialog.unity
+    guid: b33b374ac89e51d41bc1bca0b31e2081
