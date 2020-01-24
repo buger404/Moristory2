@@ -32,7 +32,7 @@ public class dialogShowing : MonoBehaviour {
 		Sprite sp = (Sprite)Resources.Load("Role/" + name + "_" + face, typeof(Sprite));
 		Role.sprite = sp;
 		int w,h;
-		h = (int)(Screen.height * 0.5);
+		h = (int)(PadR.sizeDelta.y * 0.85);
 		w = (int)(sp.rect.width * (h / sp.rect.height));
 		RoleRect.sizeDelta = new Vector2(w,h);
 	}
@@ -137,6 +137,7 @@ public class dialogShowing : MonoBehaviour {
 				return;
 			}
 			cmd = ConverCode[ConverLine];
+			Debug.Log("Processing ... " + cmd);
 			ConverLine++;
 			if(cmd.Length <= 1){goto loophead;}
 			if(cmd[0]=='♪'){
@@ -165,7 +166,6 @@ public class dialogShowing : MonoBehaviour {
 						FadeControlPad.FadeToScene(param[1]);
 						break;
 					case("bg"):
-						Debug.Log(param[1]);
 						BackgroundChanger.ChangeBack(param[1],0);
 						break;
 					case("longbg"):

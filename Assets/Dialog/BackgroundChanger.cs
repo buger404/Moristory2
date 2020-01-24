@@ -16,10 +16,15 @@ public class BackgroundChanger : MonoBehaviour {
 		}else{
 			BackAni.speed = 0.45f;
 		}
-		GameObject.Find("Speaker").SetActive(show);
-		GameObject.Find("Dialogn").SetActive(show);
-		GameObject.Find("BackBtn").SetActive(show);
-		GameObject.Find("Role").SetActive(show);
+		GameObject t;
+		t = GameObject.Find("Speaker");
+		if(t!=null){t.SetActive(show);}
+		t = GameObject.Find("Dialogn");
+		if(t!=null){t.SetActive(show);}
+		t = GameObject.Find("BackBtn");
+		if(t!=null){t.SetActive(show);}
+		t = GameObject.Find("Role");
+		if(t!=null){t.SetActive(show);}
 	}
 	public static void ChangeBack(string name,int mode){
 		TargetBackground = name;CMode = mode;

@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class DialogComplete : MonoBehaviour {
 	void OnMouseUp(){
-		if(dialogShowing.TaleMode){return;}
+		if(dialogShowing.TaleMode){
+			dialogShowing.TaleMode = false;
+			GameVars.BGMController.PlayBGM("Lifetheory - Sakura");
+			FadeControlPad.FadeToScene("StartupLOGO");
+			return;
+		}
 		dialogShowing.CarryConversation();
 	}
 	// Use this for initialization
