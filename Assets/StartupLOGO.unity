@@ -322,6 +322,7 @@ MonoBehaviour:
   BGMS:
   - {fileID: 8300000, guid: c72ee6a4a5e579047a0367d9fc82dafa, type: 3}
   - {fileID: 8300000, guid: f8b254cbf96e276428872520b6995be6, type: 3}
+  - {fileID: 8300000, guid: e22de8d3233a14e4da280cb18fc90582, type: 3}
 --- !u!1 &162336464
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,11 @@ public class GlobalEvents : MonoBehaviour {
 		DontDestroyOnLoad(this.gameObject);
 		GameVars.BGM = this.gameObject.GetComponent<AudioSource>();
 		GameVars.BGMController = this.gameObject.GetComponent<GlobalEvents>();
+		if(GameVars.TaleShowed == 0){
+			GameVars.TaleShowed = 1;
+			dialogShowing.StartConversationRIGHTNOW("Tale","传说","StartupLOGO");
+			return;
+		}
 		PlayBGM("Lifetheory - Sakura");
 	}
 	void Start () {

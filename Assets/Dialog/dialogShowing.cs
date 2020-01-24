@@ -10,11 +10,13 @@ public class dialogShowing : MonoBehaviour {
 	public static string dtext = "",buff = "",backS = "";
 	private static int playpos = 0,fontsize;
 	private static string rname,rface;
+	public static bool TaleMode = false;
+	private static int TaleTick = 0,TaleTick2 = 0;
 	private static float basex = 0,basey = 0;
 	private static Text mytext,mycaption;
 	private static Image Role;
-	private static Animator RoleAni;
 	private static RectTransform RoleRect;
+	private static Animator RoleAni;
 	private static Transform flower;
 	private static RectTransform PadR;
 	public static void PlayText(string text,bool resets){
@@ -87,6 +89,11 @@ public class dialogShowing : MonoBehaviour {
 		basex = flower.localPosition.x;
 		basey = flower.localPosition.y;
 	}
+	public static void StartConversationRIGHTNOW(string name,string part,string OnBack){
+		backS = OnBack;
+		LoadConversation(name,part);
+		FadeControlPad.ToScene("Dialog");
+	}
 	public static void StartConversation(string name,string part,string OnBack){
 		backS = OnBack;
 		LoadConversation(name,part);
@@ -98,7 +105,7 @@ public class dialogShowing : MonoBehaviour {
 		string[] parts = s.Split(new[] {@">>>####"},System.StringSplitOptions.None);
 		string[] temp;
 		ConverLine = 0;
-		ConverCode = ("雪郎：\n错误，无法找到指定的对话脚本，请联系Error 404。").Split('\n');
+		ConverCode = ("雪郎：\n错误，指定的对话脚本丢失或异常，请联系Error 404。").Split('\n');
 		for(int i = 0;i < parts.Length;i++){
 			temp = parts[i].Split(new[] {@"####<<<"},System.StringSplitOptions.None);
 			if(temp[0]==part){
@@ -156,10 +163,27 @@ public class dialogShowing : MonoBehaviour {
 				switch(param[0]){
 					case("go"):
 						FadeControlPad.FadeToScene(param[1]);
-						return;
+						break;
+					case("bg"):
+						Debug.Log(param[1]);
+						BackgroundChanger.ChangeBack(param[1],0);
+						break;
+					case("longbg"):
+						BackgroundChanger.ChangeBack(param[1],1);
+						break;
+					case("ui"):
+						if(param[1] == "ok"){
+							TaleMode = false;
+							BackgroundChanger.ShowUI(true);
+						}else{
+							TaleMode = true;TaleTick2 = 0;
+							BackgroundChanger.ShowUI(false);
+						}
+						break;
 					default:
-						return;
+						break;
 				}
+				goto loophead;
 			}
 			if(cmd != ""){
 				PlayText(cmd);
@@ -174,12 +198,26 @@ public class dialogShowing : MonoBehaviour {
 		}while(true);
 	}
 	void PutText(){
+		if(TaleMode){
+			if(TaleTick < 5){
+				TaleTick++;return;
+			}
+			TaleTick=0;
+		}
 		if(ConverLine == 0){
 			CarryConversation();
 		}
 		if(dtext == ""){return;}
 		if(playpos >= dtext.Length)
 		{
+			if(TaleMode){
+				if(TaleTick2 >= 10){
+					TaleTick2 = 0;CarryConversation();
+					return;
+				}else{
+					TaleTick2++;
+				}
+			}
 			if(NextWait){
 				NextWait = false;
 				CarryConversation();

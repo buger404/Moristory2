@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Dialog\BackgroundChanger.cs" />
      <Compile Include="Assets\Dialog\DialogComplete.cs" />
      <Compile Include="Assets\Dialog\dialogShowing.cs" />
      <Compile Include="Assets\FadeController.cs" />
@@ -64,6 +65,7 @@
      <Compile Include="Assets\Startup\BGMLighting.cs" />
      <Compile Include="Assets\Startup\ResizeBackground.cs" />
      <Compile Include="Assets\Startup\StartBtn.cs" />
+     <None Include="Assets\Resources\Conversations\Tale.txt" />
      <None Include="Assets\Resources\Conversations\Welcome.txt" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>D:/Programs/Unity/2017.4.35c1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
