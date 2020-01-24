@@ -8,6 +8,15 @@ public class StartBtn : MonoBehaviour {
 	// Use this for initialization
 	void OnMouseUp() {
 		int l = Random.Range(3,9);
+		if(GameVars.PlayerName == ""){
+			FadeControlPad.FadeToScene("NamingTime");
+			return;
+		}
+		if(PlayerPrefs.GetInt("2020year",0) == 0){
+			PlayerPrefs.SetInt("2020year",1);
+			dialogShowing.StartConversation("Welcome","新年快乐","StartupLOGO");
+			return;
+		}
 		if(l >= 5){
 			dialogShowing.StartConversation("Welcome","随机对话" + l,"StartupLOGO");
 			return;

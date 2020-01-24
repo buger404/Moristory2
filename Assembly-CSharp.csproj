@@ -60,11 +60,16 @@
      <Compile Include="Assets\GlobalUI\GlobalEvents.cs" />
      <Compile Include="Assets\GlobalUI\ItemStateLoader.cs" />
      <Compile Include="Assets\GlobalUI\MenuBackBtn.cs" />
+     <Compile Include="Assets\NameTime\BackInput.cs" />
+     <Compile Include="Assets\NameTime\KeyboardPress.cs" />
+     <Compile Include="Assets\NameTime\NameDone.cs" />
+     <Compile Include="Assets\NameTime\NameJuding.cs" />
      <Compile Include="Assets\SceneDoor.cs" />
      <Compile Include="Assets\Startup\AdaptScreen.cs" />
      <Compile Include="Assets\Startup\BGMLighting.cs" />
      <Compile Include="Assets\Startup\ResizeBackground.cs" />
      <Compile Include="Assets\Startup\StartBtn.cs" />
+     <None Include="Assets\Resources\Conversations\NameTime.txt" />
      <None Include="Assets\Resources\Conversations\Tale.txt" />
      <None Include="Assets\Resources\Conversations\Welcome.txt" />
  <Reference Include="UnityEngine.CoreModule">

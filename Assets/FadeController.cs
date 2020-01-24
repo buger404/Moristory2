@@ -56,6 +56,6 @@ public class FadeController : MonoBehaviour {
     }
     void DestroySelf(){
         GameVars.FadeState = 0;
-        Destroy(this.gameObject);
+        Destroy(this.transform.parent.gameObject);
     }
 }

@@ -18,7 +18,6 @@ longbg/tale4*
 几亿年之后，人变事迁。
 兮兮：
 而那远古的病毒也悄悄地潜入了现代世界。
-♪Lifetheory - Sakura♪
 ui/ok*
 go/StartupLOGO*
  

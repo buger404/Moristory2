@@ -9,6 +9,7 @@ public class GameVars{
     public static AudioSource BGM;
     public static GlobalEvents BGMController;
     public static string ActiveScene;
+    public static string PlayerName = "";
     public static int TaleShowed = 0;
     public static bool IsFading(){
         if(FadeState == 0){

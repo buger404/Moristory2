@@ -17,7 +17,11 @@ public class GlobalEvents : MonoBehaviour {
 		}
 	}
 	void Awake(){
-		if(GameVars.BGM != null){Destroy(this.gameObject);return;}
+		if(GameVars.BGM != null){
+			GameVars.BGMController.PlayBGM("Lifetheory - Sakura");
+			Destroy(this.gameObject);
+			return;
+		}
 		DontDestroyOnLoad(this.gameObject);
 		GameVars.BGM = this.gameObject.GetComponent<AudioSource>();
 		GameVars.BGMController = this.gameObject.GetComponent<GlobalEvents>();
