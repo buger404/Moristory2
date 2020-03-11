@@ -1,0 +1,21 @@
+#Behavior:Spy
+
+    ~Chance:TVCount:0:1
+        #旁白
+        电视里正在播放无聊的新闻。
+    ~Action:TVCount:++
+
+    ~Chance:TVCount:2
+        #旁白
+        现在电视正在播放广告。
+    ~Action:TVCount:++
+
+    ~Chance:TVCount:3
+        #旁白
+        看起来这个广告是停不下来了。
+    ~Action:TVCount:++
+
+    ~Chance:TVCount:4:∞
+        #旁白
+        再不出发就要迟到了。
+    ~
