@@ -18,4 +18,4 @@
     ~Chance:TVCount:4:∞
         #旁白
         再不出发就要迟到了。
-    ~
+    ~Action:TVCount:0

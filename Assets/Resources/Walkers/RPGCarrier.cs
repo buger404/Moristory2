@@ -26,7 +26,13 @@ public class RPGCarrier : MonoBehaviour
     private int cmdi;
     private bool IsRunning;
     public TextAsset Script;
+
+    void HangUp(){
+        GameConfig.IsBlocking = true;
+        GameConfig.BlockEvent = this;
+    }
     void StartBehavior(string behavior){
+        if(GameConfig.IsBlocking){return;}
         if(IsRunning){return;}
         int b = code.behaviors.FindIndex(m => m.behavior == behavior);
         if(b == -1){return;}
@@ -34,19 +40,14 @@ public class RPGCarrier : MonoBehaviour
         areai=0;cmdi=0;behave = b;
         RunCode();
     }
-    void RunCode(){
+    public void RunCode(){
+        if(GameConfig.IsBlocking){return;}
+
         if(areai > code.behaviors[behave].area.Count){IsRunning = false;return;}
         codearea ca = code.behaviors[behave].area[areai];
         if(cmdi == 0){
             //TODO: Area params
             switch(ca.tag){
-                case("Action"):
-                    switch(ca.param[1]){
-                        case("++"):
-                            PlayerPrefs.SetFloat(ca.param[0],PlayerPrefs.GetFloat(ca.param[0])+1);
-                            break;
-                    }
-                    break;
                 case("Chance"):
                     float data = PlayerPrefs.GetFloat(ca.param[0]);
                     if(ca.param.Count == 2){
@@ -69,12 +70,12 @@ public class RPGCarrier : MonoBehaviour
         }
         //Next Area
         if(cmdi > ca.cmd.Count){goto NextArea;}
-        codecmd cc = code.behaviors[behave].area[areai].cmd[cmdi];
+        codecmd cc = ca.cmd[cmdi];
         bool BlockCode = false;
         //TODO: Cmd params
         switch(cc.tag){
             case("say"):
-                MessageCreator.CreateMsg("先代替",cc.param[0]);
+                GameConfig.ActiveDialog.CreateMsg("旁白",cc.param[0]);
                 BlockCode = true;
                 break;
             case("day"):
@@ -84,13 +85,27 @@ public class RPGCarrier : MonoBehaviour
             case("go"):
                 Switcher.SwitchTo(cc.param[0]);
                 break;
+            case("Action"):
+                switch(cc.param[1]){
+                    case("++"):
+                        PlayerPrefs.SetFloat(cc.param[0],PlayerPrefs.GetFloat(cc.param[0])+1);
+                        break;
+                    case("--"):
+                        PlayerPrefs.SetFloat(cc.param[0],PlayerPrefs.GetFloat(cc.param[0])-1);
+                        break;
+                    default:
+                        PlayerPrefs.SetFloat(cc.param[0],float.Parse(cc.param[1]));
+                        break;
+                }
+                break;
             default:
-                MessageCreator.CreateMsg("先代替",cc.tag + "说");
+                GameConfig.ActiveDialog.CreateMsg(cc.tag,cc.param[0]);
                 BlockCode = true;
                 break;
         }
         cmdi++;
         if(!BlockCode){RunCode();}
+        if(BlockCode){HangUp();}
         return;
 
         NextArea:
@@ -142,6 +157,7 @@ public class RPGCarrier : MonoBehaviour
                     .area[code.behaviors[code.behaviors.Count - 1].area.Count - 1]
                     .cmd.Add(cc);
                 continue;
+                
             }
             co = "#say:" + co;goto recmd;
         }
