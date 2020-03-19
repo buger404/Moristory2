@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LegendSkip : MonoBehaviour
+public class Skiper : MonoBehaviour
 {
-    private void OnMouseUp() {
-        Switcher.SwitchTo("NameTime");
-    }
-
+    public string SkipTo = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +15,8 @@ public class LegendSkip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space)){
+            Switcher.SwitchTo(SkipTo);
+        }
     }
 }

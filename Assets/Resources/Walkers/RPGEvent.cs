@@ -55,31 +55,33 @@ public class RPGEvent : MonoBehaviour
         if(GameConfig.IsBlocking){return;}
         if(speed == 0){return;}
         if(IsController){
+            bool HandMove = false;
             if(Input.GetKey(KeyCode.A)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x - speed,t.y,t.z);
-                int index = (int)(Time.time * fps) % 3;
-                s.sprite = walker[index + 1 * 3];
+                transform.position = new Vector3(t.x - speed * 1.1f,t.y,t.z);
+                Direction = 1;
+                Origin.x = -404;HandMove = true;
             }
             if(Input.GetKey(KeyCode.D)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x + speed,t.y,t.z);
-                int index = (int)(Time.time * fps) % 3;
-                s.sprite = walker[index + 2 * 3];
+                transform.position = new Vector3(t.x + speed * 1.1f,t.y,t.z);
+                Direction = 2;
+                Origin.x = -404;HandMove = true;
             }
             if(Input.GetKey(KeyCode.W)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x,t.y + speed,t.z);
-                int index = (int)(Time.time * fps) % 3;
-                s.sprite = walker[index + 3 * 3];
+                transform.position = new Vector3(t.x,t.y + speed * 1.1f,t.z);
+                Direction = 3;
+                Origin.x = -404;HandMove = true;
             }
             if(Input.GetKey(KeyCode.S)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x,t.y - speed,t.z);
-                int index = (int)(Time.time * fps) % 3;
-                s.sprite = walker[index + 0 * 3];
+                transform.position = new Vector3(t.x,t.y - speed * 1.1f,t.z);
+                Direction = 0;
+                Origin.x = -404;HandMove = true;
             }
-            if(Input.GetMouseButton(0)){
+            if(Input.GetMouseButton(0) && Origin.x != -404){
+                HandMove = true;
                 Vector3 p = transform.position;
                 Vector3 inp;
                 if(Origin.x == -1){
@@ -122,15 +124,22 @@ public class RPGEvent : MonoBehaviour
                 float yD = orcircle.transform.position.y - poscircle.transform.position.y;
                 if(xD >= yD){Direction = xD > 0 ? 2 : 0;}
                 if(xD <= yD){Direction = yD > 0 ? 3 : 1;}
+
+            }
+
+            if(!HandMove){
+                if(Origin.x != -1){
+                    if(Origin.x != -1){
+                        s.sprite = walker[1 + Direction * 3];
+                        Origin.x = -1;
+                        CircleCanvas.SetActive(false);
+                    }
+                }
+            }else{
                 int index = (int)(Time.time * fps) % 3;
                 s.sprite = walker[index + Direction * 3];
-            }else{
-                if(Origin.x != -1){
-                    s.sprite = walker[1 + Direction * 3];
-                    Origin.x = -1;
-                    CircleCanvas.SetActive(false);
-                }
             }
+
         }
 
     }

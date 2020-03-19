@@ -20,22 +20,25 @@ public class RPGCarrier : MonoBehaviour
     public struct codefile{
         public List<codescript> behaviors;
     }
-    private codefile code;
-    private int behave;
-    private int areai;
-    private int cmdi;
-    private bool IsRunning;
+    public codefile code;
+    public string chara = "";
+    public int behave;
+    public int areai;
+    public int cmdi;
+    public bool IsRunning;
     public TextAsset Script;
 
-    void HangUp(){
+    public void HangUp(){
         GameConfig.IsBlocking = true;
         GameConfig.BlockEvent = this;
+        Debug.Log("Behave hang up");
     }
-    void StartBehavior(string behavior){
+    public void StartBehavior(string behavior){
         if(GameConfig.IsBlocking){return;}
         if(IsRunning){return;}
         int b = code.behaviors.FindIndex(m => m.behavior == behavior);
         if(b == -1){return;}
+        Debug.Log("New behave happend " + b + " with " + behavior);
         IsRunning = true;
         areai=0;cmdi=0;behave = b;
         RunCode();
@@ -43,10 +46,16 @@ public class RPGCarrier : MonoBehaviour
     public void RunCode(){
         if(GameConfig.IsBlocking){return;}
 
-        if(areai > code.behaviors[behave].area.Count){IsRunning = false;return;}
+        if(areai >= code.behaviors[behave].area.Count){
+            if(GameConfig.IsMsgProcess){GameConfig.ActiveDialog.EndMsg();}
+            IsRunning = false;return;
+        }
+
+        Debug.Log("At area " + areai + " , behave " + behave);
         codearea ca = code.behaviors[behave].area[areai];
         if(cmdi == 0){
             //TODO: Area params
+            Debug.Log("Now running area : " + ca.tag + " , params :" + ca.param.Count);
             switch(ca.tag){
                 case("Chance"):
                     float data = PlayerPrefs.GetFloat(ca.param[0]);
@@ -70,13 +79,22 @@ public class RPGCarrier : MonoBehaviour
         }
         //Next Area
         if(cmdi > ca.cmd.Count){goto NextArea;}
-        codecmd cc = ca.cmd[cmdi];
-        bool BlockCode = false;
+        Debug.Log("At cmd " + cmdi + " , area " + areai + " , behave " + behave);
+        codecmd cc = ca.cmd[cmdi-1];
+        bool BlockCode = false;bool MsgProccessed = false;bool ExitMark = false;
         //TODO: Cmd params
+        Debug.Log("Now running cmd : " + cc.tag + " , params :" + cc.param.Count);
         switch(cc.tag){
+            case("FaceTo"):
+                int Direction = GameConfig.Controller.GetComponent<RPGEvent>().Direction;
+                if(cc.param[0] == "RIGHT" && Direction != 2){ExitMark = true;}
+                if(cc.param[0] == "LEFT" && Direction != 1){ExitMark = true;}
+                if(cc.param[0] == "UP" && Direction != 3){ExitMark = true;}
+                if(cc.param[0] == "DOWN" && Direction != 0){ExitMark = true;}
+                break;
             case("say"):
-                GameConfig.ActiveDialog.CreateMsg("旁白",cc.param[0]);
-                BlockCode = true;
+                GameConfig.ActiveDialog.CreateMsg(chara,cc.param[0]);
+                BlockCode = true;MsgProccessed = true;
                 break;
             case("day"):
                 GameConfig.DayNight = System.Convert.ToInt16(cc.param[0]);
@@ -97,11 +115,17 @@ public class RPGCarrier : MonoBehaviour
                         PlayerPrefs.SetFloat(cc.param[0],float.Parse(cc.param[1]));
                         break;
                 }
+                ExitMark = true;
                 break;
             default:
-                GameConfig.ActiveDialog.CreateMsg(cc.tag,cc.param[0]);
-                BlockCode = true;
+                chara = cc.tag;
                 break;
+        }
+        if(!MsgProccessed){
+            if(GameConfig.IsMsgProcess){GameConfig.ActiveDialog.EndMsg();}
+        }
+        if(ExitMark){
+            IsRunning = false;return;
         }
         cmdi++;
         if(!BlockCode){RunCode();}
@@ -111,7 +135,7 @@ public class RPGCarrier : MonoBehaviour
         NextArea:
         cmdi=0;areai++;RunCode();
     }
-    void LoadScript(){
+    public void LoadScript(){
         code = new codefile();
         string[] s = Script.text.Split(new string[]{"\r\n"},System.StringSplitOptions.None);
         code.behaviors = new List<codescript>();
@@ -163,7 +187,7 @@ public class RPGCarrier : MonoBehaviour
         }
     }
     private void OnCollisionStay2D(Collision2D other) {
-        if(Input.GetMouseButtonUp(0)){
+        if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space)){
             StartBehavior("Spy");
         }else{
             StartBehavior("Touch");

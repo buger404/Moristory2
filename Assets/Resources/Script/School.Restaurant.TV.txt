@@ -1,5 +1,7 @@
 #Behavior:Spy
 
+    #FaceTo:RIGHT
+
     ~Chance:TVCount:0:1
         #旁白
         电视里正在播放无聊的新闻。
