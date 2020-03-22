@@ -277,6 +277,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1841966095054614848, guid: dbac855abae8e57468c5429ebe6e5f02,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 1841966095054614848, guid: dbac855abae8e57468c5429ebe6e5f02,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 81e2e846f1f4ae0488e8904c66471877,
+        type: 3}
+    - target: {fileID: 1841966095197256030, guid: dbac855abae8e57468c5429ebe6e5f02,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -17.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841966095197256030, guid: dbac855abae8e57468c5429ebe6e5f02,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.23
+      objectReference: {fileID: 0}
     - target: {fileID: 1841966096514173953, guid: dbac855abae8e57468c5429ebe6e5f02,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -56,25 +56,25 @@ public class RPGEvent : MonoBehaviour
         if(speed == 0){return;}
         if(IsController){
             bool HandMove = false;
-            if(Input.GetKey(KeyCode.A)){
+            if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
                 Vector3 t = transform.position;
                 transform.position = new Vector3(t.x - speed * 1.1f,t.y,t.z);
                 Direction = 1;
                 Origin.x = -404;HandMove = true;
             }
-            if(Input.GetKey(KeyCode.D)){
+            if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
                 Vector3 t = transform.position;
                 transform.position = new Vector3(t.x + speed * 1.1f,t.y,t.z);
                 Direction = 2;
                 Origin.x = -404;HandMove = true;
             }
-            if(Input.GetKey(KeyCode.W)){
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
                 Vector3 t = transform.position;
                 transform.position = new Vector3(t.x,t.y + speed * 1.1f,t.z);
                 Direction = 3;
                 Origin.x = -404;HandMove = true;
             }
-            if(Input.GetKey(KeyCode.S)){
+            if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
                 Vector3 t = transform.position;
                 transform.position = new Vector3(t.x,t.y - speed * 1.1f,t.z);
                 Direction = 0;

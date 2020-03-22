@@ -44,8 +44,6 @@ public class RPGCarrier : MonoBehaviour
         RunCode();
     }
     public void RunCode(){
-        if(GameConfig.IsBlocking){return;}
-
         if(areai >= code.behaviors[behave].area.Count){
             if(GameConfig.IsMsgProcess){GameConfig.ActiveDialog.EndMsg();}
             IsRunning = false;return;

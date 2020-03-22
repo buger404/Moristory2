@@ -1,6 +1,6 @@
 #Behavior:Spy
 
-    #FaceTo:RIGHT
+    #FaceTo:UP
 
     ~Chance:TVCount:0:1
         #旁白

@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 152126039}
   - component: {fileID: 152126038}
   - component: {fileID: 152126042}
+  - component: {fileID: 152126043}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -419,6 +420,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DayLight: {fileID: 1026320884}
   NightLight: {fileID: 1041987869}
+--- !u!114 &152126043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152126037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc5a78c42f67e54790316e742ba654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &199296571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,12 +1102,12 @@ PrefabInstance:
     - target: {fileID: 6878685347711784736, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.075645626
+      value: -4.96
       objectReference: {fileID: 0}
     - target: {fileID: 6878685347711784736, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.007537
+      value: 5.44
       objectReference: {fileID: 0}
     - target: {fileID: 6878685347711784736, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
@@ -1149,7 +1162,12 @@ PrefabInstance:
     - target: {fileID: 6878685347711784741, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
       propertyPath: m_Name
-      value: Character
+      value: TV
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878685347711784741, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6878685347711784742, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
@@ -1167,7 +1185,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6258088735313751929, guid: 948aa2a2a18d29c4e885e3d9025513cf,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6878685347711784743, guid: ab1d0d9a47d6da44d9c8a82e82efb58b, type: 3}
+    - {fileID: 6878685347711784742, guid: ab1d0d9a47d6da44d9c8a82e82efb58b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ab1d0d9a47d6da44d9c8a82e82efb58b, type: 3}
 --- !u!1 &450062850 stripped
 GameObject:

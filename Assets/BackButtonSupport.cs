@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class BackButtonSupport : MonoBehaviour
 {
     // Start is called before the first frame update
+    private float TimeShift = -999;
     void Start()
     {
         
@@ -15,7 +16,17 @@ public class BackButtonSupport : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyUp(KeyCode.Escape)){
-             Application.Quit();
+            if(Time.time - TimeShift <= 3.0f){
+                Debug.Log("App exited !");
+                Application.Quit();
+            }else{
+                Debug.Log("Delay Destoried");
+                GameObject fab = (GameObject)Resources.Load("Prefabs\\ExitCanvas");
+                GameObject obj = Instantiate(fab,new Vector3(0,0,0),Quaternion.identity);
+                obj.SetActive(true);
+                Destroy(obj,3.0f);
+            }
+            TimeShift = Time.time;
         }
     }
 }

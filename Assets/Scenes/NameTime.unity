@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1303,8 +1303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 92, y: 84}
-  m_SizeDelta: {x: 770.4, y: 69.377}
+  m_AnchoredPosition: {x: 94.4, y: 67.1}
+  m_SizeDelta: {x: 786.5, y: 182.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999855607
 MonoBehaviour:
@@ -1337,7 +1337,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5927\u5BB6\u76F8\u4E92\u8BA4\u8BC6\u4E00\u4E0B\u5440\u30FE(\u2267\u25BD\u2266*)o"
+  m_Text: "\u5927\u5BB6\u76F8\u4E92\u8BA4\u8BC6\u4E00\u4E0B\u5440\u30FE(\u2267\u25BD\u2266*)o\n\u70B9\u51FB\u4E0B\u9762\u95EA\u70C1\u7684\u5B57\u8F93\u5165\u540D\u5B57\u5662~\n\u70B9\u51FB\u84DD\u8272\u6309\u94AE\u6311\u9009\u4F60\u559C\u6B22\u7684\u5B57~"
 --- !u!222 &999855608
 CanvasRenderer:
   m_ObjectHideFlags: 0
