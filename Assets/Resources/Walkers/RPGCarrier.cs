@@ -76,12 +76,13 @@ public class RPGCarrier : MonoBehaviour
             cmdi = 1;
         }
         //Next Area
-        if(cmdi > ca.cmd.Count){goto NextArea;}
+        if(cmdi > ca.cmd.Count){Debug.Log("Next Area"); goto NextArea;}
         Debug.Log("At cmd " + cmdi + " , area " + areai + " , behave " + behave);
         codecmd cc = ca.cmd[cmdi-1];
         bool BlockCode = false;bool MsgProccessed = false;bool ExitMark = false;
         //TODO: Cmd params
         Debug.Log("Now running cmd : " + cc.tag + " , params :" + cc.param.Count);
+        RPGEvent rpg = this.gameObject.GetComponent<RPGEvent>();
         switch(cc.tag){
             case("FaceTo"):
                 int Direction = GameConfig.Controller.GetComponent<RPGEvent>().Direction;
@@ -89,6 +90,31 @@ public class RPGCarrier : MonoBehaviour
                 if(cc.param[0] == "LEFT" && Direction != 1){ExitMark = true;}
                 if(cc.param[0] == "UP" && Direction != 3){ExitMark = true;}
                 if(cc.param[0] == "DOWN" && Direction != 0){ExitMark = true;}
+                break;
+            case("WalkX"):
+                if(cc.param.Count > 1){
+                    rpg = GameObject.Find(cc.param[1]).GetComponent<RPGEvent>();
+                }
+                rpg.XTask = float.Parse(cc.param[0]) / 2;
+                break;
+            case("WalkY"):
+                if(cc.param.Count > 1){
+                    rpg = GameObject.Find(cc.param[1]).GetComponent<RPGEvent>();
+                }
+                rpg.YTask = float.Parse(cc.param[0]) / 2;
+                break;
+            case("Fix"):
+                Vector3 otrans = this.gameObject.transform.position;
+                Transform ttrans = GameObject.Find(cc.param[1]).transform;
+                if(cc.param[0] == "X"){
+                    ttrans.position = new Vector3(otrans.x,ttrans.position.y,ttrans.position.z);
+                }
+                if(cc.param[0] == "Y"){
+                    ttrans.position = new Vector3(ttrans.position.x,otrans.y,ttrans.position.z);
+                }
+                break;
+            case("WalkTask"):
+                BlockCode = true;GameConfig.WalkingTask = true;
                 break;
             case("say"):
                 GameConfig.ActiveDialog.CreateMsg(chara,cc.param[0]);
@@ -116,6 +142,7 @@ public class RPGCarrier : MonoBehaviour
                 ExitMark = true;
                 break;
             default:
+                MsgProccessed = true;
                 chara = cc.tag;
                 break;
         }
@@ -178,8 +205,7 @@ public class RPGCarrier : MonoBehaviour
                 code.behaviors[code.behaviors.Count - 1]
                     .area[code.behaviors[code.behaviors.Count - 1].area.Count - 1]
                     .cmd.Add(cc);
-                continue;
-                
+                continue;  
             }
             co = "#say:" + co;goto recmd;
         }

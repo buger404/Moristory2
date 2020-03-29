@@ -17,7 +17,7 @@ public class RPGEvent : MonoBehaviour
     private GameObject arcircle;
     private GameObject CircleCanvas;
     private Canvas CircleCanvasT;
-
+    public float XTask = 0;public float YTask = 0;
     private void OnCollisionStay2D(Collision2D other) {
 
     }
@@ -52,31 +52,56 @@ public class RPGEvent : MonoBehaviour
 
     void FixedUpdate()
     {
+        bool HandMove = false;
+        if(XTask != 0 || YTask != 0){
+            Vector3 t = transform.position;
+            transform.position = 
+            new Vector3(
+                t.x + speed * (XTask > 0 ? 1 : -1) * (XTask != 0 ? 1 : 0),
+                t.y - speed * (YTask > 0 ? 1 : -1) * (YTask != 0 ? 1 : 0),
+                        t.z);
+            if(XTask != 0){Direction = XTask > 0 ? 2 : 1;}
+            if(YTask != 0){Direction = YTask < 0 ? 3 : 0;}
+            XTask -= speed * (XTask > 0 ? 1 : -1) * (XTask != 0 ? 1 : 0);
+            YTask -= speed * (YTask > 0 ? 1 : -1) * (YTask != 0 ? 1 : 0);
+            if(Mathf.Abs(XTask) <= 0.1){XTask = 0;}
+            if(Mathf.Abs(YTask) <= 0.1){YTask = 0;}
+            HandMove = true;
+            if(XTask == 0 && YTask == 0 && GameConfig.WalkingTask){
+                Debug.Log("Walk let next");
+                GameConfig.WalkingTask = false;
+                GameConfig.IsBlocking = false;
+                GameConfig.BlockEvent.RunCode();
+            }
+            if(XTask == 0 && YTask == 0){Origin.x = -244;HandMove = false;}
+            goto Moves;
+        }
         if(GameConfig.IsBlocking){return;}
         if(speed == 0){return;}
-        if(IsController){
-            bool HandMove = false;
+        //一步的坐标移动距离大约为1.5！
+        Moves:
+        if(IsController && !HandMove){
             if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x - speed * 1.1f,t.y,t.z);
+                transform.position = new Vector3(t.x - speed * 1.0f,t.y,t.z);
                 Direction = 1;
                 Origin.x = -404;HandMove = true;
             }
             if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x + speed * 1.1f,t.y,t.z);
+                transform.position = new Vector3(t.x + speed * 1.0f,t.y,t.z);
                 Direction = 2;
                 Origin.x = -404;HandMove = true;
             }
             if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x,t.y + speed * 1.1f,t.z);
+                transform.position = new Vector3(t.x,t.y + speed * 1.0f,t.z);
                 Direction = 3;
                 Origin.x = -404;HandMove = true;
             }
             if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x,t.y - speed * 1.1f,t.z);
+                transform.position = new Vector3(t.x,t.y - speed * 1.0f,t.z);
                 Direction = 0;
                 Origin.x = -404;HandMove = true;
             }
@@ -116,7 +141,7 @@ public class RPGEvent : MonoBehaviour
                 }
                 Vector3 t = transform.position;
                 float b1 = 3.0f / 2.0f * 3.1415f - Mathf.Atan(k);
-                float b2 = (Des.y < Origin.y ? 1 : -1) * speed;
+                float b2 = (Des.y < Origin.y ? 1 : -1) * speed * 1.0f;
                 transform.position = new Vector3(t.x + Mathf.Cos(b1) * b2,
                                                  t.y + Mathf.Sin(b1) * b2,
                                                  t.z);
@@ -127,19 +152,17 @@ public class RPGEvent : MonoBehaviour
 
             }
 
-            if(!HandMove){
-                if(Origin.x != -1){
-                    if(Origin.x != -1){
-                        s.sprite = walker[1 + Direction * 3];
-                        Origin.x = -1;
-                        CircleCanvas.SetActive(false);
-                    }
-                }
-            }else{
-                int index = (int)(Time.time * fps) % 3;
-                s.sprite = walker[index + Direction * 3];
-            }
+        }
 
+        if(!HandMove){
+            if(Origin.x != -1){
+                s.sprite = walker[1 + Direction * 3];
+                Origin.x = -1;
+                try{CircleCanvas.SetActive(false);}catch{}
+            }
+        }else{
+            int index = (int)(Time.time * fps) % 3;
+            s.sprite = walker[index + Direction * 3];
         }
 
     }

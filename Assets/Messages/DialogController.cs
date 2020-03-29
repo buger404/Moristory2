@@ -9,11 +9,13 @@ public class DialogController : MonoBehaviour
     private GameObject NameB;
     private GameObject NameZone;
     private GameObject Character;
+    private string lastchara = "";
     private bool WaitForNew = false;
     private string TextBuff = "";
     private int BuffIndex = 0;
     private float BuffDelta = 0;
     private Text ContentText;
+    private bool Disabled2 = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,6 +39,7 @@ public class DialogController : MonoBehaviour
                 BuffIndex++;
             }
         }
+        if(Disabled2){return;}
         if(Disabled){return;}
         if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space)){
             if(BuffIndex < TextBuff.Length){
@@ -46,24 +49,39 @@ public class DialogController : MonoBehaviour
             }
             WaitForNew = true;
             GameConfig.IsBlocking = false;
+            Debug.Log("Auto next");
             GameConfig.BlockEvent.RunCode();
         }
     }
     public void EndMsg(){
-        WaitForNew = false;
+        WaitForNew = false;Disabled2 = true;
         Animator ani = this.GetComponent<Animator>();
         ani.SetFloat("Speed",-4);
         GameConfig.IsMsgProcess = true;
         ani.Play("DialogShow",0, 1);
-        Disabled = true;
+        Disabled = true;lastchara = "";
     }
     public void CreateMsg(string Name,string Content){
         bool ShowChara = (Name != "旁白");
         this.gameObject.SetActive(true);
+        Disabled2 = false;
 
-        NameZone.SetActive(ShowChara);
-        NameB.SetActive(ShowChara);
-        Character.SetActive(ShowChara);
+        if(Name != lastchara){
+            Sprite chara = Resources.Load<Sprite>("Characters\\" + Name);
+            if(chara != null){
+                Image csp = Character.GetComponent<Image>();
+                RectTransform csr = Character.GetComponent<RectTransform>();
+                float ow = csr.sizeDelta.x;
+                csp.sprite = chara;
+                csr.sizeDelta = new Vector2 (ow,(chara.rect.height / chara.rect.width) * ow);
+            }else{
+                ShowChara = false;
+            }
+            lastchara = Name;
+            NameZone.SetActive((Name != "旁白"));
+            NameB.SetActive((Name != "旁白"));
+            Character.SetActive(ShowChara);
+        }
 
         Animator ani = this.GetComponent<Animator>();
 
