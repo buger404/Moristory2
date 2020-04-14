@@ -1,0 +1,11 @@
+#Behavior:Touch
+
+    ~Chance:AP:0
+
+        #兮·御冯
+        『？？？』
+
+        #WalkY:-3:Character
+        #WalkTask
+
+    ~Action:~

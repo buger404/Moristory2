@@ -58,16 +58,16 @@ public class RPGCarrier : MonoBehaviour
                 case("Chance"):
                     float data = PlayerPrefs.GetFloat(ca.param[0]);
                     if(ca.param.Count == 2){
-                        if(data != System.Convert.ToDouble(ca.param[1])){goto NextArea;}
+                        if(data != double.Parse(ca.param[1])){goto NextArea;}
                     }else{
                         if(ca.param[2] == "∞"){
-                            if(data < System.Convert.ToDouble(ca.param[1])){goto NextArea;}
+                            if(data < double.Parse(ca.param[1])){goto NextArea;}
                         }else{
                             if(ca.param[1] == "∞"){
-                                if(data > System.Convert.ToDouble(ca.param[1])){goto NextArea;}
+                                if(data > double.Parse(ca.param[1])){goto NextArea;}
                             }else{
-                                if(data < System.Convert.ToDouble(ca.param[1]) ||
-                                   data > System.Convert.ToDouble(ca.param[2])){goto NextArea;}
+                                if(data < double.Parse(ca.param[1]) ||
+                                   data > double.Parse(ca.param[2])){goto NextArea;}
                             }
                         }
                     }
@@ -83,6 +83,7 @@ public class RPGCarrier : MonoBehaviour
         //TODO: Cmd params
         Debug.Log("Now running cmd : " + cc.tag + " , params :" + cc.param.Count);
         RPGEvent rpg = this.gameObject.GetComponent<RPGEvent>();
+        GameObject go = this.gameObject;
         switch(cc.tag){
             case("FaceTo"):
                 int Direction = GameConfig.Controller.GetComponent<RPGEvent>().Direction;
@@ -90,6 +91,18 @@ public class RPGCarrier : MonoBehaviour
                 if(cc.param[0] == "LEFT" && Direction != 1){ExitMark = true;}
                 if(cc.param[0] == "UP" && Direction != 3){ExitMark = true;}
                 if(cc.param[0] == "DOWN" && Direction != 0){ExitMark = true;}
+                break;
+            case("Hide"):
+                if(cc.param.Count > 1){
+                    go = GameObject.Find(cc.param[1]);
+                }
+                go.SetActive(false);
+                break;
+            case("Show"):
+                if(cc.param.Count > 1){
+                    go = GameObject.Find(cc.param[1]);
+                }
+                go.SetActive(true);
                 break;
             case("WalkX"):
                 if(cc.param.Count > 1){
@@ -127,7 +140,21 @@ public class RPGCarrier : MonoBehaviour
             case("go"):
                 Switcher.SwitchTo(cc.param[0]);
                 break;
+            case("Var"):
+                switch(cc.param[1]){
+                    case("++"):
+                        PlayerPrefs.SetFloat(cc.param[0],PlayerPrefs.GetFloat(cc.param[0])+1);
+                        break;
+                    case("--"):
+                        PlayerPrefs.SetFloat(cc.param[0],PlayerPrefs.GetFloat(cc.param[0])-1);
+                        break;
+                    default:
+                        PlayerPrefs.SetFloat(cc.param[0],float.Parse(cc.param[1]));
+                        break;
+                }
+                break;
             case("Action"):
+                if(cc.param[1] == "~") {ExitMark = true; break;}
                 switch(cc.param[1]){
                     case("++"):
                         PlayerPrefs.SetFloat(cc.param[0],PlayerPrefs.GetFloat(cc.param[0])+1);

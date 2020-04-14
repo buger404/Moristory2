@@ -16,6 +16,7 @@ public class RPGCamera : MonoBehaviour
     void Update()
     {
         Vector3 te = transform.position;
+        if(GameConfig.Controller == null){return;}
         Vector3 r = GameConfig.Controller.transform.position;
         if(te.x != r.x || te.y != r.y){
             transform.position = new Vector3(te.x + (r.x - te.x) / 30,te.y + (r.y - te.y) / 30,te.z );

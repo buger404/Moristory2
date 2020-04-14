@@ -21,7 +21,7 @@ public class NameKey : MonoBehaviour
     }
     void NameComplete(){
         if(Type != 5){return;}
-        Switcher.SwitchTo("NatingDaily");
+        Switcher.SwitchTo("DocumentSpy");
     }
     private void OnMouseUp() {
         if(Type == 0){
