@@ -7,7 +7,8 @@ public class GameConfig{
     public static int DayNight = 0;
     public static bool IsBlocking = false;
     public static bool WalkingTask = false;
-    public static RPGCarrier BlockEvent;
+    public static RPG BlockEvent;
     public static DialogController ActiveDialog;
+    public static RPG LastEvent;
     public static bool IsMsgProcess = false;
 }

@@ -50,7 +50,7 @@ public class DialogController : MonoBehaviour
             WaitForNew = true;
             GameConfig.IsBlocking = false;
             Debug.Log("Auto next");
-            GameConfig.BlockEvent.RunCode();
+            GameConfig.BlockEvent.Run();
         }
     }
     public void EndMsg(){

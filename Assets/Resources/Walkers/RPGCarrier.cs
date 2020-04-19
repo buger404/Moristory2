@@ -30,7 +30,7 @@ public class RPGCarrier : MonoBehaviour
 
     public void HangUp(){
         GameConfig.IsBlocking = true;
-        GameConfig.BlockEvent = this;
+       //GameConfig.BlockEvent = this;
         Debug.Log("Behave hang up");
     }
     public void StartBehavior(string behavior){
@@ -245,13 +245,22 @@ public class RPGCarrier : MonoBehaviour
         }
     }
     private void Awake() {
-        LoadScript();
+        
     }
     void Start() {
-        StartBehavior("Auto");
+        try
+        {
+            LoadScript();
+            StartBehavior("Auto");
+        }
+        catch(UnityException e)
+        {
+            MessageCreator.CreateMsg("错误！",e.Message + "\n" + e.StackTrace);
+        }
+        
     }
     void Update()
     {
-
+        
     }
 }

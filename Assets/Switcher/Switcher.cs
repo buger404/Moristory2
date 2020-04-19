@@ -46,6 +46,10 @@ public class Switcher :MonoBehaviour
         Debug.Log("Call back!");
         SceneManager.sceneLoaded -= CallBack;
         if(animator.GetFloat("Speed") != -1.1f){
+            Destroy(this.gameObject);
+            Debug.Log("Destoried Switcher!");
+            SwitcherUsing = false;
+            return;
             animator.Play("Switcher_Showing",0,1);
             animator.SetFloat("Speed", -1.1f);
         }

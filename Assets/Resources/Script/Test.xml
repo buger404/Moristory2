@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="true">
+        <if condition="[test]=0">
+            <chara>布莱·昴斯</chara>
+            <s>噢，这里是spy的behaviour</s>
+        </if>
+        <if condition="[test]!=0">
+            <if condition="[test]=1">
+                <chara>域零·占也</chara>
+                <s>套if，现在test=[test]</s>
+            </if>
+            <if condition="[test]=2">
+                <chara>谭娜·霓悦</chara>
+                <s>现在test=[test]，哈哈。</s>
+            </if>
+            <if condition="[test]!=2">
+                <if condition="[test]=3">
+                    <chara>布莱·昴斯</chara>
+                    <s>好嘞，套了一堆if，测试完毕。</s>
+                    <var tar="test">0-1</var>
+                </if>
+            </if>
+            <chara>兮·御冯</chara>
+            <s>看来if外有正常执行：[test]</s>
+        </if>
+        <var tar="test">[test]+1</var>
+    </behaviour>
+    <behaviour action="auto" condition="true">
+        <chara>兮·御冯</chara>
+        <s>噢，这里是auto的behaviour</s>
+    </behaviour>
+</game>

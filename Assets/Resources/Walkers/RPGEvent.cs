@@ -19,13 +19,10 @@ public class RPGEvent : MonoBehaviour
     private Canvas CircleCanvasT;
     public float XTask = 0;public float YTask = 0;
     private void OnCollisionStay2D(Collision2D other) {
-
+        
     }
     private void Awake() {
         s = this.gameObject.GetComponent<SpriteRenderer>();
-    }
-    void Start()
-    {
         if(character == ""){return;}
         walker = Resources.LoadAll<Sprite>("Walkers/" + character);
         s.sprite = walker[1 + 3 * Direction];
@@ -71,7 +68,7 @@ public class RPGEvent : MonoBehaviour
                 Debug.Log("Walk let next");
                 GameConfig.WalkingTask = false;
                 GameConfig.IsBlocking = false;
-                GameConfig.BlockEvent.RunCode();
+                GameConfig.BlockEvent.Run();
             }
             if(XTask == 0 && YTask == 0){Origin.x = -244;HandMove = false;}
             goto Moves;
