@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 6878685347711784743}
   - component: {fileID: 6878685347711784742}
   - component: {fileID: 6878685347711784737}
-  - component: {fileID: 6878685347711784738}
+  - component: {fileID: 1222533178}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6878685347711784736
 Transform:
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd23029c2711e4eafe435419f65c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsController: 0
+  IsController: 1
   speed: 0.05
   fps: 6
   Direction: 3
@@ -118,15 +118,15 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.1
   m_LinearDrag: 0.1
-  m_AngularDrag: 0
+  m_AngularDrag: 0.1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6878685347711784738
-BoxCollider2D:
+--- !u!60 &1222533178
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,6 +148,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.48, y: 0.48}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.122460775, y: 0.1988387}
+      - {x: -0.1864101, y: 0.14345269}
+      - {x: -0.19000003, y: -0.059999924}
+      - {x: -0.14999999, y: -0.24}
+      - {x: 0.11, y: -0.24}
+      - {x: 0.13820508, y: -0.23}
+      - {x: 0.16424103, y: -0.090829454}
+      - {x: 0.19999996, y: 0.12395583}
+      - {x: 0.09753954, y: 0.19883886}

@@ -9,6 +9,7 @@ public class GameConfig{
     public static bool WalkingTask = false;
     public static RPG BlockEvent;
     public static DialogController ActiveDialog;
+    public static SpyController ActiveSpy;
     public static RPG LastEvent;
     public static bool IsMsgProcess = false;
 }

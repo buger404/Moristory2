@@ -44,6 +44,10 @@ public class RPGEvent : MonoBehaviour
             obj = Instantiate(fab,new Vector3(0,0,90),Quaternion.identity);
             GameConfig.ActiveDialog = obj.GetComponent<DialogController>();
             obj.SetActive(false);
+            fab = (GameObject)Resources.Load("Prefabs\\SpyCanvas");
+            obj = Instantiate(fab,new Vector3(0,0,90),Quaternion.identity);
+            GameConfig.ActiveSpy = obj.GetComponent<SpyController>();
+            obj.SetActive(false);
         }
     }
 

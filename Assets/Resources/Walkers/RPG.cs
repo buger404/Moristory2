@@ -128,16 +128,21 @@ public class RPG : MonoBehaviour
             //阻止代码继续运行直到对话框被用户关闭
             BlockCode = true;MsgProccessed = true;
         }
+        //调查文本
+        if(c.Name == "a"){
+            GameConfig.ActiveSpy.CreateSpy(Storage.Deepin(c.InnerText));
+            BlockCode = true;
+        }
 
 
         //--人物操作-------------------------------------------------------
         //设置行走任务
         if(c.Name == "walk"){
-            if(c.GetAttribute("tar") != null)
+            if(c.GetAttribute("tar") != "")
             rpg = GameObject.Find(c.GetAttribute("tar")).GetComponent<RPGEvent>();
-            if(c.GetAttribute("x") != null)
+            if(c.GetAttribute("x") != "")
             rpg.XTask = float.Parse(Storage.Condition(c.GetAttribute("x")).ToString());
-            if(c.GetAttribute("y") != null)
+            if(c.GetAttribute("y") != "")
             rpg.YTask = float.Parse(Storage.Condition(c.GetAttribute("y")).ToString());
         }
         //开始根据设定的任务行走

@@ -48,6 +48,7 @@ public class Storage
 
         //根据存档替换
         string[] t = s.Replace("]","[").Split('[');
+        s="";
         for(int i = 0;i < t.Length;i++){
             if(i%2 == 0){
                 s += t[i];

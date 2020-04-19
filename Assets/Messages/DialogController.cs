@@ -41,7 +41,7 @@ public class DialogController : MonoBehaviour
         }
         if(Disabled2){return;}
         if(Disabled){return;}
-        if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space)){
+        if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Z)){
             if(BuffIndex < TextBuff.Length){
                 BuffDelta = 0;ContentText.text = TextBuff;
                 BuffIndex = TextBuff.Length;
