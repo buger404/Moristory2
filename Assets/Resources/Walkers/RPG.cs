@@ -174,6 +174,10 @@ public class RPG : MonoBehaviour
             if(c.InnerText == "day") GameConfig.DayNight = 0;
             if(c.InnerText == "night") GameConfig.DayNight = 1;
         }
+        //传送
+        if(c.Name == "tp"){
+            Switcher.SwitchTo(c.InnerText);
+        }
 
 
         //--代码执行收尾----------------------------------------------------
