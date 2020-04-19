@@ -11,7 +11,7 @@ public class MapTipController : MonoBehaviour
     {
         GameObject.Find("MapContent").GetComponent<Text>().text = MapName;
         Destroy(this.gameObject,3.0f);
-        GameObject.Find("MapContent").GetComponent<Animator>().Play("MapMsg");
+        //GameObject.Find("MapContent").GetComponent<Animator>().Play("MapMsg");
     }
 
     // Update is called once per frame
