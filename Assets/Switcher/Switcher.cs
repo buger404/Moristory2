@@ -15,14 +15,14 @@ public class Switcher :MonoBehaviour
 
     void Update()
     {
-        //GameObject.Find("Main Camera").transform.position = new Vector3(0,0,-10);
+
     }
 
     public static void SwitchTo(string Scene){
         if(SwitcherUsing) {return;}
         SwitcherUsing = true;
         GameObject swfab = (GameObject)Resources.Load("Prefabs\\Switcher");
-        GameObject swbox = Instantiate(swfab,new Vector3(0,0,0),Quaternion.identity);
+        GameObject swbox = Instantiate(swfab,new Vector3(0,0,-1),Quaternion.identity);
 		swbox.SetActive(true);
         TargetScene = Scene;
     }
@@ -46,10 +46,6 @@ public class Switcher :MonoBehaviour
         Debug.Log("Call back!");
         SceneManager.sceneLoaded -= CallBack;
         if(animator.GetFloat("Speed") != -1.1f){
-            Destroy(this.gameObject);
-            Debug.Log("Destoried Switcher!");
-            SwitcherUsing = false;
-            return;
             animator.Play("Switcher_Showing",0,1);
             animator.SetFloat("Speed", -1.1f);
         }
