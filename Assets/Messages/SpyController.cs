@@ -12,13 +12,11 @@ public class SpyController : MonoBehaviour
     private bool IsDisabled = false;
     private void Show(){
         if(this.GetComponent<Animator>().GetFloat("Speed") == 1){
-            Debug.Log("start spying.");
             IsDisabled = false;
         }
     }
     private void Hide(){
         if(this.GetComponent<Animator>().GetFloat("Speed") == -1.5){
-            Debug.Log("end spying.");
             GameConfig.IsBlocking = false;
             GameConfig.BlockEvent.Run();
             IsDisabled = false;
@@ -53,7 +51,6 @@ public class SpyController : MonoBehaviour
                 BuffIndex = TextBuff.Length;
                 return;
             }
-            Debug.Log("time to end spying.");
             IsDisabled = true;
             this.GetComponent<Animator>().Play("SpyShow",0,1f);
             this.GetComponent<Animator>().SetFloat("Speed",-1.5f);

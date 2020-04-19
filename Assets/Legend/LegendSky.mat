@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ef0157f0ba78d8c4f9ee1a36f2a542b1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7ce25ef38474f0245b76dd0be341ed07, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -102,11 +102,11 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnableExternalAlpha: 0
-    - _Exposure: 1
+    - _Exposure: 0.5
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _ImageType: 0
+    - _ImageType: 1
     - _Layout: 0
     - _Mapping: 1
     - _Metallic: 0
