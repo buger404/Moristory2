@@ -25,8 +25,8 @@ public class RPGEvent : MonoBehaviour
         s = this.gameObject.GetComponent<SpriteRenderer>();
         if(character == ""){return;}
         walker = Resources.LoadAll<Sprite>("Walkers/" + character);
-        s.sprite = walker[1 + 3 * Direction];
         if(IsController){
+            Direction = GameConfig.TpDir;
             GameConfig.Controller = this.gameObject;
             GameObject fab = (GameObject)Resources.Load("Prefabs\\poscircle");
             GameObject obj = Instantiate(fab,new Vector3(0,0,90),Quaternion.identity);
@@ -48,7 +48,11 @@ public class RPGEvent : MonoBehaviour
             obj = Instantiate(fab,new Vector3(0,0,90),Quaternion.identity);
             GameConfig.ActiveSpy = obj.GetComponent<SpyController>();
             obj.SetActive(false);
+            if(GameConfig.TpSpot != ""){
+                transform.position = GameObject.Find(GameConfig.TpSpot).transform.position;
+            }
         }
+        s.sprite = walker[1 + 3 * Direction];
     }
 
     void FixedUpdate()

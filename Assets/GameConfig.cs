@@ -12,4 +12,6 @@ public class GameConfig{
     public static SpyController ActiveSpy;
     public static RPG LastEvent;
     public static bool IsMsgProcess = false;
+    public static string TpSpot = "";
+    public static int TpDir = 0;
 }

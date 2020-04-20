@@ -176,6 +176,9 @@ public class RPG : MonoBehaviour
         }
         //传送
         if(c.Name == "tp"){
+            GameConfig.TpSpot = c.GetAttribute("spot");
+            if(GameConfig.TpSpot == null) GameConfig.TpSpot = "";
+            GameConfig.TpDir = int.Parse(Storage.Condition(c.GetAttribute("face")).ToString());
             Switcher.SwitchTo(c.InnerText);
         }
 
