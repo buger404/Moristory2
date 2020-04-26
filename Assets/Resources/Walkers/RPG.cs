@@ -202,6 +202,18 @@ public class RPG : MonoBehaviour
     public void Begin(string behave){
         //如果当前有别的behaviour在执行，则退出
         if(IsRunning) return;
+        
+        RPGEvent Player = GameConfig.Controller.GetComponent<RPGEvent>();
+        Vector3 Pp = Player.transform.position;
+        Vector3 Px = Player.transform.localScale;
+        float XD = 0,YD = 0;
+        if(Player.Direction == 0) {YD = Pp.y;Pp.y -= (Px.y/2);}
+        if(Player.Direction == 1) {XD = -Pp.x;Pp.x -= (Px.x/2);}
+        if(Player.Direction == 2) {XD = Pp.x;Pp.x += (Px.x/2);}
+        if(Player.Direction == 3) {YD = -Pp.y;Pp.y += (Px.y/2);}
+
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(Pp.x,Pp.y),new Vector2(XD,YD));
+        GameConfig.FACE = hit.collider == this.GetComponent<BoxCollider2D>() ? 1 : 0;
 
         XmlNodeList behaviours = xml.GetElementsByTagName("behaviour");
         foreach(XmlElement behaviour in behaviours){

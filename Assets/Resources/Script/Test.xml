@@ -19,5 +19,6 @@
     </behaviour>
     <behaviour action="auto" condition="true">
         <a>这是一条调查文本。</a>
+        <a>调查文本2，Of course。</a>
     </behaviour>
 </game>

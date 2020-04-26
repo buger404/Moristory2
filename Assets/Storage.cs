@@ -42,6 +42,7 @@ public class Storage
         s = s.Replace("FACE_LEFT","1");
         s = s.Replace("FACE_UP","3");
         s = s.Replace("FACE_DOWN","0");
+        s = s.Replace("FACE",GameConfig.FACE.ToString());
         if(GameConfig.Controller != null){
             s = s.Replace("[face]",GameConfig.Controller.GetComponent<RPGEvent>().Direction.ToString());
         }

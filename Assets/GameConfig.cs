@@ -14,4 +14,5 @@ public class GameConfig{
     public static bool IsMsgProcess = false;
     public static string TpSpot = "";
     public static int TpDir = 0;
+    public static int FACE = 0;
 }
