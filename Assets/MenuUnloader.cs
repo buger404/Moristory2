@@ -27,7 +27,6 @@ public class MenuUnloader : MonoBehaviour
         GameConfig.RecoverScene();
     }
     private void OnMouseUp() {
-        Debug.Log("Touched!");
         Unload();
     }
     // Start is called before the first frame update
