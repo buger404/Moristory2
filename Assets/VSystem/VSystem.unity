@@ -321,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 963683855014396178, guid: 5ea65956efc38e84997f6e6bf5ca49ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 189.1062
+      value: 189.10623
       objectReference: {fileID: 0}
     - target: {fileID: 963683855014396178, guid: 5ea65956efc38e84997f6e6bf5ca49ef,
         type: 3}
@@ -1353,6 +1353,8 @@ GameObject:
   - component: {fileID: 754576587}
   - component: {fileID: 754576589}
   - component: {fileID: 754576588}
+  - component: {fileID: 754576590}
+  - component: {fileID: 754576591}
   m_Layer: 5
   m_Name: rolefocus0
   m_TagString: Untagged
@@ -1415,6 +1417,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754576586}
   m_CullTransparentMesh: 0
+--- !u!114 &754576590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754576586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334ea20b02afd4d48b429c01814b44a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VController: {fileID: 0}
+  Index: 0
+--- !u!60 &754576591
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754576586}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 46.221558, y: 151.10446}
+      - {x: 85.40863, y: -128.52673}
+      - {x: -49.559998, y: -147.72711}
+      - {x: -88.71155, y: 133.31992}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: -87.15564, y: 128.37958}
 --- !u!1 &768594112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,6 +1707,8 @@ GameObject:
   - component: {fileID: 849132457}
   - component: {fileID: 849132459}
   - component: {fileID: 849132458}
+  - component: {fileID: 849132460}
+  - component: {fileID: 849132461}
   m_Layer: 5
   m_Name: rolefocus2
   m_TagString: Untagged
@@ -1720,6 +1771,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849132456}
   m_CullTransparentMesh: 0
+--- !u!114 &849132460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849132456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334ea20b02afd4d48b429c01814b44a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VController: {fileID: 0}
+  Index: 2
+--- !u!60 &849132461
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849132456}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 46.221558, y: 151.10446}
+      - {x: 85.40863, y: -128.52673}
+      - {x: -49.559998, y: -147.72711}
+      - {x: -88.71155, y: 133.31992}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: -87.15564, y: 128.37958}
 --- !u!1 &926520832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,7 +2014,7 @@ PrefabInstance:
     - target: {fileID: 963683855014396178, guid: 5ea65956efc38e84997f6e6bf5ca49ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 202.1636
+      value: 202.16356
       objectReference: {fileID: 0}
     - target: {fileID: 963683855014396178, guid: 5ea65956efc38e84997f6e6bf5ca49ef,
         type: 3}
@@ -2069,6 +2167,8 @@ GameObject:
   - component: {fileID: 1376620707}
   - component: {fileID: 1376620709}
   - component: {fileID: 1376620708}
+  - component: {fileID: 1376620710}
+  - component: {fileID: 1376620711}
   m_Layer: 5
   m_Name: rolefocus1
   m_TagString: Untagged
@@ -2131,6 +2231,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376620706}
   m_CullTransparentMesh: 0
+--- !u!114 &1376620710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376620706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334ea20b02afd4d48b429c01814b44a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VController: {fileID: 0}
+  Index: 1
+--- !u!60 &1376620711
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376620706}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 46.221558, y: 151.10446}
+      - {x: 85.40863, y: -128.52673}
+      - {x: -49.559998, y: -147.72711}
+      - {x: -88.71155, y: 133.31992}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: -87.15564, y: 128.37958}
 --- !u!1 &1582510408
 GameObject:
   m_ObjectHideFlags: 0

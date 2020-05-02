@@ -34,18 +34,16 @@ public class VSystemController : MonoBehaviour
             HP[i].Value = float.Parse(abi[1]); MP[i].Value = float.Parse(abi[2]);
             HP[i].Max = ab.HP; MP[i].Max = ab.MP;
             focus.Add(this.transform.Find("rolefocus" + i).GetComponent<Image>());
+            focus[i].GetComponent<RoleClicker>().VController = this;
             Walker.Add(this.transform.Find("WakerAni" + i).GetComponent<WalkingAnimate>());
             Roles.Add(abi[0]);
             Walker[i].character = Roles[i];
         }
         HP.Add(this.transform.Find("HPBar").GetComponent<AbilityBarController>());
         MP.Add(this.transform.Find("MPBar").GetComponent<AbilityBarController>());
-        HP[3].Value = HP[0].Value;HP[3].Max = HP[0].Max;
-        MP[3].Value = MP[0].Value;MP[3].Max = MP[0].Max;
         RoleName = this.transform.Find("RoleName").GetComponent<Text>();
         Role = this.transform.Find("Role").gameObject;
-        RoleName.text = Roles[0];
-        SetFace();
+        SwitchRole(0);
     }
     void SetFace(){
         Vector3 v = Role.GetComponent<RectTransform>().sizeDelta;
@@ -53,7 +51,16 @@ public class VSystemController : MonoBehaviour
         Role.GetComponent<Image>().sprite = s;
         Role.GetComponent<RectTransform>().sizeDelta = new Vector3(s.rect.width / s.rect.height * v.y,v.y,v.z);
     }
+    public void SwitchRole(int Index){
+        foreach(Image f in focus)
+            f.color = new Color(1.0f,1.0f,1.0f,1.0f / 255.0f);
 
+        focus[Index].color = new Color(1.0f,1.0f,1.0f,1.0f);
+        RoleName.text = Roles[Index];
+        HP[3].Value = HP[Index].Value;HP[3].Max = HP[Index].Max;
+        MP[3].Value = MP[Index].Value;MP[3].Max = MP[Index].Max;
+        SetFace();
+    }
     // Update is called once per frame
     void Update()
     {
