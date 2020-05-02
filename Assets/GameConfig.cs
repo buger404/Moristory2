@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameConfig{
     public static GameObject Controller;
@@ -15,4 +16,22 @@ public class GameConfig{
     public static string TpSpot = "";
     public static int TpDir = 0;
     public static int FACE = 0;
+    public static string CurrentMenu = "";
+    private static List<ObjectState> SceneRecord;
+    private struct ObjectState{
+        public GameObject Object;
+        public bool State;
+    }
+    public static void RecordScene(){
+        SceneRecord = new List<ObjectState>();
+        foreach(GameObject g in SceneManager.GetActiveScene().GetRootGameObjects()){
+            SceneRecord.Add(new ObjectState{Object = g,State = g.activeSelf});
+            g.SetActive(false);
+        }
+    }
+    public static void RecoverScene(){
+        foreach(ObjectState o in SceneRecord){
+            o.Object.SetActive(o.State);
+        }
+    }
 }

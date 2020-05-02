@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Maps/School.Outside1.unity
     guid: dc9197d261e4c9849bb71cf3a4ec999d
+  - enabled: 1
+    path: Assets/VSystem/VSystem.unity
+    guid: b81827951cb70924aa04fd96185b1021
   m_configObjects: {}

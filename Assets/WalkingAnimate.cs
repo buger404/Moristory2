@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WalkingAnimate : MonoBehaviour
 {
     private Sprite[] walker;
     public float fps = 24;
     public int Direction = 0;
-    private SpriteRenderer s;
+    private Image s;
     public string character = "";
     // Start is called before the first frame update
     void Start()
     {
-        s = this.gameObject.GetComponent<SpriteRenderer>();
+        s = this.gameObject.GetComponent<Image>();
         if(character == ""){
             int i = Random.Range(0,6);
             if(i == 0) character="世原·安诺";
