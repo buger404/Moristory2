@@ -1424,7 +1424,7 @@ PrefabInstance:
     - target: {fileID: 6878685347711784742, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
       propertyPath: character
-      value: "\u4E16"
+      value: "\u4E16\u539F\xB7\u5B89\u8BFA"
       objectReference: {fileID: 0}
     - target: {fileID: 6878685347711784742, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
@@ -1714,7 +1714,7 @@ PrefabInstance:
     - target: {fileID: 6878685347711784742, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
       propertyPath: character
-      value: "\u57DF\u96F6"
+      value: "\u57DF\u96F6\xB7\u5360\u4E5F"
       objectReference: {fileID: 0}
     - target: {fileID: 6878685347711784742, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
@@ -2044,7 +2044,7 @@ PrefabInstance:
     - target: {fileID: 6878685347711784742, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
       propertyPath: character
-      value: "\u8C2D\u5A1C"
+      value: "\u8C2D\u5A1C\xB7\u9713\u60A6"
       objectReference: {fileID: 0}
     - target: {fileID: 6878685347711784742, guid: ab1d0d9a47d6da44d9c8a82e82efb58b,
         type: 3}
