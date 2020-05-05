@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PaySystem : MonoBehaviour
 {
-    public bool Disabled = true;
+    public static bool Disabled = true;
     public static List<ItemSystem.GameItemInfo> Shopping;
     public static int NowShop;
     public static string Owner;
@@ -27,36 +27,48 @@ public class PaySystem : MonoBehaviour
     }
 
     private void OnMouseUp() {
+        Debug.Log(this.name);
         if(Disabled) return;
-
-        if(this.name == "NextBtn"){
+        Debug.Log("passed");
+        if(this.name.StartsWith("NextBtn")){
+            Debug.Log("next");
             if(NowShop + 1 >= Shopping.Count) return;
-            NowShop++; UpdateUI();
+            NowShop++; this.transform.parent.GetComponent<PaySystem>().UpdateUI();
         }
-        if(this.name == "PrevBtn"){
+        if(this.name.StartsWith("PrevBtn")){
+            Debug.Log("prev");
             if(NowShop - 1 < 0) return;
-            NowShop--; UpdateUI();
+            NowShop--; this.transform.parent.GetComponent<PaySystem>().UpdateUI();
         }
-        if(this.name == "Pay"){
+        if(this.name.StartsWith("Pay")){
+            Debug.Log("pay");
             GameObject fab = (GameObject)Resources.Load("Prefabs\\Fallen");
-            GameObject box = Instantiate(fab,new Vector3(0,0,0),Quaternion.identity);
-            box.GetComponent<Image>().sprite = this.transform.Find("Icon").GetComponent<Image>().sprite;
+            GameObject box = Instantiate(fab,new Vector3(0,0,50),Quaternion.identity,this.transform.parent);
+            box.GetComponent<RectTransform>().localPosition = this.transform.parent.Find("Icon").GetComponent<RectTransform>().localPosition;
+            box.GetComponent<Image>().sprite = this.transform.parent.Find("Icon").GetComponent<Image>().sprite;
             box.SetActive(true);
             Destroy(box,2.5f);
         }  
-        if(this.name == "NoWay"){
-            this.GetComponent<Animator>().SetFloat("Speed",-1);
-            this.GetComponent<Animator>().Play("PayCan",0,1.0f);
+        if(this.name.StartsWith("NoWay")){
+            Debug.Log("no");
+            Disabled = true;
+            this.transform.parent.GetComponent<Animator>().SetFloat("Speed",-1);
+            this.transform.parent.GetComponent<Animator>().Play("PayCan",0,1.0f);
         }  
     }
 
     public void AniEnter(){
-        if(this.GetComponent<Animator>().GetFloat("Speed") == -1)
+        if(this.GetComponent<Animator>().GetFloat("Speed") == -1){
+            GameConfig.IsBlocking = false;
+            Debug.Log("Shop OK");
+            GameConfig.BlockEvent.Run();
             Destroy(this.gameObject);
+        }
     }
     public void AniEnd(){
-        if(this.GetComponent<Animator>().GetFloat("Speed") != -1)
+        if(this.GetComponent<Animator>().GetFloat("Speed") != -1){
             Disabled = false;
+        }
     }
 
     void Awake()
@@ -65,12 +77,15 @@ public class PaySystem : MonoBehaviour
     }
 
     public void UpdateUI(){
-        if(this.name != "PayCanvas") return;
+        Debug.Log(this.name);
+        if(!this.name.StartsWith("PayCanvas")) return;
 
         this.transform.Find("PrevBtn").gameObject.SetActive(NowShop > 0 && Shopping.Count > 1);
         this.transform.Find("NextBtn").gameObject.SetActive(NowShop < Shopping.Count - 1 && Shopping.Count > 1);
         
         ItemSystem.GameItemInfo gmi = Shopping[NowShop];
+
+        this.transform.Find("Icon").GetComponent<Image>().sprite = Resources.Load<Sprite>("Items/" + gmi.Icon);
 
         this.transform.Find("CutOff").gameObject.SetActive(gmi.Cut != 1);
         this.transform.Find("Cuts").gameObject.SetActive(gmi.Cut != 1);

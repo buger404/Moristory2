@@ -35,7 +35,7 @@ public class ItemSystem{
         GItems.Add(new GameItemInfo(
             "蛋糕",
             "一种甜甜的食物，可以回复10点体力。",
-            5,"cake.png",       //花费，图标
+            5,"cake",       //花费，图标
             10,0,               //HP点数，MP点数
             false,              //是否有扩展效果
             "谭娜·域零"          //有加成效果的成员名单
@@ -44,7 +44,7 @@ public class ItemSystem{
         GItems.Add(new GameItemInfo(
             "咖啡",
             "可以微微提神，回复5点体力，10点魔力",
-            9,"coffee-cup.png",       
+            9,"coffee-cup",       
             5,10,               
             false,              
             "雪郎·梦亭","域零·占也","艾伦·思瑞","莎瑟·娜蕾"          
@@ -52,8 +52,8 @@ public class ItemSystem{
 
         GItems.Add(new GameItemInfo(
             "奶茶",
-            "奶味和茶香味扑面而来，可回复12点体力，12点魔力",
-            14,"iced-tea.png",       
+            "香味扑面而来，可回复12点体力，12点魔力",
+            14,"iced-tea",       
             12,12,               
             true,              
             "兮·御冯","世原·安诺","布莱·昴斯","域零·占也"          
@@ -62,7 +62,7 @@ public class ItemSystem{
         GItems.Add(new GameItemInfo(
             "纯牛奶",
             "校长的推荐，可回复10点体力，5点魔力",
-            7,"milk.png",       
+            7,"milk",       
             10,5,               
             false,              
             "兮·御冯","谭娜·霓悦"          
@@ -71,7 +71,7 @@ public class ItemSystem{
         GItems.Add(new GameItemInfo(
             "鲜橙汁",
             "可能不是鲜橙？可回复5点魔力",
-            4,"orange-juice.png",       
+            4,"orange-juice",       
             0,5,               
             false,              
             "布莱·昴斯","閠橘·芙莱"          
@@ -80,7 +80,7 @@ public class ItemSystem{
         GItems.Add(new GameItemInfo(
             "汽水",
             "香橙味。可回复1点体力，10点魔力",
-            6,"soft-drink.png",       
+            6,"soft-drink",       
             1,10,               
             false,              
             "布莱·昴斯","艾伦·思瑞","埃斯·洛里"          
@@ -89,7 +89,7 @@ public class ItemSystem{
         GItems.Add(new GameItemInfo(
             "矿泉水",
             "谁知道是不是自来水呢？可回复5点体力",
-            2,"water.png",       
+            2,"water",       
             5,0,               
             false,              
             "埃斯·洛里"          

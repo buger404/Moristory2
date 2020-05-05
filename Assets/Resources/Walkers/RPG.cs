@@ -183,6 +183,14 @@ public class RPG : MonoBehaviour
         }
 
 
+        //--交易操作-------------------------------------------------------
+        //显示售货页面
+        if(c.Name == "shop"){
+            PaySystem.CreateShop(c.InnerText,c.GetAttribute("cut"),c.GetAttribute("owner"),c.GetAttribute("post"));
+            BlockCode = true;
+        }
+
+
         //--代码执行收尾----------------------------------------------------
         //若对话框没有被使用，则当作废弃关闭
         if(!MsgProccessed){

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <shop owner="自动售货机" post="口渴了么？买一瓶吧~" cut="1;1;1;1;1;1">矿泉水;咖啡;奶茶;纯牛奶;汽水;鲜橙汁</shop>
+    </behaviour>
+</game>

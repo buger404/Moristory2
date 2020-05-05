@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 8914216902964425842}
   - component: {fileID: 8914216902964425853}
   - component: {fileID: 1792284103}
+  - component: {fileID: 1792284102}
   m_Layer: 0
   m_Name: PayCanvas
   m_TagString: Untagged
@@ -352,6 +353,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Disabled: 1
+--- !u!95 &1792284102
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914216902964425855}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef148940fa14bd84b8fa765cfd301bd8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8914216903031683758
 GameObject:
   m_ObjectHideFlags: 0
