@@ -20,9 +20,10 @@ public class ItemSystem{
         public long HP;
         public long MP;
         public bool Extend;
+        public float Cut;
         public GameItemInfo(string name,string describe,long cost,string icon,long hp,long mp,bool extend,params string[] love){
             Name = name;Describe = describe;Cost = cost;
-            Icon = icon;HP = hp;MP = mp;Extend = extend;
+            Icon = icon;HP = hp;MP = mp;Extend = extend;Cut = 1;
             Love = "";
             foreach(string p in love)
                 Love += p + ";";
