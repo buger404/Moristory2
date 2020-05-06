@@ -29,13 +29,14 @@ public class Switcher :MonoBehaviour
 
     void LoadScene(){
         if(animator.GetFloat("Speed") == 1.1f){
-            SceneManager.LoadSceneAsync(TargetScene);
+            GameConfig.ProcessingScene = SceneManager.LoadSceneAsync(TargetScene);
         }
     }
 
     void MessageOperation(){
         if(animator.GetFloat("Speed") == -1.1f){
             Destroy(this.gameObject);
+            GameConfig.ProcessingScene = null;
             Debug.Log("Destoried Switcher!");
             SwitcherUsing = false;
         }

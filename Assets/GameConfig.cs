@@ -16,6 +16,7 @@ public class GameConfig{
     public static string TpSpot = "";
     public static int TpDir = 0;
     public static int FACE = 0;
+    public static AsyncOperation ProcessingScene;
     public static string CurrentMenu = "";
     private static List<ObjectState> SceneRecord;
     private struct ObjectState{
