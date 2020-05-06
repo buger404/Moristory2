@@ -26,34 +26,34 @@ public class PaySystem : MonoBehaviour
 		box.SetActive(true);
     }
 
-    private void OnMouseUp() {
-        Debug.Log(this.name);
+    private void Carry(string Name) {
+        Debug.Log(Name);
         if(Disabled) return;
         Debug.Log("passed");
-        if(this.name.StartsWith("NextBtn")){
+        if(Name.StartsWith("NextBtn")){
             Debug.Log("next");
             if(NowShop + 1 >= Shopping.Count) return;
-            NowShop++; this.transform.parent.GetComponent<PaySystem>().UpdateUI();
+            NowShop++; this.GetComponent<PaySystem>().UpdateUI();
         }
-        if(this.name.StartsWith("PrevBtn")){
+        if(Name.StartsWith("PrevBtn")){
             Debug.Log("prev");
             if(NowShop - 1 < 0) return;
-            NowShop--; this.transform.parent.GetComponent<PaySystem>().UpdateUI();
+            NowShop--; this.GetComponent<PaySystem>().UpdateUI();
         }
-        if(this.name.StartsWith("Pay")){
+        if(Name.StartsWith("Pay")){
             Debug.Log("pay");
             GameObject fab = (GameObject)Resources.Load("Prefabs\\Fallen");
-            GameObject box = Instantiate(fab,new Vector3(0,0,50),Quaternion.identity,this.transform.parent);
-            box.GetComponent<RectTransform>().localPosition = this.transform.parent.Find("Icon").GetComponent<RectTransform>().localPosition;
-            box.GetComponent<Image>().sprite = this.transform.parent.Find("Icon").GetComponent<Image>().sprite;
+            GameObject box = Instantiate(fab,new Vector3(0,0,50),Quaternion.identity,this.transform);
+            box.GetComponent<RectTransform>().localPosition = this.transform.Find("Icon").GetComponent<RectTransform>().localPosition;
+            box.GetComponent<Image>().sprite = this.transform.Find("Icon").GetComponent<Image>().sprite;
             box.SetActive(true);
             Destroy(box,2.5f);
         }  
-        if(this.name.StartsWith("NoWay")){
+        if(Name.StartsWith("NoWay")){
             Debug.Log("no");
             Disabled = true;
-            this.transform.parent.GetComponent<Animator>().SetFloat("Speed",-1);
-            this.transform.parent.GetComponent<Animator>().Play("PayCan",0,1.0f);
+            this.GetComponent<Animator>().SetFloat("Speed",-1);
+            this.GetComponent<Animator>().Play("PayCan",0,1.0f);
         }  
     }
 
@@ -132,7 +132,11 @@ public class PaySystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetMouseButtonUp(0)){
+            foreach(RaycastHit2D hit in Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition),Vector2.zero)){
+                Carry(hit.transform.name);
+            }
+        }
     }
 
 

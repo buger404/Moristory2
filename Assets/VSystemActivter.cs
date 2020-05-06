@@ -15,9 +15,6 @@ public class VSystemActivter : MonoBehaviour
         GameConfig.IsBlocking = true;
         Camera.main.gameObject.SetActive(false);
     }
-    private void OnMouseUp() {
-        ActiveVSystem();
-    }
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,6 +31,13 @@ public class VSystemActivter : MonoBehaviour
         }
         if(Input.GetKeyUp(KeyCode.X)){
             ActiveVSystem();
+        }
+        if(Input.GetMouseButtonUp(0)){
+            foreach(RaycastHit2D hit in Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition),Vector2.zero)){
+                if(hit.transform == this.transform){
+                    ActiveVSystem();
+                }
+            }
         }
     }
 }

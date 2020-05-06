@@ -85,8 +85,7 @@ GameObject:
   - component: {fileID: 8914216902679323304}
   - component: {fileID: 8914216902679323307}
   - component: {fileID: 8914216902679323305}
-  - component: {fileID: 1540735760}
-  - component: {fileID: 1540735761}
+  - component: {fileID: 7485439194762590524}
   m_Layer: 5
   m_Name: PrevBtn
   m_TagString: Untagged
@@ -168,20 +167,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1540735760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8914216902679323317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd25542285a3ad1428fa972a8abb1dcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Disabled: 1
---- !u!61 &1540735761
+--- !u!61 &7485439194762590524
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,7 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd25542285a3ad1428fa972a8abb1dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Disabled: 1
 --- !u!95 &1792284102
 Animator:
   serializedVersion: 3
@@ -615,8 +600,7 @@ GameObject:
   - component: {fileID: 8914216903238365651}
   - component: {fileID: 8914216903238365650}
   - component: {fileID: 8914216903238365648}
-  - component: {fileID: 90181735}
-  - component: {fileID: 90181736}
+  - component: {fileID: 769222243564635716}
   m_Layer: 5
   m_Name: NextBtn
   m_TagString: Untagged
@@ -698,20 +682,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &90181735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8914216903238365660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd25542285a3ad1428fa972a8abb1dcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Disabled: 1
---- !u!61 &90181736
+--- !u!61 &769222243564635716
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -748,8 +719,7 @@ GameObject:
   - component: {fileID: 8914216903372647991}
   - component: {fileID: 8914216903372647989}
   - component: {fileID: 8914216903372647988}
-  - component: {fileID: 224464781}
-  - component: {fileID: 224464782}
+  - component: {fileID: 5251148607701849155}
   m_Layer: 5
   m_Name: Pay
   m_TagString: Untagged
@@ -812,20 +782,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &224464781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8914216903372647990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd25542285a3ad1428fa972a8abb1dcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Disabled: 1
---- !u!61 &224464782
+--- !u!61 &5251148607701849155
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1608,8 +1565,7 @@ GameObject:
   - component: {fileID: 8914216904202994744}
   - component: {fileID: 8914216904202994750}
   - component: {fileID: 8914216904202994745}
-  - component: {fileID: 1021535618}
-  - component: {fileID: 1021535619}
+  - component: {fileID: 507768440986717690}
   m_Layer: 5
   m_Name: NoWay
   m_TagString: Untagged
@@ -1672,20 +1628,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1021535618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8914216904202994747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd25542285a3ad1428fa972a8abb1dcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Disabled: 1
---- !u!61 &1021535619
+--- !u!61 &507768440986717690
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
