@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/VSystem/VSystem.unity
     guid: b81827951cb70924aa04fd96185b1021
+  - enabled: 1
+    path: Assets/Saving/Saving.unity
+    guid: c2370966229b5cd48a74fa733cc96611
   m_configObjects: {}

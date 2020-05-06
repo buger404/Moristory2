@@ -37,6 +37,9 @@ public class Switcher :MonoBehaviour
         if(animator.GetFloat("Speed") == -1.1f){
             Destroy(this.gameObject);
             GameConfig.ProcessingScene = null;
+            if(PlayerPrefs.GetString("scene") == TargetScene){
+                GameConfig.RecoverSceneFromString(PlayerPrefs.GetString("scenecode"));
+            }
             Debug.Log("Destoried Switcher!");
             SwitcherUsing = false;
         }

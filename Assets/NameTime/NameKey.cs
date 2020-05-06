@@ -21,6 +21,8 @@ public class NameKey : MonoBehaviour
     }
     void NameComplete(){
         if(Type != 5){return;}
+        PlayerPrefs.SetString("name",Name.text);
+        Debug.Log($"player created: {Name.text}");
         Switcher.SwitchTo("DocumentSpy");
     }
     private void OnMouseUp() {

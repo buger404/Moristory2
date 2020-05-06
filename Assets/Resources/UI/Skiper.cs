@@ -16,7 +16,13 @@ public class Skiper : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space)){
-            Switcher.SwitchTo(SkipTo);
+            if(SkipTo == "NameTime"){
+                if(PlayerPrefs.GetString("scenecode") != ""){
+                    Switcher.SwitchTo("Saving");
+                }else{
+                    Switcher.SwitchTo(SkipTo);
+                }
+            }
         }
     }
 }

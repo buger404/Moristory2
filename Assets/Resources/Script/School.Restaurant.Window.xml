@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="true">
+        <save></save>
+        <chara>世原·安诺</chara>
+        <s>存档已保存。</s>
+    </behaviour>
+</game>

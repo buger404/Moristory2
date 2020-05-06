@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 代码状态
@@ -188,6 +189,15 @@ public class RPG : MonoBehaviour
         if(c.Name == "shop"){
             PaySystem.CreateShop(c.InnerText,c.GetAttribute("cut"),c.GetAttribute("owner"),c.GetAttribute("post"));
             BlockCode = true;
+        }
+
+
+        //--存档操作-------------------------------------------------------
+        //存入存档
+        if(c.Name == "save"){
+            PlayerPrefs.SetString("map",GameConfig.CurrentMapName);
+            PlayerPrefs.SetString("scene",SceneManager.GetActiveScene().name);
+            PlayerPrefs.SetString("scenecode",GameConfig.RecordSceneToString());
         }
 
 

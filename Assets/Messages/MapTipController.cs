@@ -9,6 +9,7 @@ public class MapTipController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameConfig.CurrentMapName = MapName;
         GameObject.Find("MapContent").GetComponent<Text>().text = MapName;
         Destroy(this.gameObject,3.0f);
         //GameObject.Find("MapContent").GetComponent<Animator>().Play("MapMsg");
