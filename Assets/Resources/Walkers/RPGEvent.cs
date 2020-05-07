@@ -26,6 +26,9 @@ public class RPGEvent : MonoBehaviour
         if(!IsController) return;
         if(PlayerPrefs.GetString("scene") == SceneManager.GetActiveScene().name){
                 GameConfig.RecoverSceneFromString(PlayerPrefs.GetString("scenecode"));
+                Direction = PlayerPrefs.GetInt("mapdirection");
+                s.sprite = walker[1 + 3 * Direction];
+                CircleCanvas.SetActive(false);
         }
     }
     private void Awake() {

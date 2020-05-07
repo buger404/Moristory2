@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -54,6 +55,18 @@ public class RPG : MonoBehaviour
         GameConfig.IsBlocking = true;
         GameConfig.BlockEvent = this;
         Debug.Log("Behave hang up");
+    }
+
+    IEnumerator SaveDone()
+    {
+        yield return new WaitForSeconds(2.5f);
+        SoundPlayer.Play("SaveDone");
+        PlayerPrefs.SetString("map",GameConfig.CurrentMapName);
+        PlayerPrefs.SetString("scene",SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetString("scenecode",GameConfig.RecordSceneToString());
+        PlayerPrefs.SetInt("mapdirection",GameConfig.Controller.GetComponent<RPGEvent>().Direction);
+        GameConfig.IsBlocking = false;
+        GameConfig.BlockEvent.Run();
     }
 
     //每行代码的执行
@@ -195,10 +208,14 @@ public class RPG : MonoBehaviour
         //--存档操作-------------------------------------------------------
         //存入存档
         if(c.Name == "save"){
-            SoundPlayer.Play("SaveDone");
-            PlayerPrefs.SetString("map",GameConfig.CurrentMapName);
-            PlayerPrefs.SetString("scene",SceneManager.GetActiveScene().name);
-            PlayerPrefs.SetString("scenecode",GameConfig.RecordSceneToString());
+            GameObject fab = (GameObject)Resources.Load("Prefabs\\SaveCanvas");
+            GameObject obj = Instantiate(fab,new Vector3(0,0,90),Quaternion.identity);
+            obj.SetActive(true);
+            obj.transform.Find("SaveWord").GetComponent<Text>().text = c.InnerText;
+            Destroy(obj,4.0f);
+            SoundPlayer.Play("Clock");
+            StartCoroutine("SaveDone");
+            BlockCode = true;
         }
 
 
