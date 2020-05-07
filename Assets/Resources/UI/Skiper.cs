@@ -23,7 +23,13 @@ public class Skiper : MonoBehaviour
                     Switcher.SwitchTo(SkipTo);
                 }
             }else{
-                Switcher.SwitchTo(SkipTo);
+                if(Input.GetMouseButtonUp(0)){
+                    foreach(RaycastHit2D hit in Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition),Vector2.zero)){
+                        if(hit.transform.name.StartsWith("Skip")){
+                            Switcher.SwitchTo(SkipTo);
+                        }
+                    }
+                }
             }
         }
     }
