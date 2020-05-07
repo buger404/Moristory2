@@ -35,6 +35,8 @@ public class NameKey : MonoBehaviour
             //FixPos();
         }
         if(Type == 2){
+            Debug.Log("push!");
+            SoundPlayer.Play("Cursor_2");
             Name.text = Name.text + Key.text;
             //KeyR.position.Set(KeyR.position.x + KeyR.sizeDelta.x, KeyR.position.y,KeyR.position.z);
             GetKey();//FixPos();
