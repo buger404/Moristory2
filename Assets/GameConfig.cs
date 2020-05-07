@@ -31,15 +31,20 @@ public class GameConfig
         foreach(GameObject g in SceneManager.GetActiveScene().GetRootGameObjects()){
             r += g.name + ";" + g.activeSelf + ";" + g.transform.localPosition.x + ";" + g.transform.localPosition.y + "|";
         }
+        Debug.Log("Saved:\n" + r);
         return r;
     }
     public static void RecoverSceneFromString(string code){
         string[] g = code.Split('|');
         for(int i = 0;i < g.Length-1;i++){
-            string[] c = code.Split(';');
-            GameObject go = GameObject.Find(c[0]);
-            go.SetActive(c[1] == "True");
-            go.transform.localPosition = new Vector3(float.Parse(c[2]),float.Parse(c[3]),go.transform.localPosition.z);
+            Debug.Log("Recovering:" + g[i]);
+            string[] c = g[i].Split(';');
+            foreach(GameObject go in SceneManager.GetActiveScene().GetRootGameObjects()){
+                if(go.name == c[0]){
+                    go.SetActive(c[1] == "True");
+                    go.transform.localPosition = new Vector3(float.Parse(c[2]),float.Parse(c[3]),go.transform.localPosition.z);
+                }
+            }
         }
     }
     public static void RecordScene(){

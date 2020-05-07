@@ -22,6 +22,8 @@ public class Skiper : MonoBehaviour
                 }else{
                     Switcher.SwitchTo(SkipTo);
                 }
+            }else{
+                Switcher.SwitchTo(SkipTo);
             }
         }
     }

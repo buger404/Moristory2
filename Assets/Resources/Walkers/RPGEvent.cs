@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class RPGEvent : MonoBehaviour
@@ -20,6 +21,12 @@ public class RPGEvent : MonoBehaviour
     public float XTask = 0;public float YTask = 0;
     private void OnCollisionStay2D(Collision2D other) {
         
+    }
+    private void Start() {
+        if(!IsController) return;
+        if(PlayerPrefs.GetString("scene") == SceneManager.GetActiveScene().name){
+                GameConfig.RecoverSceneFromString(PlayerPrefs.GetString("scenecode"));
+        }
     }
     private void Awake() {
         s = this.gameObject.GetComponent<SpriteRenderer>();
