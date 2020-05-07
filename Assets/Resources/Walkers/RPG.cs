@@ -243,10 +243,10 @@ public class RPG : MonoBehaviour
         Vector3 Pp = Player.transform.position;
         Vector3 Px = Player.transform.localScale;
         float XD = 0,YD = 0;
-        if(Player.Direction == 0) {YD = -Pp.y;Pp.y -= (Px.y/2)*0;}
-        if(Player.Direction == 1) {XD = Pp.x;Pp.x -= (Px.x/2)*0;}
-        if(Player.Direction == 2) {XD = -Pp.x;Pp.x += (Px.x/2)*0;}
-        if(Player.Direction == 3) {YD = Pp.y;Pp.y += (Px.y/2)*0;}
+        if(Player.Direction == 0) {YD = -10;Pp.y -= (Px.y/2)*0;}
+        if(Player.Direction == 1) {XD = -10;Pp.x -= (Px.x/2)*0;}
+        if(Player.Direction == 2) {XD = 10;Pp.x += (Px.x/2)*0;}
+        if(Player.Direction == 3) {YD = 10;Pp.y += (Px.y/2)*0;}
 
         int FACE = 0;
         RaycastHit2D[] hit = Physics2D.RaycastAll(new Vector2(Pp.x,Pp.y),new Vector2(XD,YD));

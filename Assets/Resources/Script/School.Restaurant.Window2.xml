@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <chara>旁白</chara>
+        <s>窗外的阳光是那么的柔和。</s>
+    </behaviour>
+</game>
