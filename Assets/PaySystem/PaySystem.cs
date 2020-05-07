@@ -24,6 +24,8 @@ public class PaySystem : MonoBehaviour
         GameObject fab = (GameObject)Resources.Load("Prefabs\\PayCanvas");
         GameObject box = Instantiate(fab,new Vector3(0,0,0),Quaternion.identity);
 		box.SetActive(true);
+
+        SoundPlayer.Play("Decide_2");
     }
 
     private void Carry(string Name) {
@@ -41,6 +43,7 @@ public class PaySystem : MonoBehaviour
             NowShop--; this.GetComponent<PaySystem>().UpdateUI();
         }
         if(Name.StartsWith("Pay")){
+            SoundPlayer.Play("Coin");
             Debug.Log("pay");
             GameObject fab = (GameObject)Resources.Load("Prefabs\\Fallen");
             GameObject box = Instantiate(fab,new Vector3(0,0,50),Quaternion.identity,this.transform);
@@ -50,6 +53,7 @@ public class PaySystem : MonoBehaviour
             Destroy(box,2.5f);
         }  
         if(Name.StartsWith("NoWay")){
+            SoundPlayer.Play("Cancel_4");
             Debug.Log("no");
             Disabled = true;
             this.GetComponent<Animator>().SetFloat("Speed",-1);

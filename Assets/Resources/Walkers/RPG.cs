@@ -195,6 +195,7 @@ public class RPG : MonoBehaviour
         //--存档操作-------------------------------------------------------
         //存入存档
         if(c.Name == "save"){
+            SoundPlayer.Play("SaveDone");
             PlayerPrefs.SetString("map",GameConfig.CurrentMapName);
             PlayerPrefs.SetString("scene",SceneManager.GetActiveScene().name);
             PlayerPrefs.SetString("scenecode",GameConfig.RecordSceneToString());
@@ -225,13 +226,17 @@ public class RPG : MonoBehaviour
         Vector3 Pp = Player.transform.position;
         Vector3 Px = Player.transform.localScale;
         float XD = 0,YD = 0;
-        if(Player.Direction == 0) {YD = Pp.y;Pp.y -= (Px.y/2);}
-        if(Player.Direction == 1) {XD = -Pp.x;Pp.x -= (Px.x/2);}
-        if(Player.Direction == 2) {XD = Pp.x;Pp.x += (Px.x/2);}
-        if(Player.Direction == 3) {YD = -Pp.y;Pp.y += (Px.y/2);}
+        if(Player.Direction == 0) {YD = -Pp.y;Pp.y -= (Px.y/2)*0;}
+        if(Player.Direction == 1) {XD = Pp.x;Pp.x -= (Px.x/2)*0;}
+        if(Player.Direction == 2) {XD = -Pp.x;Pp.x += (Px.x/2)*0;}
+        if(Player.Direction == 3) {YD = Pp.y;Pp.y += (Px.y/2)*0;}
 
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(Pp.x,Pp.y),new Vector2(XD,YD));
-        GameConfig.FACE = hit.collider == this.GetComponent<BoxCollider2D>() ? 1 : 0;
+        int FACE = 0;
+        RaycastHit2D[] hit = Physics2D.RaycastAll(new Vector2(Pp.x,Pp.y),new Vector2(XD,YD));
+        foreach(RaycastHit2D c in hit)
+            if(c.collider.gameObject.name == this.name) FACE = 1;
+
+        GameConfig.FACE = FACE;
 
         XmlNodeList behaviours = xml.GetElementsByTagName("behaviour");
         foreach(XmlElement behaviour in behaviours){
@@ -257,7 +262,8 @@ public class RPG : MonoBehaviour
 
     private void Update() {
         //如果最后一个进入碰撞的RPG是自己
-        if(GameConfig.LastEvent == this){
+        if(GameConfig.LastEvent.FindIndex(m => m == this) != -1){
+            //Debug.Log(this.name + " attached to the spy event!");
             //支持的触发输入
             if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Z)){
                 Begin("spy"); //调用spy behaviour
@@ -267,10 +273,10 @@ public class RPG : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         //当玩家进入碰撞区域时，开始允许玩家触发spy behaviour
-        GameConfig.LastEvent = this;
+        GameConfig.LastEvent.Add(this);
     }
     private void OnTriggerExit2D(Collider2D other) {
-        GameConfig.LastEvent = null;
+        GameConfig.LastEvent.Remove(this);
     }
     private void OnTriggerStay2D(Collider2D other) {
         //接触即调用touch behaviour

@@ -23,6 +23,7 @@ public class SoundPlayer
         
         AudioSource source = go.AddComponent<AudioSource>();
         source.clip = audios.Find(m => m.name == tar);
+        source.volume = 0.9f + Random.Range(-0.2f,0.2f);
         source.Play();
         GameObject.Destroy(go, source.clip.length);
     }

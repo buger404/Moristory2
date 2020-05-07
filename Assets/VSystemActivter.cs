@@ -14,6 +14,7 @@ public class VSystemActivter : MonoBehaviour
         GameConfig.CurrentMenu = "VSystem";
         GameConfig.IsBlocking = true;
         Camera.main.gameObject.SetActive(false);
+        SoundPlayer.Play("Electrocardiogram");
     }
     // Start is called before the first frame update
     void Awake()

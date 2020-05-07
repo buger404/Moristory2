@@ -13,7 +13,7 @@ public class GameConfig
     public static RPG BlockEvent;
     public static DialogController ActiveDialog;
     public static SpyController ActiveSpy;
-    public static RPG LastEvent;
+    public static List<RPG> LastEvent = new List<RPG>();
     public static bool IsMsgProcess = false;
     public static string TpSpot = "";
     public static int TpDir = 0;
@@ -56,7 +56,12 @@ public class GameConfig
     }
     public static void RecoverScene(){
         foreach(ObjectState o in SceneRecord){
-            o.Object.SetActive(o.State);
+            try{
+                o.Object.SetActive(o.State);
+            }
+            catch{
+
+            }
         }
     }
 }

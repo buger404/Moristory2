@@ -36,7 +36,7 @@ public class NameKey : MonoBehaviour
         }
         if(Type == 2){
             Debug.Log("push!");
-            SoundPlayer.Play("Cursor_2");
+            SoundPlayer.Play("Cursor1");
             Name.text = Name.text + Key.text;
             //KeyR.position.Set(KeyR.position.x + KeyR.sizeDelta.x, KeyR.position.y,KeyR.position.z);
             GetKey();//FixPos();
@@ -48,6 +48,7 @@ public class NameKey : MonoBehaviour
                 if(Name.text.IndexOf("志琰") >= 0){
                     GameObject.Find("Praise").GetComponent<Text>().text = "...行吧，就叫这个名字:("; 
                 }
+                SoundPlayer.Play("Cursor_2");
                 ani.Play("NameDone",0,0);
                 ani.SetFloat("Speed",1.0f);
             }
