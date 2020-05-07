@@ -8,6 +8,7 @@ public class SavePoint : MonoBehaviour
     void Carry(string name){
         Debug.Log("try:" + name);
         if(name.StartsWith("Continue")){
+            SoundPlayer.Play("Load");
             Switcher.SwitchTo(PlayerPrefs.GetString("scene"));
         }
         if(name.StartsWith("Reset")){

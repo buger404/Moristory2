@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CameraFixer : MonoBehaviour
 {
+    public bool IsCanvas = false;
     /// <summary>
     /// 开发屏幕的宽
     /// </summary>
@@ -61,7 +62,7 @@ public class CameraFixer : MonoBehaviour
 
     public void FitCanvas(CanvasScaler canvas)
     {
-        Debug.Log("fixed:" + DevelopRate + "," + ScreenRate);
+        Debug.Log("fixed:" + DevelopRate + "," + ScreenRate + " with " + canvas.name);
         if (DevelopRate <= ScreenRate)
         {
             canvas.matchWidthOrHeight = (1f - DevelopRate / ScreenRate) / DevelopRate;
@@ -73,10 +74,17 @@ public class CameraFixer : MonoBehaviour
     }
     void Awake()
     {
+        if(IsCanvas) return;
         FitCamera(this.GetComponent<Camera>());
-        foreach(GameObject g in SceneManager.GetActiveScene().GetRootGameObjects()){
-            CanvasScaler c = g.GetComponent<CanvasScaler>();
-            if(c!=null) FitCanvas(c);
+    }
+
+    private void Start() {
+        for(int i = 0;i < SceneManager.sceneCount;i++){
+            Scene s = SceneManager.GetSceneAt(i);
+            foreach(GameObject g in s.GetRootGameObjects()){
+                CanvasScaler c = g.GetComponent<CanvasScaler>();
+                if(c!=null) FitCanvas(c);
+            }
         }
     }
 

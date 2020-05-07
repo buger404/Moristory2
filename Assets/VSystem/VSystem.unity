@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1477,6 +1477,7 @@ GameObject:
   - component: {fileID: 768594113}
   - component: {fileID: 768594117}
   - component: {fileID: 768594118}
+  - component: {fileID: 768594119}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1617,6 +1618,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c42bf9221b7a746a7d732b6aea2cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &768594119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768594112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c8b4ea958239f4c948fed6b657c171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsCanvas: 1
 --- !u!1 &791086815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c8b4ea958239f4c948fed6b657c171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsCanvas: 0
 --- !u!20 &926520834
 Camera:
   m_ObjectHideFlags: 0

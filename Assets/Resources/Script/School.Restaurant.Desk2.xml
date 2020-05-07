@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <a>桌上还有没吃完的早饭，看起来挺丰盛的。</a>
+        <a>不过充当“光盘行动”代言人似乎会很尴尬。</a>
+    </behaviour>
+</game>
