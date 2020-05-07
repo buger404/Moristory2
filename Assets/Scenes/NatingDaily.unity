@@ -563,6 +563,7 @@ GameObject:
   - component: {fileID: 782400177}
   - component: {fileID: 782400178}
   - component: {fileID: 782400179}
+  - component: {fileID: 782400180}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -723,6 +724,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkipTo: School.Restaurant
+--- !u!114 &782400180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782400171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c8b4ea958239f4c948fed6b657c171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &888119604
 GameObject:
   m_ObjectHideFlags: 0

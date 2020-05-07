@@ -1716,6 +1716,7 @@ GameObject:
   - component: {fileID: 1941163265}
   - component: {fileID: 1941163266}
   - component: {fileID: 1941163264}
+  - component: {fileID: 1941163267}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1845,6 +1846,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DayLight: {fileID: 1026320884}
   NightLight: {fileID: 1041987869}
+--- !u!114 &1941163267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941163260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c8b4ea958239f4c948fed6b657c171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1944741823
 PrefabInstance:
   m_ObjectHideFlags: 0
