@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
     <behaviour action="spy" condition="FACE=1">
-        <chara>旁白</chara>
+        <chara>食堂大妈</chara>
         <if condition="[NOCOST]!=1">
             <s>同学，你想吃些什么？</s>
             <shop owner="食堂大妈" post="今日限量五折优惠" cut="0.5;0.5;0.5;0.5">炒面;炒饭;拉面;牛排套餐</shop>

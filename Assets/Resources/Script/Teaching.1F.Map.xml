@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <chara>世原·安诺</chara>
+        <s>地图中央便是奥伦娜的领土，奥伦娜有着世界第一大的领土。而我所在的维克中学就在奥伦娜的东北部。</s>
+        <s>奥伦娜的首都娜亭则在奥伦娜的西南部。</s>
+        <s>楚斯卡德则是世界上领土第二大的国家，它的领土和奥伦娜的墓之森接壤。</s>
+    </behaviour>
+</game>

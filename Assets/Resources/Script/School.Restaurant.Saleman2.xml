@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
     <behaviour action="spy" condition="FACE=1">
-        <chara>旁白</chara>
+        <chara>食堂大妈</chara>
         <s>同学，看看要吃些什么吧。</s>
         <shop owner="食堂大妈" post="早餐也要吃饱才行啊" cut="1;1;1;1">面包;蛋糕;鸡腿;香肠</shop>
         <s>谢谢惠顾。</s>

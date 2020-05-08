@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <chara>世原·安诺</chara>
+        <s>似乎需要老师持电梯卡才可以使用。</s>
+    </behaviour>
+</game>

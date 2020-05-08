@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <chara>老人</chara>
+        <s>『看着这些花儿，我又不禁想起了娜亭的蕾尔玫宫。』</s>
+        <s>『那是一座环绕着玫瑰的宫殿。。。』</s>
+    </behaviour>
+</game>

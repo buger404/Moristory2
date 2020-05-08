@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="auto" condition="[AP]>1">
+        <visible tar="X">false</visible>
+    </behaviour>
+    <behaviour action="spy" condition="[face]=FACE_RIGHT and [AP]=1">
+        <chara>世原·安诺</chara>
+        <s>兮，我准备好啦。</s>
+        <chara>兮·御冯</chara>
+        <s>“嗯，那我们开始吧，靠近我一些。”</s>
+        <s>（世走进兮）</s>
+        <chara>兮·御冯</chara>
+        <s>“那么——”</s>
+        <s>（她的手指向上一指，一个界面凭空出现，然后，她按下了界面上的按钮。界面即刻消失，周围的景色逐渐被黑暗吞没，</s>
+        <s>接着我和她又回到了教学楼，只是刚才在公示栏前面的老师不见了。没错，我和她现在正处于系统构建的虚拟环境。）</s>
+        <chara>世原·安诺</chara>
+        <s>“不必手下留情哦，毕竟我们只是在学校构建的虚拟环境中进行法术比赛。任何人都不会因为受到攻击受伤。”</s>
+        <chara>兮·御冯</chara>
+        <s>“那当然，如果可以的话，这次就使用我的主攻阵法吧~”</s>
+        <chara>世原·安诺</chara>
+        <s>“嗯。”</s>
+        <chara>旁白</chara>
+        <s>（晨间的阳光覆盖在她曲卷的头发上，她哼着歌，步履轻盈。那是同清泉一般澄澈，水花一样柔嫩的嗓音。悠长的曲子慢慢地，慢慢地从远方飘来。</s>
+        <s>教学楼大厅一地都是柔和的光影，光晕随风变换，她——狂风中的舞者来了。）</s>
+        <s>COMMING SOON</s>
+    </behaviour>
+</game>

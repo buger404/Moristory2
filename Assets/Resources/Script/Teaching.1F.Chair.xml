@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="[face]=FACE_UP">
+        <chara>世原·安诺</chara>
+        <s>『坐下来休息一下吧。』</s>
+        <save>你坐了下来，准备好迎接兮。</save>
+    </behaviour>
+</game>

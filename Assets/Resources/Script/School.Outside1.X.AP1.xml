@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
+    <behaviour action="auto" condition="[AP]>0">
+        <visible tar="X">false</visible>
+    </behaviour>
     <behaviour action="spy" condition="[face]=FACE_RIGHT and [AP]=0">
         <var tar="AP">[AP]+1</var>
         <fix src="Player" tar="y"/>
@@ -101,7 +104,8 @@
         <chara>兮·御冯</chara>
         <s>『嗯。。。那我先进大厅啦。』</s>
         <s>『准备好了之后进来找我哦。』</s>
-
+        <s>（说完，她就哼着小调走进教学楼了。）</s>
+        
         <visible tar="X">false</visible>
 
         <save>清晨温和的问候。</save>

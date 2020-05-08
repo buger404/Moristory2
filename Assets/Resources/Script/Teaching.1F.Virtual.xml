@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <a>一位老师正盯着公示栏发呆，他似乎没有注意到你。</a>
+    </behaviour>
+</game>

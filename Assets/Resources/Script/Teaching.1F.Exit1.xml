@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="touch" condition="[face]=FACE_DOWN">
+        <tp spot="tpspot2" face="FACE_DOWN">School.Outside1</tp>
+    </behaviour>
+</game>
