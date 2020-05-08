@@ -222,8 +222,9 @@ public class RPG : MonoBehaviour
             obj.transform.Find("SaveWord").GetComponent<Text>().text = c.InnerText;
             Destroy(obj,4.0f);
             SoundPlayer.Play("Clock");
-            StartCoroutine("SaveDone");
             BlockCode = true;
+            StartCoroutine("SaveDone");
+            return;
         }
 
 
