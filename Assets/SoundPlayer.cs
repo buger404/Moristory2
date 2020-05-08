@@ -8,13 +8,9 @@ public class SoundPlayer
 {
     public static List<AudioClip> audios = new List<AudioClip>();
     static SoundPlayer(){
-        string[] files = Directory.GetFiles("Assets/Resources/Sounds/");
-        foreach(string f in files){
-            string rf = f.Replace("Assets/Resources/Sounds/","").Split('.')[0];
-            audios.Add((AudioClip)Resources.Load("Sounds/" + rf));
-            Debug.Log("loaded:" + rf);
-        }
-            
+        object[] audio = Resources.LoadAll("Sounds");
+        foreach(AudioClip au in audio)
+            audios.Add(au);
     }
     public static void Play(string tar){
         GameObject go = new GameObject("Audio: " + tar);

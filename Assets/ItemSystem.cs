@@ -157,6 +157,15 @@ public class ItemSystem{
             false,              
             "埃斯·洛里"          
         ));
+
+        GItems.Add(new GameItemInfo(
+            "咖啡",
+            "可以微微提神，回复5点体力，10点魔力",
+            9,"coffee-cup",       
+            5,10,               
+            false,              
+            "雪郎·梦亭","域零·占也","艾伦·思瑞","莎瑟·娜蕾"          
+        ));
     }
     public static List<GameItem> Get(){
         string[] temp = PlayerPrefs.GetString("Items","").Split(';');
