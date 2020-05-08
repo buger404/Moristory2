@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
     <behaviour action="spy" condition="[face]=FACE_RIGHT and [AP]=0">
-        <vare tar="AP">[AP]+1</vare>
+        <var tar="AP">[AP]+1</var>
         <fix src="Player" tar="y"/>
         <chara>兮·御冯</chara>
         <s>『早安~世原。』</s>
@@ -103,5 +103,7 @@
         <s>『准备好了之后进来找我哦。』</s>
 
         <visible tar="X">false</visible>
+
+        <save>清晨温和的问候。</save>
     </behaviour>
 </game>

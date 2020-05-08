@@ -18,6 +18,7 @@ public class GameConfig
     public static string TpSpot = "";
     public static int TpDir = 0;
     public static int FACE = 0;
+    public static bool Loaded = false;
     public static string CurrentMapName = "";
     public static AsyncOperation ProcessingScene;
     public static string CurrentMenu = "";

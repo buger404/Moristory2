@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="touch" condition="[AP]=0">
+        <chara>兮·御冯</chara>
+        <s>『？？？？？？？？？』</s>
+        <walk tar="Player" y="[step]*-1"/>
+        <walktask/>
+    </behaviour>
+</game>

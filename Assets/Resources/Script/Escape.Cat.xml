@@ -8,6 +8,10 @@
         <if condition="[face]=FACE_RIGHT"><walk x="[step]*1"/></if>
         <walktask/>
         <chara>世原·安诺</chara>
-        <s>『这只猫好像不喜欢我。』</s>
+        <if condition="[Cat1]=0"><s>『这只猫好像不喜欢我。』</s></if>
+        <if condition="[Cat1]=1"><s>『我一接近这只猫它就跑了。』</s></if>
+        <if condition="[Cat1]=2"><s>『这只猫或许是真的不喜欢我。』</s></if>
+        <if condition="[Cat1]>=3"><s>『我觉得逗猫不是我现在该做的事情。』</s></if>
+        <var tar="Cat1">[Cat1]+1</var>
     </behaviour>
 </game>

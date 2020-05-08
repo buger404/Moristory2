@@ -24,7 +24,8 @@ public class NameKey : MonoBehaviour
         PlayerPrefs.SetString("name",Name.text);
         Debug.Log($"player created: {Name.text}");
         //销毁旧的存档
-        PlayerPrefs.SetString("scene","");
+        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.SetString("scene","");
         Switcher.SwitchTo("DocumentSpy");
     }
     private void OnMouseUp() {

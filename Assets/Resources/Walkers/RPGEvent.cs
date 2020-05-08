@@ -24,11 +24,13 @@ public class RPGEvent : MonoBehaviour
     private void Start() {
         if(!IsController) return;
         if(PlayerPrefs.GetString("scene") == SceneManager.GetActiveScene().name){
-                GameConfig.RecoverSceneFromString(PlayerPrefs.GetString("scenecode"));
-                Direction = PlayerPrefs.GetInt("mapdirection");
-                s.sprite = walker[1 + 3 * Direction];
-                CircleCanvas.SetActive(false);
+            if(GameConfig.Loaded) return;
+            GameConfig.RecoverSceneFromString(PlayerPrefs.GetString("scenecode"));
+            Direction = PlayerPrefs.GetInt("mapdirection");
+            s.sprite = walker[1 + 3 * Direction];
+            CircleCanvas.SetActive(false);
         }
+        GameConfig.Loaded = true;
     }
     private void Awake() {
         s = this.gameObject.GetComponent<SpriteRenderer>();
@@ -67,7 +69,7 @@ public class RPGEvent : MonoBehaviour
     }
 
     public void UnlockFreeze(){
-        if(Body != null) Body.constraints = RigidbodyConstraints2D.None;
+        if(Body != null) Body.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     void FixedUpdate()
