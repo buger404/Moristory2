@@ -19,9 +19,8 @@ public class RPGEvent : MonoBehaviour
     private GameObject CircleCanvas;
     private Canvas CircleCanvasT;
     public float XTask = 0;public float YTask = 0;
-    private void OnCollisionStay2D(Collision2D other) {
-        
-    }
+    private RigidbodyConstraints2D Freeze;
+    private Rigidbody2D Body;
     private void Start() {
         if(!IsController) return;
         if(PlayerPrefs.GetString("scene") == SceneManager.GetActiveScene().name){
@@ -63,6 +62,12 @@ public class RPGEvent : MonoBehaviour
             }
         }
         s.sprite = walker[1 + 3 * Direction];
+        Body = this.GetComponent<Rigidbody2D>();
+        if(Body != null) Freeze = Body.constraints;
+    }
+
+    public void UnlockFreeze(){
+        if(Body != null) Body.constraints = RigidbodyConstraints2D.None;
     }
 
     void FixedUpdate()
@@ -84,6 +89,7 @@ public class RPGEvent : MonoBehaviour
             HandMove = true;
             if(XTask == 0 && YTask == 0 && GameConfig.WalkingTask){
                 Debug.Log("Walk let next");
+                if(Body != null) Body.constraints = Freeze;
                 GameConfig.WalkingTask = false;
                 GameConfig.IsBlocking = false;
                 GameConfig.BlockEvent.Run();

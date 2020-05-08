@@ -1,3 +1,0 @@
-#Behavior:Touch
-
-    #go:School.Outside1

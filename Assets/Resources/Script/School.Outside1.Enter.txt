@@ -1,3 +1,0 @@
-#Behavior:Spy
-
-    #go:School.Restaurant

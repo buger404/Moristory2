@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="[face]=FACE_RIGHT and [AP]=0">
+        <vare tar="AP">[AP]+1</vare>
+        <fix src="Player" tar="y"/>
+        <chara>兮·御冯</chara>
+        <s>『早安~世原。』</s>
+        <chara>世原·安诺</chara>
+        <s>『早啊，兮。』</s>
+        <chara>兮·御冯</chara>
+        <s>『吃饭还是一如既往地慢啊，小世。』</s>
+        <s>（她嘟起嘴，举起手指轻轻地点了点我的鼻子）</s>
+        <chara>世原·安诺</chara>
+        <s>『让你在这里等太久了吗？不好意思。。。』</s>
+        <chara>兮·御冯</chara>
+        <s>『没关系。我也是刚到的。』</s>
+        <s>（她轻轻地抖了抖发麻的双腿，她似乎早早地就来到了这里。）</s>
+        <chara>世原·安诺</chara>
+        <s>『每天都在这里等我，真是辛苦你了。』</s>
+        <chara>兮·御冯</chara>
+        <s>『我只是每天都凑巧路过啦。』</s>
+        <chara>世原·安诺</chara>
+        <s>『那，我们就一起去教室吧。』</s>
+
+        <walk tar="Player" y="[step]*7"/>
+        <walk tar="X" y="[step]*7"/>
+        <walktask/>
+
+        <chara>兮·御冯</chara>
+        <s>『我准备了今天的午餐哦，有你最爱吃的牛排呢。』</s>
+        <chara>世原·安诺</chara>
+        <s>『真的吗？谢谢你。』</s>
+        <chara>兮·御冯</chara>
+        <s>『昨晚我去找素鱼老师学了一门新手艺，素鱼老师做的牛排可好吃了。我一个晚上就学会了，我厉害吧？』</s>
+        <chara>世原·安诺</chara>
+        <s>『嗯，兮很厉害呢。我很期待哦。』</s>
+        <chara>兮·御冯</chara>
+        <s>『没什么啦。』</s>
+        <chara>世原·安诺</chara>
+        <s>『兮昨晚发的新歌也很好听呢。』</s>
+        <s>（兮·御冯，是网络上的著名歌手。以动听的嗓音，美妙的曲子，博得了一波又一波的狂热粉丝。）</s>
+        <s>（使用曲子的节奏展开风属性魔法攻击，是她的特殊能力。因此，她又被人称作『狂风中的舞者』。）</s>
+        <s>（不仅如此，她在维克中学也是数一数二的学霸。就论法师能力而言，她在全国也有靠前的名次。）</s>
+
+        <walk tar="Player" y="[step]*6"/>
+        <walk tar="X" y="[step]*6"/>
+        <walktask/>
+
+        <chara>兮·御冯</chara>
+        <s>『小世，中午可以陪我去图书馆吗？』</s>
+        <chara>世原·安诺</chara>
+        <s>『当然可以呀。』</s>
+        <chara>兮·御冯</chara>
+        <s>『霓悦老师说她有些事情要找我们。』</s>
+        <chara>世原·安诺</chara>
+        <s>『霓悦老师？她有什么事吗？』</s>
+        <chara>兮·御冯</chara>
+        <s>『不清楚呢，还叮嘱我们一定要两个人一起去。』</s>
+        <chara>世原·安诺</chara>
+        <s>『我们。。。应该没有惹出什么事情来吧？』</s>
+        <chara>兮·御冯</chara>
+        <s>『不清楚呢，就算有，人家也是被你拖累的，噜噜噜。』</s>
+        <chara>世原·安诺</chara>
+        <s>『兮，别这么说嘛。。。』</s>
+        <chara>兮·御冯</chara>
+        <s>『嘻嘻。』</s>
+
+        <walk tar="Player" y="[step]*6"/>
+        <walk tar="X" y="[step]*6"/>
+        <walktask/>
+
+        <chara>世原·安诺</chara>
+        <s>『兮。。。你今天吃过早餐了吗？』</s>
+        <chara>兮·御冯</chara>
+        <s>『啊。。。？啊。。。？我。。。我当然吃过啦！』</s>
+        <s>（咕——）</s>
+        <s>（她的脸瞬间红了起来，她的手不自觉地摸了摸肚子。）</s>
+        <chara>世原·安诺</chara>
+        <s>『我这里还有一袋面包，不介意的话你拿去吃吧。』</s>
+        <chara>兮·御冯</chara>
+        <s>『啊。。。谢谢。』</s>
+        <chara>世原·安诺</chara>
+        <s>『不吃早餐可不行啊。』</s>
+        <chara>兮·御冯</chara>
+        <s>『我知道啦。』</s>
+
+        <walk tar="Player" y="[step]*6"/>
+        <walk tar="X" y="[step]*5"/>
+        <walktask/>
+        <walk tar="Player" x="[step]*6"/>
+        <walk tar="X" x="[step]*5"/>
+        <walktask/>
+        <walk tar="Player" y="[step]*-1"/>
+        <walk tar="X" y="[step]*-1"/>
+        <walktask/>
+
+        <chara>兮·御冯</chara>
+        <s>『小世。到了哦。这里就是教学楼大厅了。』</s>
+        <chara>世原·安诺</chara>
+        <s>『嗯。。。那今天。。。也要吗？』</s>
+        <chara>兮·御冯</chara>
+        <s>『嗯。。。那我先进大厅啦。』</s>
+        <s>『准备好了之后进来找我哦。』</s>
+
+        <visible tar="X">false</visible>
+    </behaviour>
+</game>

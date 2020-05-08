@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,7 +65,7 @@ public class NameKey : MonoBehaviour
         Key.text = t[Random.Range(0,t.Length)];
     }
     void FixPos(){
-        //ResetR.position = new Vector3(
+        //  ResetR.position = new Vector3(
         //    KeyR.position.x + KeyR.sizeDelta.x / 2 - ResetR.localScale.x / 2,
         //    ResetR.position.y,
         //    ResetR.position.z);

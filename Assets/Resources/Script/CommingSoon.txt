@@ -1,5 +1,0 @@
-#Behavior:Spy
-
-    #旁白
-    COMMING SOON！
-    感谢你的支持！

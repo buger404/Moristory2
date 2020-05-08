@@ -124,6 +124,13 @@ public class RPG : MonoBehaviour
         }
 
 
+        //--音效操作--------------------------------------------------------
+        //播放音效
+        if(c.Name == "snd"){
+            SoundPlayer.Play(c.InnerText);
+        }
+
+
         //--变量操作--------------------------------------------------------
         //游戏变量操作
         if(c.Name == "var"){
@@ -158,6 +165,7 @@ public class RPG : MonoBehaviour
             rpg.XTask = float.Parse(Storage.Condition(c.GetAttribute("x")).ToString());
             if(c.GetAttribute("y") != "")
             rpg.YTask = float.Parse(Storage.Condition(c.GetAttribute("y")).ToString());
+            rpg.UnlockFreeze();
         }
         //开始根据设定的任务行走
         if(c.Name == "walktask"){
@@ -238,7 +246,8 @@ public class RPG : MonoBehaviour
     public void Begin(string behave){
         //如果当前有别的behaviour在执行，则退出
         if(IsRunning) return;
-        
+        //if(behave != "touch") Debug.Log("behave:" + behave);
+
         RPGEvent Player = GameConfig.Controller.GetComponent<RPGEvent>();
         Vector3 Pp = Player.transform.position;
         Vector3 Px = Player.transform.localScale;
@@ -289,13 +298,18 @@ public class RPG : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject != GameConfig.Controller) return;
         //当玩家进入碰撞区域时，开始允许玩家触发spy behaviour
+        //Debug.Log("enter:" + this.name);
         GameConfig.LastEvent.Add(this);
     }
     private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject != GameConfig.Controller) return;
+        //Debug.Log("exit:" + this.name);
         GameConfig.LastEvent.Remove(this);
     }
     private void OnTriggerStay2D(Collider2D other) {
+        if(other.gameObject != GameConfig.Controller) return;
         //接触即调用touch behaviour
         Begin("touch");
     }

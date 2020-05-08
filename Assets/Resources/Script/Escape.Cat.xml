@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <snd>Cat</snd>
+        <if condition="[face]=FACE_UP"><walk y="[step]*-1"/></if>
+        <if condition="[face]=FACE_DOWN"><walk y="[step]*1"/></if>
+        <if condition="[face]=FACE_LEFT"><walk x="[step]*-1"/></if>
+        <if condition="[face]=FACE_RIGHT"><walk x="[step]*1"/></if>
+        <walktask/>
+        <chara>世原·安诺</chara>
+        <s>『这只猫好像不喜欢我。』</s>
+    </behaviour>
+</game>
