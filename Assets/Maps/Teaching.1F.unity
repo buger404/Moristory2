@@ -1365,6 +1365,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1647372952}
     m_Modifications:
+    - target: {fileID: 2393364948602568886, guid: 889f29ea518d8a14db67e7fbbd6572cd,
+        type: 3}
+      propertyPath: Btn
+      value: 
+      objectReference: {fileID: 1054192751}
     - target: {fileID: 2393364948602568889, guid: 889f29ea518d8a14db67e7fbbd6572cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1493,6 +1498,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1054192749}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1054192751 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2393364948602568888, guid: 889f29ea518d8a14db67e7fbbd6572cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1054192749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1069472966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,7 +2193,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1148624467}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
