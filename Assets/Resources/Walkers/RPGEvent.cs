@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-
+// RPG人物行走图控制器和玩家控制器类
 public class RPGEvent : MonoBehaviour
 {
-    public bool IsController = false;
-    public float speed = 3;
-    public float fps = 6;
-    public int Direction = 0;
-    public string character;
-    private SpriteRenderer s;
-    private Sprite[] walker;
-    private Vector3 Origin;
+    public bool IsController = false;   //是否为玩家控制器
+    public float speed = 3;             //此为行走速度
+    public float fps = 6;               //每秒行走图刷新次数
+    public int Direction = 0;           //人物朝向
+    public string character;            //使用的人物的行走图名称
+    private SpriteRenderer s;           //控制对象图片
+    private Sprite[] walker;            //行走图图片集
+    //--------------------------------------------------------
+    //摇杆相关
+    private Vector3 Origin;             //
     private GameObject poscircle;
     private GameObject orcircle;
     private GameObject arcircle;
     private GameObject CircleCanvas;
     private Canvas CircleCanvasT;
-    public float XTask = 0;public float YTask = 0;
-    private RigidbodyConstraints2D Freeze;
+    //--------------------------------------------------------
+    public float XTask = 0,YTask = 0;       //行走任务
+    private RigidbodyConstraints2D Freeze;  //人物冻结状态
     private Rigidbody2D Body;
     private void Start() {
         if(!IsController) return;
+        //还原存档数据
         if(PlayerPrefs.GetString("scene") == SceneManager.GetActiveScene().name){
             if(GameConfig.Loaded) return;
             GameConfig.RecoverSceneFromString(PlayerPrefs.GetString("scenecode"));
@@ -30,6 +34,7 @@ public class RPGEvent : MonoBehaviour
             s.sprite = walker[1 + 3 * Direction];
             CircleCanvas.SetActive(false);
         }
+        //无论如何是否在目标地图，一旦已经加载地图，存档就不应该被二次还原
         GameConfig.Loaded = true;
     }
     private void Awake() {
@@ -69,6 +74,7 @@ public class RPGEvent : MonoBehaviour
     }
 
     public void UnlockFreeze(){
+        //将人物的冻结解除，防止在行走任务中穿墙
         if(Body != null) Body.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
@@ -93,8 +99,11 @@ public class RPGEvent : MonoBehaviour
                 Debug.Log("Walk let next");
                 if(Body != null) Body.constraints = Freeze;
                 GameConfig.WalkingTask = false;
+                //----------------------------------
+                //脚本挂起需要此处复原
                 GameConfig.IsBlocking = false;
                 GameConfig.BlockEvent.Run();
+                //----------------------------------
             }
             if(XTask == 0 && YTask == 0){Origin.x = -244;HandMove = false;}
             goto Moves;
