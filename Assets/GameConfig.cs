@@ -27,6 +27,9 @@ public class GameConfig
         public GameObject Object;
         public bool State;
     }
+    static GameConfig(){
+        
+    }
     public static string RecordSceneToString(){
         string r = "";
         foreach(GameObject g in SceneManager.GetActiveScene().GetRootGameObjects()){

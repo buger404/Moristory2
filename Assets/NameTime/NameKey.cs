@@ -21,10 +21,10 @@ public class NameKey : MonoBehaviour
     }
     void NameComplete(){
         if(Type != 5){return;}
-        PlayerPrefs.SetString("name",Name.text);
         Debug.Log($"player created: {Name.text}");
         //销毁旧的存档
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetString("name",Name.text);
         //PlayerPrefs.SetString("scene","");
         Switcher.SwitchTo("DocumentSpy");
     }

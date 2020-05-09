@@ -57,18 +57,6 @@ public class RPG : MonoBehaviour
         Debug.Log("Behave hang up");
     }
 
-    IEnumerator SaveDone()
-    {
-        yield return new WaitForSeconds(2.5f);
-        SoundPlayer.Play("SaveDone");
-        PlayerPrefs.SetString("map",GameConfig.CurrentMapName);
-        PlayerPrefs.SetString("scene",SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetString("scenecode",GameConfig.RecordSceneToString());
-        PlayerPrefs.SetInt("mapdirection",GameConfig.Controller.GetComponent<RPGEvent>().Direction);
-        GameConfig.IsBlocking = false;
-        GameConfig.BlockEvent.Run();
-    }
-
     //每行代码的执行
     public void Run(){
         //--代码执行准备-----------------------------------------------------
@@ -220,11 +208,8 @@ public class RPG : MonoBehaviour
             GameObject obj = Instantiate(fab,new Vector3(0,0,90),Quaternion.identity);
             obj.SetActive(true);
             obj.transform.Find("SaveWord").GetComponent<Text>().text = c.InnerText;
-            Destroy(obj,4.0f);
             SoundPlayer.Play("Clock");
             BlockCode = true;
-            StartCoroutine("SaveDone");
-            return;
         }
 
 
