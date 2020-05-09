@@ -170,8 +170,8 @@ public class RPGEvent : MonoBehaviour
                                                  t.z);
                 float xD = orcircle.transform.position.x - poscircle.transform.position.x;
                 float yD = orcircle.transform.position.y - poscircle.transform.position.y;
-                if(xD >= yD){Direction = xD > 0 ? 2 : 0;}
-                if(xD <= yD){Direction = yD > 0 ? 3 : 1;}
+                if(Mathf.Abs(xD) >= Mathf.Abs(yD)){Direction = xD > 0 ? 2 : 1;}
+                if(Mathf.Abs(xD) <= Mathf.Abs(yD)){Direction = yD > 0 ? 3 : 0;}
 
             }
 
