@@ -2,6 +2,6 @@
 <game>
     <behaviour action="touch" condition="[face]=FACE_DOWN">
         <var tar="NOCOST">1</var>
-        <tp spot="tpspot1" face="FACE_DOWN">School.Outside1</tp>
+        <tp spot="tpspot1" face="FACE_DOWN">S.Out1</tp>
     </behaviour>
 </game>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
     <behaviour action="spy" condition="FACE=1">
-        <a>电视里正在播放无聊的研究报告。</a>
-        <a>你认为你有更重要的事情要做。</a>
+	<chara>旁白</chara>
+        <s>电视里正在播放无聊的研究报告。</s>
+        <s>你认为你有更重要的事情要做。</s>
     </behaviour>
 </game>

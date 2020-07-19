@@ -238,16 +238,19 @@ public class RPG : MonoBehaviour
         Vector3 Pp = Player.transform.position;
         Vector3 Px = Player.transform.localScale;
         float XD = 0,YD = 0;
-        if(Player.Direction == 0) {YD = -10;Pp.y -= (Px.y/2)*0;}
-        if(Player.Direction == 1) {XD = -10;Pp.x -= (Px.x/2)*0;}
-        if(Player.Direction == 2) {XD = 10;Pp.x += (Px.x/2)*0;}
-        if(Player.Direction == 3) {YD = 10;Pp.y += (Px.y/2)*0;}
+        if(Player.Direction == 0) {YD = -0.5f;Pp.z -= (Px.z/2)*0;}
+        if(Player.Direction == 1) {XD = -0.5f;Pp.x -= (Px.x/2)*0;}
+        if(Player.Direction == 2) {XD = 0.5f;Pp.x += (Px.x/2)*0;}
+        if(Player.Direction == 3) {YD = 0.5f;Pp.z += (Px.z/2)*0;}
 
         int FACE = 0;
-        RaycastHit2D[] hit = Physics2D.RaycastAll(new Vector2(Pp.x,Pp.y),new Vector2(XD,YD));
-        foreach(RaycastHit2D c in hit)
-            if(c.collider.gameObject.name == this.name) FACE = 1;
-
+        RaycastHit[] hit = Physics.RaycastAll(new Vector3(Pp.x,0.1f,Pp.z),new Vector3(XD,0,YD));
+        foreach(RaycastHit c in hit){
+            if(c.collider.gameObject.name == this.name) {
+                FACE = 1;
+            }
+        }
+            
         GameConfig.FACE = FACE;
 
         XmlNodeList behaviours = xml.GetElementsByTagName("behaviour");
@@ -283,6 +286,25 @@ public class RPG : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other) {
+        
+    }
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject != GameConfig.Controller) return;
+        //当玩家进入碰撞区域时，开始允许玩家触发spy behaviour
+        //Debug.Log("enter:" + this.name);
+        GameConfig.LastEvent.Add(this);  
+    }
+    private void OnTriggerExit(Collider other) {
+        if(other.gameObject != GameConfig.Controller) return;
+        //Debug.Log("exit:" + this.name);
+        GameConfig.LastEvent.Remove(this);
+    }
+    private void OnTriggerStay(Collider other) {
+        if(other.gameObject != GameConfig.Controller) return;
+        //接触即调用touch behaviour
+        Begin("touch");
+    }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject != GameConfig.Controller) return;
         //当玩家进入碰撞区域时，开始允许玩家触发spy behaviour

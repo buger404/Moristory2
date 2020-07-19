@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <chara>你</chara>
+        <s>在桌底下捡到了一块钱。</s>
+    </behaviour>
+</game>

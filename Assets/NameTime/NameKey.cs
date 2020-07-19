@@ -26,7 +26,7 @@ public class NameKey : MonoBehaviour
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetString("name",Name.text);
         //PlayerPrefs.SetString("scene","");
-        Switcher.SwitchTo("DocumentSpy");
+        Switcher.SwitchTo("NatingDaily");
     }
     private void OnMouseUp() {
         if(Type == 0){

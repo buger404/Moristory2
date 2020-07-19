@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="touch" condition="true">
+        <chara>食堂大妈</chara>
+        <s>同学，不要爬到盆栽上面玩！</s>
+        <walk tar="Player" y="[step]*2"/>
+        <walktask/>
+    </behaviour>
+</game>

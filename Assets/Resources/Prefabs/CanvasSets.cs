@@ -8,8 +8,8 @@ public class CanvasSets : MonoBehaviour
     void Awake()
     {
         Canvas canvas = this.gameObject.GetComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        canvas.worldCamera = Camera.main;
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        //canvas.worldCamera = Camera.main;
         
         this.transform.position = new Vector3(0,0,90);
         Debug.Log("Canvas has successfully connected with the camera .");

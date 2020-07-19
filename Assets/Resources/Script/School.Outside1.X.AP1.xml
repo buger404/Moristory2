@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
     <behaviour action="auto" condition="[AP]>0">
-        <visible tar="X">false</visible>
+	<var tar="AP">0</var>
+        <visible tar="X">true</visible>
     </behaviour>
-    <behaviour action="spy" condition="[face]=FACE_RIGHT and [AP]=0">
+    <behaviour action="spy" condition="[face]=FACE_UP and [AP]=0">
         <var tar="AP">[AP]+1</var>
-        <fix src="Player" tar="y"/>
+        <fix src="Player" tar="x"/>
         <chara>兮·御冯</chara>
         <s>『早安~世原。』</s>
         <chara>世原·安诺</chara>
@@ -25,6 +26,9 @@
         <chara>世原·安诺</chara>
         <s>『那，我们就一起去教室吧。』</s>
 
+        <walk tar="Player" x="[step]*(-8)"/>
+        <walk tar="X" x="[step]*(-7)"/>
+        <walktask/>
         <walk tar="Player" y="[step]*7"/>
         <walk tar="X" y="[step]*7"/>
         <walktask/>

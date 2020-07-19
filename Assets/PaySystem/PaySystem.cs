@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 public class PaySystem : MonoBehaviour
 {
     public static bool Disabled = true;
@@ -50,7 +50,7 @@ public class PaySystem : MonoBehaviour
             box.GetComponent<RectTransform>().localPosition = this.transform.Find("Icon").GetComponent<RectTransform>().localPosition;
             box.GetComponent<Image>().sprite = this.transform.Find("Icon").GetComponent<Image>().sprite;
             box.SetActive(true);
-            Destroy(box,2.5f);
+            Destroy(box,0.95f);
         }  
         if(Name.StartsWith("NoWay")){
             SoundPlayer.Play("Cancel_4");
@@ -137,8 +137,15 @@ public class PaySystem : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButtonUp(0)){
-            foreach(RaycastHit2D hit in Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition),Vector2.zero)){
-                Carry(hit.transform.name);
+            GraphicRaycaster gr = this.GetComponent<GraphicRaycaster>();
+            PointerEventData data = new PointerEventData(EventSystem.current);
+            data.pressPosition = Input.mousePosition;
+            data.position = Input.mousePosition;
+            List<RaycastResult> results = new List<RaycastResult>();
+            gr.Raycast(data, results);
+
+            foreach(RaycastResult rr in results){
+                Carry(rr.gameObject.name);
             }
         }
     }

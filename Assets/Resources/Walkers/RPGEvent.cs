@@ -65,7 +65,8 @@ public class RPGEvent : MonoBehaviour
             GameConfig.ActiveSpy = obj.GetComponent<SpyController>();
             obj.SetActive(false);
             if(GameConfig.TpSpot != ""){
-                transform.position = GameObject.Find(GameConfig.TpSpot).transform.position;
+                Vector3 pos = GameObject.Find(GameConfig.TpSpot).transform.position;
+                transform.position = new Vector3(pos.x,transform.position.y,pos.z);
             }
         }
         s.sprite = walker[1 + 3 * Direction];
@@ -86,8 +87,9 @@ public class RPGEvent : MonoBehaviour
             transform.position = 
             new Vector3(
                 t.x + speed * (XTask > 0 ? 1 : -1) * (XTask != 0 ? 1 : 0),
-                t.y - speed * (YTask > 0 ? 1 : -1) * (YTask != 0 ? 1 : 0),
-                        t.z);
+                t.y,
+                t.z - speed * (YTask > 0 ? 1 : -1) * (YTask != 0 ? 1 : 0)
+                );
             if(XTask != 0){Direction = XTask > 0 ? 2 : 1;}
             if(YTask != 0){Direction = YTask < 0 ? 3 : 0;}
             XTask -= speed * (XTask > 0 ? 1 : -1) * (XTask != 0 ? 1 : 0);
@@ -127,13 +129,13 @@ public class RPGEvent : MonoBehaviour
             }
             if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x,t.y + speed * 1.0f,t.z);
+                transform.position = new Vector3(t.x,t.y,t.z + speed * 1.0f);
                 Direction = 3;
                 Origin.x = -404;HandMove = true;
             }
             if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
                 Vector3 t = transform.position;
-                transform.position = new Vector3(t.x,t.y - speed * 1.0f,t.z);
+                transform.position = new Vector3(t.x,t.y,t.z - speed * 1.0f);
                 Direction = 0;
                 Origin.x = -404;HandMove = true;
             }
@@ -144,11 +146,11 @@ public class RPGEvent : MonoBehaviour
                 if(Origin.x == -1){
                     Origin = Input.mousePosition;
                     inp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    CircleCanvas.SetActive(true);
+                    //CircleCanvas.SetActive(true);
                     poscircle.transform.position = new Vector3(inp.x,inp.y,p.z);
                     arcircle.transform.position = poscircle.transform.position;
                     //arcircle.GetComponent<Animator>().Play("CircleCatch",0);
-                    poscircle.GetComponent<Animator>().Play("CircleCatch",0);
+                    //poscircle.GetComponent<Animator>().Play("CircleCatch",0);
                 }
                 Vector3 Des = Input.mousePosition;
                 inp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -175,10 +177,10 @@ public class RPGEvent : MonoBehaviour
                 float b1 = 3.0f / 2.0f * 3.1415f - Mathf.Atan(k);
                 float b2 = (Des.y < Origin.y ? 1 : -1) * speed * 1.0f;
                 transform.position = new Vector3(t.x + Mathf.Cos(b1) * b2,
-                                                 t.y + Mathf.Sin(b1) * b2,
-                                                 t.z);
-                float xD = orcircle.transform.position.x - poscircle.transform.position.x;
-                float yD = orcircle.transform.position.y - poscircle.transform.position.y;
+                                                 t.y,
+                                                 t.z + Mathf.Sin(b1) * b2);
+                float xD = transform.position.x - t.x;
+                float yD = transform.position.z - t.z;
                 if(Mathf.Abs(xD) >= Mathf.Abs(yD)){Direction = xD > 0 ? 2 : 1;}
                 if(Mathf.Abs(xD) <= Mathf.Abs(yD)){Direction = yD > 0 ? 3 : 0;}
 

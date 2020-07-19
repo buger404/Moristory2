@@ -11,7 +11,7 @@ public class MapTipController : MonoBehaviour
     {
         GameConfig.CurrentMapName = MapName;
         GameObject.Find("MapContent").GetComponent<Text>().text = MapName;
-        Destroy(this.gameObject,3.0f);
+        Destroy(this.gameObject,2.3f);
         //GameObject.Find("MapContent").GetComponent<Animator>().Play("MapMsg");
     }
 

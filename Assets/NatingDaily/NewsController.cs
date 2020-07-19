@@ -59,7 +59,7 @@ public class NewsController : MonoBehaviour
             word = "近日维克中学的最新研究报告";
             if(!IsEnd){
                 IsEnd = true;
-                Switcher.SwitchTo("School.Restaurant");
+                Switcher.SwitchTo("S.Rest");
             }
         }
         if(Content.text != word){Content.text = word;}
