@@ -163,8 +163,17 @@ public class ItemSystem{
             "可以微微提神，回复5点体力，10点魔力",
             9,"coffee-cup",       
             5,10,               
-            false,              
+            false,             
             "雪郎·梦亭","域零·占也","艾伦·思瑞","莎瑟·娜蕾"          
+        ));
+
+        GItems.Add(new GameItemInfo(
+            "冰棍",
+            "冰棍刚才含在嘴里的冰棍",
+            99999,"icelolly",       
+            5,10,               
+            false,              
+            "世原·安诺"          
         ));
     }
     public static List<GameItem> Get(){

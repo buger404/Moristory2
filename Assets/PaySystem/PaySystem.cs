@@ -121,6 +121,7 @@ public class PaySystem : MonoBehaviour
          /** TODO
             查找道具的喜爱者然后从队伍中筛选出
          **/
+        if(gmi.Love.IndexOf("世原·安诺;") >= 0){LovePerson = "世原·安诺";}
 
         this.transform.Find("LikeBar").gameObject.SetActive(LovePerson != "");
         this.transform.Find("Role").gameObject.SetActive(LovePerson != "");

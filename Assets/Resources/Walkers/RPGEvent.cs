@@ -83,6 +83,7 @@ public class RPGEvent : MonoBehaviour
     {
         bool HandMove = false;
         if(XTask != 0 || YTask != 0){
+            //Debug.Log("attached " + this.gameObject.name);
             Vector3 t = transform.position;
             transform.position = 
             new Vector3(

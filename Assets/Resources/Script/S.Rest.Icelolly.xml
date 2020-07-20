@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <chara>埃斯·洛里</chara>
+        <walk tar="Icelolly" x="[step]*1"/>
+        <walktask/>
+	<s>『看什么看，没看到本冰棍在吃冰棍吗？』</s>
+        <shop owner="冰棍" post="怎么？你这么想吃我吃过的冰棍？" cut="1">冰棍</shop>
+        <s>『给爷爬。』</s>
+    </behaviour>
+</game>
