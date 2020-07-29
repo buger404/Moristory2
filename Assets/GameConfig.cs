@@ -42,7 +42,6 @@ public class GameConfig
         string[] g = code.Split('|');
         for(int i = 0;i < g.Length-1;i++){
             Debug.Log("Recovering:" + g[i]);
-            return;
             string[] c = g[i].Split(';');
             foreach(GameObject go in SceneManager.GetActiveScene().GetRootGameObjects()){
                 if(go.name == c[0]){

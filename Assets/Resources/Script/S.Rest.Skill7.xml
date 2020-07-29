@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <tricks>40,0;0,40;-40,0;0,-40</tricks>
+    <behaviour action="spy" condition="FACE=1">
+	<fixface></fixface>
+        <chara>閠橘·芙莱</chara>
+	<s>啊啊啊啊怎么办啊，外面好多人在法术对决。</s>
+        <s>可我根本打不过他们...</s>
+    </behaviour>
+</game>

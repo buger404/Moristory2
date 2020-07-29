@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <chara>旁白</chara>
+	<snd>Sand</snd>
+	<s>你翻了翻花盆...</s>
+        <s>什么也没找到。</s>
+    </behaviour>
+</game>

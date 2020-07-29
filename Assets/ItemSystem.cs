@@ -169,11 +169,11 @@ public class ItemSystem{
 
         GItems.Add(new GameItemInfo(
             "冰棍",
-            "冰棍刚才含在嘴里的冰棍",
+            "同学刚才含在嘴里的冰棍",
             99999,"icelolly",       
             5,10,               
             false,              
-            "世原·安诺"          
+            ""          
         ));
     }
     public static List<GameItem> Get(){
@@ -194,7 +194,6 @@ public class ItemSystem{
         if(gii.Extend){
             //特殊事件
         }
-
         //持有数量--
         string code = PlayerPrefs.GetString("Items","");
         code = code.Remove(code.IndexOf(Name),Name.Length + 1);

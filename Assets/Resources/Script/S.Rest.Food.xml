@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <chara>同学</chara>
+	<s>『食堂大妈实在是太抠门了。』</s>
+        <s>『送你一点吃的吧。』</s>
+    </behaviour>
+</game>

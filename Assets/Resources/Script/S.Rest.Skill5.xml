@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+	<fixface></fixface>
+        <chara>同学</chara>
+	<s>进入维克中学是有一定门槛的。</s>
+        <s>我也不太明白他们录取的标准是什么。</s>
+        <s>...就像是，你原打算和平常一样准备期末考试来着。</s>
+        <s>突然来了个电话告诉你下午就到维克中学上课。</s>
+        <s>不过这所学校的待遇是真的挺好的。</s>
+    </behaviour>
+</game>

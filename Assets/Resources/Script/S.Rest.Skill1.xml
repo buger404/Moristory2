@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+	<fixface></fixface>
+        <chara>同学</chara>
+	<s>有时候在花盆里翻一翻总可以翻到些什么。</s>
+        <s>虽然我一直都翻不出什么东西。</s>
+        <s>有一次我翻出了一条虫。</s>
+        <s>我当场把它吃掉了。</s>
+        <s>怎么，我吃虫不行吗？</s>
+    </behaviour>
+</game>

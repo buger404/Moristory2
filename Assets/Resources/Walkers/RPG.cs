@@ -95,7 +95,6 @@ public class RPG : MonoBehaviour
         GameObject go = this.gameObject;
 
 
-
         //--代码本体的关键操作-----------------------------------------------
         //套if层到当前层的next
         if(c.Name == "if"){
@@ -159,6 +158,19 @@ public class RPG : MonoBehaviour
         if(c.Name == "walktask"){
             //等待走完
             BlockCode = true;GameConfig.WalkingTask = true;
+        }
+        //面向人物
+        if(c.Name == "fixface"){
+            int dir = GameObject.Find("Player").GetComponent<RPGEvent>().Direction;
+            go.GetComponent<RPGEvent>().Direction = 3 - dir;
+            go.GetComponent<RPGEvent>().UpdateFace();
+            Debug.Log("Fixed face:" + (3 - dir));
+        }
+        if(c.Name == "face"){
+            if(c.GetAttribute("tar") != null)  go = GameObject.Find(c.GetAttribute("tar"));
+            if(go == null) go = this.gameObject;
+            go.GetComponent<RPGEvent>().Direction = int.Parse(Storage.Condition(c.InnerText).ToString());
+            go.GetComponent<RPGEvent>().UpdateFace();
         }
         //和指定目标对齐坐标
         if(c.Name == "fix"){
@@ -271,6 +283,16 @@ public class RPG : MonoBehaviour
     private void Start() {
         //装载代码xml
         xml.LoadXml(Code.text);
+        //读取人物轨迹
+        XmlNodeList trick = xml.GetElementsByTagName("tricks");
+        if(trick.Count > 0){
+            string tricks = ((XmlElement)trick[0]).InnerText;
+            if(tricks == null) tricks = "";
+            if(tricks != ""){
+                this.gameObject.GetComponent<RPGEvent>().OriginTrick = tricks;
+                this.gameObject.GetComponent<RPGEvent>().ReadTricks();
+            }
+        }
         //调用auto behaviour
         Begin("auto");
     }

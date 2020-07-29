@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,8 +45,10 @@ public class DialogController : MonoBehaviour
             if(BuffIndex < TextBuff.Length){
                 BuffDelta = 0;ContentText.text = TextBuff;
                 BuffIndex = TextBuff.Length;
+                SoundPlayer.Play("Cursor1");
                 return;
             }
+            SoundPlayer.Play("Cursor1");
             WaitForNew = true;
             GameConfig.IsBlocking = false;
             Debug.Log("Auto next");
@@ -56,9 +58,8 @@ public class DialogController : MonoBehaviour
     public void EndMsg(){
         WaitForNew = false;Disabled2 = true;
         Animator ani = this.GetComponent<Animator>();
-        ani.SetFloat("Speed",-4);
         GameConfig.IsMsgProcess = true;
-        ani.Play("DialogShow",0, 1);
+        HideMySelf();
         Disabled = true;lastchara = "";
     }
     public void CreateMsg(string Name,string Content){
@@ -88,8 +89,7 @@ public class DialogController : MonoBehaviour
         if(!WaitForNew){
             Disabled = true;
             GameConfig.IsMsgProcess = false;
-            ani.SetFloat("Speed",2);
-            ani.Play("DialogShow",0, 0);
+            NotifyShowed();
         }
 
         WaitForNew = false;

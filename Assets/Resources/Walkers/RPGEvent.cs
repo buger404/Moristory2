@@ -5,6 +5,13 @@ using UnityEngine;
 // RPG人物行走图控制器和玩家控制器类
 public class RPGEvent : MonoBehaviour
 {
+    public string OriginTrick = "";
+    private bool TrickPaused = false;
+    public struct Tricks{
+        public int X;
+        public int Y;
+    }
+    public List<Tricks> lt = new List<Tricks>();
     public bool IsController = false;   //是否为玩家控制器
     public float speed = 3;             //此为行走速度
     public float fps = 6;               //每秒行走图刷新次数
@@ -12,6 +19,7 @@ public class RPGEvent : MonoBehaviour
     public string character;            //使用的人物的行走图名称
     private SpriteRenderer s;           //控制对象图片
     private Sprite[] walker;            //行走图图片集
+    public bool DisableWalker = false;
     //--------------------------------------------------------
     //摇杆相关
     private Vector3 Origin;             //
@@ -22,6 +30,7 @@ public class RPGEvent : MonoBehaviour
     private Canvas CircleCanvasT;
     //--------------------------------------------------------
     public float XTask = 0,YTask = 0;       //行走任务
+    public bool SpeedUp = false;
     private RigidbodyConstraints2D Freeze;  //人物冻结状态
     private Rigidbody2D Body;
     private void Start() {
@@ -79,6 +88,27 @@ public class RPGEvent : MonoBehaviour
         if(Body != null) Body.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    public void UpdateFace(){
+        s.sprite = walker[1 + 3 * Direction];
+    }
+
+    public void ReadTricks(){
+        string[] group = OriginTrick.Split(';');
+        lt.Clear();
+        for(int i = 0;i < group.Length;i++){
+            lt.Add(new Tricks{X = int.Parse(group[i].Split(',')[0]),
+                    Y = int.Parse(group[i].Split(',')[1])});
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        //TrickPaused = true;
+    }
+
+    private void OnTriggerExit(Collider other) {
+        //TrickPaused = false;
+    }
+
     void FixedUpdate()
     {
         bool HandMove = false;
@@ -111,11 +141,45 @@ public class RPGEvent : MonoBehaviour
             if(XTask == 0 && YTask == 0){Origin.x = -244;HandMove = false;}
             goto Moves;
         }
+        if(((Input.GetKey(KeyCode.X) == false && IsController) || HandMove) && SpeedUp){
+            fps /= 1.5f; speed /= 1.5f;
+            SpeedUp = false;
+        }
+        if(lt.Count > 0 && HandMove == false && GameConfig.IsBlocking == false && TrickPaused == false){
+            for(int i = 0;i < lt.Count;i++){
+                Tricks tr = lt[i];HandMove = true;
+                if(tr.X != 0 || tr.Y != 0){
+                    Origin.x = -244;
+                    Vector3 t = transform.position;
+                    transform.position = 
+                    new Vector3(
+                        t.x + speed * (tr.X > 0 ? 1 : -1) * (tr.X != 0 ? 1 : 0),
+                        t.y,
+                        t.z - speed * (tr.Y > 0 ? 1 : -1) * (tr.Y != 0 ? 1 : 0)
+                        );
+                    if(tr.X != 0){Direction = tr.X > 0 ? 2 : 1;}
+                    if(tr.Y != 0){Direction = tr.Y < 0 ? 3 : 0;}
+                    tr.X -= (tr.X > 0 ? 1 : -1) * (tr.X != 0 ? 1 : 0);
+                    tr.Y -= (tr.Y > 0 ? 1 : -1) * (tr.Y != 0 ? 1 : 0);
+                    lt[i] = tr;
+                    //Debug.Log("Carry:" + tr.X + "," + tr.Y);
+                    if(tr.X == 0 && tr.Y == 0 && i + 1 == lt.Count){
+                        //Debug.Log("Reload tricks");
+                        ReadTricks();
+                    }
+                    break;
+                }
+            }
+        }
         if(GameConfig.IsBlocking){return;}
         if(speed == 0){return;}
         //一步的坐标移动距离大约为1.5！
         Moves:
         if(IsController && !HandMove){
+            if(Input.GetKey(KeyCode.X) && SpeedUp == false){
+                fps *= 1.5f; speed *= 1.5f;
+                SpeedUp = true;
+            }
             if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
                 Vector3 t = transform.position;
                 transform.position = new Vector3(t.x - speed * 1.0f,t.y,t.z);
@@ -191,13 +255,13 @@ public class RPGEvent : MonoBehaviour
 
         if(!HandMove){
             if(Origin.x != -1){
-                s.sprite = walker[1 + Direction * 3];
+                if(!DisableWalker) s.sprite = walker[1 + Direction * 3];
                 Origin.x = -1;
                 try{CircleCanvas.SetActive(false);}catch{}
             }
         }else{
             int index = (int)(Time.time * fps) % 3;
-            s.sprite = walker[index + Direction * 3];
+            if(!DisableWalker) s.sprite = walker[index + Direction * 3];
         }
 
     }

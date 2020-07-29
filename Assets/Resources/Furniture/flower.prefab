@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6287314589928164431}
   - component: {fileID: 6287314589928164430}
   - component: {fileID: 1738511732}
+  - component: {fileID: 2796057399600310408}
+  - component: {fileID: 4877956083086959075}
   m_Layer: 0
   m_Name: flower
   m_TagString: Untagged
@@ -95,3 +97,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.48, y: 0.87, z: 0.4}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &2796057399600310408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287314589928164425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.58, y: 0.97, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4877956083086959075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287314589928164425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bdd3dcd6136594fb9708076dd577c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: {fileID: 4900000, guid: 03515b1476cf8f1439afb8f1c789d79d, type: 3}

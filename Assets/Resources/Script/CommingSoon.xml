@@ -2,7 +2,6 @@
 <game>
     <behaviour action="spy" condition="FACE=1">
         <chara>旁白</chara>
-        <s>COMMING SOON</s>
-        <s>您正在游玩的是beta版本，后续敬请期待。</s>
+        <s>emmmm，前面好像在施工呢。</s>
     </behaviour>
 </game>

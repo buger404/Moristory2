@@ -6,7 +6,7 @@
     </behaviour>
     <behaviour action="spy" condition="[face]=FACE_UP and [AP]=0">
         <var tar="AP">[AP]+1</var>
-        <fix src="Player" tar="x"/>
+        <fix src="Player" tar="X"/>
         <chara>兮·御冯</chara>
         <s>『早安~世原。』</s>
         <chara>世原·安诺</chara>
@@ -27,10 +27,10 @@
         <s>『那，我们就一起去教室吧。』</s>
 
         <walk tar="Player" x="[step]*(-8)"/>
-        <walk tar="X" x="[step]*(-7)"/>
+        <walk x="[step]*(-7)"/>
         <walktask/>
         <walk tar="Player" y="[step]*7"/>
-        <walk tar="X" y="[step]*7"/>
+        <walk y="[step]*7"/>
         <walktask/>
 
         <chara>兮·御冯</chara>
@@ -50,7 +50,7 @@
         <s>（不仅如此，她在维克中学也是数一数二的学霸。就论法师能力而言，她在全国也有靠前的名次。）</s>
 
         <walk tar="Player" y="[step]*6"/>
-        <walk tar="X" y="[step]*6"/>
+        <walk y="[step]*6"/>
         <walktask/>
 
         <chara>兮·御冯</chara>
@@ -73,7 +73,7 @@
         <s>『嘻嘻。』</s>
 
         <walk tar="Player" y="[step]*6"/>
-        <walk tar="X" y="[step]*6"/>
+        <walk y="[step]*6"/>
         <walktask/>
 
         <chara>世原·安诺</chara>
@@ -92,13 +92,13 @@
         <s>『我知道啦。』</s>
 
         <walk tar="Player" y="[step]*6"/>
-        <walk tar="X" y="[step]*5"/>
+        <walk y="[step]*5"/>
         <walktask/>
         <walk tar="Player" x="[step]*6"/>
-        <walk tar="X" x="[step]*5"/>
+        <walk x="[step]*5"/>
         <walktask/>
         <walk tar="Player" y="[step]*-1"/>
-        <walk tar="X" y="[step]*-1"/>
+        <walk y="[step]*-1"/>
         <walktask/>
 
         <chara>兮·御冯</chara>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+	<fixface></fixface>
+        <chara>同学</chara>
+	<s>维克网络覆盖奥伦娜。</s>
+        <s>它可以在任何地点生成全息影像。</s>
+        <s>你可以在维克网络中和其他同学进行虚拟法术战斗。</s>
+        <s>胜利者可以拿到学分和奖金。</s>
+        <s>因此总是有人一大早就堵在食堂门外找人战斗。</s>
+        <s>有一次我都快要迟到了。</s>
+    </behaviour>
+</game>

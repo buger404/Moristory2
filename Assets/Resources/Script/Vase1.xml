@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="auto" condition="[AP]>0">
+	<var tar="Vase1">0</var>
+    </behaviour>
+    <behaviour action="spy" condition="FACE=1 and [Vase1]=0">
+        <chara>旁白</chara>
+	<snd>Sand</snd>
+	<s>你翻了翻花盆...</s>
+	<snd>Victory2</snd>
+        <s>找到了1元硬币！</s>
+        <var tar="Vase1">1</var>
+    </behaviour>
+    <behaviour action="spy" condition="FACE=1 and [Vase1]=1">
+        <chara>旁白</chara>
+	<snd>Sand</snd>
+	<s>你翻了翻花盆...</s>
+	<snd>Victory2</snd>
+        <s>这次你找到了一角钱硬币！</s>
+        <var tar="Vase1">2</var>
+    </behaviour>
+    <behaviour action="spy" condition="FACE=1 and [Vase1]=2">
+        <chara>旁白</chara>
+	<snd>Sand</snd>
+	<s>你翻了翻花盆...</s>
+        <s>什么也没找到。</s>
+        <s>说不定再翻一次可以发现些什么。</s>
+        <var tar="Vase1">3</var>
+    </behaviour>
+    <behaviour action="spy" condition="FACE=1 and [Vase1]=3">
+        <chara>旁白</chara>
+	<snd>Sand</snd>
+	<s>你翻了翻花盆...</s>
+        <s>什么也没找到。</s>
+        <s>但你的决心告诉你一定要坚持。</s>
+        <var tar="Vase1">4</var>
+    </behaviour>
+    <behaviour action="spy" condition="FACE=1 and [Vase1]=4">
+        <chara>旁白</chara>
+	<snd>Sand</snd>
+	<s>你翻了翻花盆...</s>
+	<snd>Jump2</snd>
+        <walk y="[step]*9"/>
+        <walktask/>
+        <chara>旁白</chara>
+        <s>花盆跑走了。</s>
+        <s>再也没有回来。</s>
+        <var tar="Vase1">5</var>
+	<save>凭你一己之力让花盆成精了</save>
+    </behaviour>
+</game>

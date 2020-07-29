@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+	<fixface></fixface>
+        <chara>同学</chara>
+	<s>维克中学和魔法研究组织有许多联系。</s>
+        <s>他们有时会来记录你的某些数据。</s>
+        <s>有时感觉挺可怕的。</s>
+    </behaviour>
+</game>
