@@ -1895,6 +1895,27 @@ PrefabInstance:
       propertyPath: lengthInSec
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 19864176, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
+      propertyPath: ShapeModule.m_Texture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 19864176, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19864176, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
+      propertyPath: ShapeModule.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19864176, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
+      propertyPath: ShapeModule.m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d4ab7595f4b5b074ca6ee1f117b68ed8,
+        type: 3}
+    - target: {fileID: 19864176, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
+      propertyPath: ShapeModule.m_MeshNormalOffset
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
 --- !u!1 &1913042518

@@ -9,6 +9,7 @@ public class DialogController : MonoBehaviour
     private GameObject NameB;
     private GameObject NameZone;
     private GameObject Character;
+    private GameObject Sakura;
     private string lastchara = "";
     private bool WaitForNew = false;
     private string TextBuff = "";
@@ -24,6 +25,7 @@ public class DialogController : MonoBehaviour
         NameZone = GameObject.Find("NameZone");
         NameB = GameObject.Find("NameB");
         Character = GameObject.Find("CharacterD");
+        Sakura = GameObject.Find("Sakura");
         ContentText = GameObject.Find("Dialog").GetComponent<Text>();
         this.gameObject.SetActive(false);
     }
@@ -41,7 +43,11 @@ public class DialogController : MonoBehaviour
         }
         if(Disabled2){return;}
         if(Disabled || WaitForNew){return;}
+
+        if(Sakura.activeSelf != !GameConfig.MsgLock) Sakura.SetActive(!GameConfig.MsgLock);
+
         if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Z)){
+            if(GameConfig.MsgLock) return;
             if(BuffIndex < TextBuff.Length){
                 BuffDelta = 0;ContentText.text = TextBuff;
                 BuffIndex = TextBuff.Length;

@@ -55,6 +55,7 @@
         <chara>兮·御冯</chara>
 	<s>走走走！</s>
 	<snd>PinkGunShort</snd>
+	<wait>5</wait>
         <s>♪三点钟方向有惊喜烟雾侵袭♪</s>
 	<chara>世原·安诺</chara>
 	<s>这是你作的新歌吗？</s>
@@ -63,6 +64,7 @@
 	<s>我打算在今晚万圣节晚会的时候唱。</s>
 	<s>昨晚就是练这个曲才没睡好...</s>
 	<snd>PinkGunShort2</snd>
+	<wait>3</wait>
         <s>♪Scream it scream it♪</s>
 	<chara>世原·安诺</chara>
 	<s>我觉得挺好听的。</s>

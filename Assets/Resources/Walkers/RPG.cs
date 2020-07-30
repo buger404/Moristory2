@@ -213,6 +213,16 @@ public class RPG : MonoBehaviour
         }
 
 
+        //--等待操作-------------------------------------------------------
+        if(c.Name == "wait"){
+            GameObject fab = (GameObject)Resources.Load("Prefabs\\WaitObject");
+            GameObject box = Instantiate(fab,new Vector3(0,0,0),Quaternion.identity);
+            box.SetActive(true);
+            Destroy(box,float.Parse(c.InnerText));
+            GameConfig.MsgLock = true;
+        }
+
+
         //--存档操作-------------------------------------------------------
         //存入存档
         if(c.Name == "save"){
