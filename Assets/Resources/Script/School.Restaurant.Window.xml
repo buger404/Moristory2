@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
     <behaviour action="spy" condition="FACE=1">
-        <save>清晨的阳光洒在篮球场上，鸟鸣声婉转嘲哳。&#x000A;新的一天就此拉开了帷幕。</save>
+        <save>新的一天就此拉开了帷幕</save>
     </behaviour>
 </game>

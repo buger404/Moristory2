@@ -8,8 +8,9 @@ public class SavePoint : MonoBehaviour
     void Carry(string name){
         Debug.Log("try:" + name);
         if(name.StartsWith("Continue")){
+            DataCenter.Load();
             SoundPlayer.Play("Load");
-            Switcher.SwitchTo(PlayerPrefs.GetString("scene"));
+            Switcher.SwitchTo(DataCenter.Get("scene"));
         }
         if(name.StartsWith("Reset")){
             Switcher.SwitchTo("NameTime");
@@ -17,7 +18,7 @@ public class SavePoint : MonoBehaviour
     }
     private void Update() {
         this.transform.Find("Tip").GetComponent<Text>().text =
-            PlayerPrefs.GetString("name") + "·" + PlayerPrefs.GetString("map");
+            DataCenter.Get("name") + "·" + DataCenter.Get("map");
         if(Input.GetMouseButtonUp(0)){
             foreach(RaycastHit2D hit in Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition),Vector2.zero)){
                 Carry(hit.transform.name);

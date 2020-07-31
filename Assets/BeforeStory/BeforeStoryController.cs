@@ -40,19 +40,20 @@ public class BeforeStoryController : MonoBehaviour
         if(Input.GetMouseButtonUp(0)){
             if(PlayerPrefs.GetString("Watched") == ""){
                 Debug.Log("You have not watched it!");
-                if(BGM.time >= 31.0){
+                if(BGM.time >= 31.0 || BGM.isPlaying == false){
                     Debug.Log("Welcome~~~");
                     PlayerPrefs.SetString("Watched","√");
                     goto SkipOP;
                 }
             }else{
-                Debug.Log("Skip directly.");
+                Debug.Log("Skip directly:" + BGM.isPlaying);
                 goto SkipOP;
             }
         }
         return;
         SkipOP:
-        if(PlayerPrefs.GetString("scenecode") != ""){
+        if(PlayerPrefs.GetString("global") != ""){
+            DataCenter.Load();
             Switcher.SwitchTo("Saving");
         }else{
             Switcher.SwitchTo("NameTime");

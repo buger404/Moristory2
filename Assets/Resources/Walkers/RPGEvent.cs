@@ -36,10 +36,10 @@ public class RPGEvent : MonoBehaviour
     private void Start() {
         if(!IsController) return;
         //还原存档数据
-        if(PlayerPrefs.GetString("scene") == SceneManager.GetActiveScene().name){
+        if(DataCenter.Get("scene") == SceneManager.GetActiveScene().name){
             if(GameConfig.Loaded) return;
-            GameConfig.RecoverSceneFromString(PlayerPrefs.GetString("scenecode"));
-            Direction = PlayerPrefs.GetInt("mapdirection");
+            GameConfig.RecoverSceneFromString(DataCenter.Get("scenecode"));
+            Direction = int.Parse(DataCenter.Get("mapdirection","0"));
             s.sprite = walker[1 + 3 * Direction];
             CircleCanvas.SetActive(false);
         }

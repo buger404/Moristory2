@@ -19,7 +19,7 @@ public class Skiper : MonoBehaviour
             foreach(RaycastHit2D hit in Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition),Vector2.zero)){
                 if(hit.transform.name.StartsWith("Skip")){
                     if(SkipTo == "NameTime"){
-                        if(PlayerPrefs.GetString("scenecode") != ""){
+                        if(DataCenter.Get("scenecode") != ""){
                             Switcher.SwitchTo("Saving");
                         }else{
                             Switcher.SwitchTo(SkipTo);

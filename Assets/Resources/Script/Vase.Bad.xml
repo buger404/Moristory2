@@ -3,6 +3,7 @@
     <behaviour action="spy" condition="FACE=1">
         <chara>旁白</chara>
 	<snd>Sand</snd>
+	<wait>1</wait>
 	<s>你翻了翻花盆...</s>
 	<snd>Victory2</snd>
         <s>找到了一条虫。</s>

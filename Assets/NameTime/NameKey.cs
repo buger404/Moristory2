@@ -24,8 +24,7 @@ public class NameKey : MonoBehaviour
         Debug.Log($"player created: {Name.text}");
         //销毁旧的存档
         PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetString("name",Name.text);
-        //PlayerPrefs.SetString("scene","");
+        DataCenter.Put("name",Name.text);
         Switcher.SwitchTo("NatingDaily");
     }
     private void OnMouseUp() {

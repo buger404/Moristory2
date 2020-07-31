@@ -8,10 +8,11 @@ public class SaveComplete : MonoBehaviour
 {
     void Sound(){
         SoundPlayer.Play("SaveDone");
-        PlayerPrefs.SetString("map",GameConfig.CurrentMapName);
-        PlayerPrefs.SetString("scene",SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetString("scenecode",GameConfig.RecordSceneToString());
-        PlayerPrefs.SetInt("mapdirection",GameConfig.Controller.GetComponent<RPGEvent>().Direction);
+        DataCenter.Put("map",GameConfig.CurrentMapName);
+        DataCenter.Put("scene",SceneManager.GetActiveScene().name);
+        DataCenter.Put("scenecode",GameConfig.RecordSceneToString());
+        DataCenter.Put("mapdirection",GameConfig.Controller.GetComponent<RPGEvent>().Direction.ToString());
+        DataCenter.Save();
     }
     void Complete(){
         Destroy(this.gameObject);

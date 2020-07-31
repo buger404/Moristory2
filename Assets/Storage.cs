@@ -8,10 +8,10 @@ public class Storage
 {
     private static DataTable dt = new DataTable();
     public static string Get(string name){
-        return PlayerPrefs.GetString(name,"");
+        return DataCenter.Get(name,"");
     }
     public static void Set(string name,string value){
-        PlayerPrefs.SetString(name,value);
+        DataCenter.Put(name,value);
     }
     /// <summary>
     /// 计算表达式
@@ -54,7 +54,7 @@ public class Storage
             if(i%2 == 0){
                 s += t[i];
             }else{
-                s += PlayerPrefs.GetString(t[i],"0");
+                s += DataCenter.Get(t[i],"0");
             }
         }    
         t = s.Replace("}","{").Split('{');
@@ -63,7 +63,7 @@ public class Storage
             if(i%2 == 0){
                 s += t[i];
             }else{
-                s += PlayerPrefs.GetString(t[i],"");
+                s += DataCenter.Get(t[i],"");
             }
         }    
         Debug.Log("Replaced:" + s);
