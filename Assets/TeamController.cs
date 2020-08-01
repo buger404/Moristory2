@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TeamController
+public class TeamController : MonoBehaviour
 {
     // 职业技能加成表
     public static float[,] JC = new float[8,8]
@@ -59,4 +59,6 @@ public class TeamController
     static TeamController(){
         Team.Mem = new List<Member>();
     }
+
+    
 }

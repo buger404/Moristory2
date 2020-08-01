@@ -24,6 +24,10 @@ public class NameKey : MonoBehaviour
         Debug.Log($"player created: {Name.text}");
         //销毁旧的存档
         PlayerPrefs.DeleteAll();
+        DataCenter.Saves.Data = new List<DataCenter.Key>();
+        ItemSystem.PItems.Data = new List<ItemSystem.GameItem>();
+        TeamController.Team.Mem = new List<TeamController.Member>();
+        TeamController.Team.Mem.Add(new TeamController.Member("世原·安诺"));
         DataCenter.Put("name",Name.text);
         Switcher.SwitchTo("NatingDaily");
     }
