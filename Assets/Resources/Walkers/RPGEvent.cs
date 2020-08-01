@@ -40,6 +40,8 @@ public class RPGEvent : MonoBehaviour
             if(GameConfig.Loaded) return;
             GameConfig.RecoverSceneFromString(DataCenter.Get("scenecode"));
             Direction = int.Parse(DataCenter.Get("mapdirection","0"));
+            Transform pp = GameObject.Find("Player").transform;
+            pp.position = new Vector3(int.Parse(DataCenter.Get("mapx","0")),pp.position.y,int.Parse(DataCenter.Get("mapz","0")));
             s.sprite = walker[1 + 3 * Direction];
             CircleCanvas.SetActive(false);
         }

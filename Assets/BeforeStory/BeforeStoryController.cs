@@ -25,16 +25,16 @@ public class BeforeStoryController : MonoBehaviour
     void Update()
     {
         string ly = "";
-        if(BGM.time >= 0.5) ly = "さくら ひらひら the leaves will flutter to the ground";
-        if(BGM.time >= 6.3) ly = "It reminds me of the days";
-        if(BGM.time >= 9.0) ly = "when you were here to hold my hand";
-        if(BGM.time >= 13.5) ly = "And the promises we've made";
-        if(BGM.time >= 16.5) ly = "along still keep me hanging on";
-        if(BGM.time >= 20.0) ly = "Hold me now";
-        if(BGM.time >= 21.5) ly = "just like";
-        if(BGM.time >= 22.5) ly = "other lovers";
-        if(BGM.time >= 26.0) ly = "さくら";
-        if(BGM.time >= 28.0) ly = "舞い散る";
+        if(BGM.time >= 0.5) ly = "樱树之花终将坠地";
+        if(BGM.time >= 6.3) ly = "拾起回忆碎片";
+        if(BGM.time >= 9.0) ly = "同行的时光模糊撕裂";
+        if(BGM.time >= 13.5) ly = "昔日信誓旦旦的诺言";
+        if(BGM.time >= 16.5) ly = "鼓舞见证明日的黎明";
+        if(BGM.time >= 20.0) ly = "为何无法紧握我的手";
+        if(BGM.time >= 21.5) ly = "仅仅像";
+        if(BGM.time >= 22.5) ly = "普通的情侣一般";
+        if(BGM.time >= 26.0) ly = "樱树之花";
+        if(BGM.time >= 28.0) ly = "肆虐地舞落";
         if(BGM.time >= 31.0) ly = "";
         if(lyt.text != ly) lyt.text = ly;
         if(Input.GetMouseButtonUp(0)){

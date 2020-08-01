@@ -121,7 +121,7 @@ public class RPG : MonoBehaviour
         //--变量操作--------------------------------------------------------
         //游戏变量操作
         if(c.Name == "var"){
-            Storage.Set(c.GetAttribute("tar"),Storage.Condition(c.InnerText).ToString());
+            DataCenter.Put(c.GetAttribute("tar"),Storage.Condition(c.InnerText).ToString());
         }
         
 
@@ -186,6 +186,7 @@ public class RPG : MonoBehaviour
         //显示或隐藏目标
         if(c.Name == "visible"){
             if(c.GetAttribute("tar") != null)  go = GameObject.Find(c.GetAttribute("tar"));
+            if(go == null) go = this.gameObject;
             go.SetActive((bool)Storage.Condition(c.InnerText));
         }
 

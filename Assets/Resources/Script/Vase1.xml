@@ -54,5 +54,6 @@
         <s>再也没有回来。</s>
         <var tar="Vase1">5</var>
 	<save>凭你一己之力让花盆成精了</save>
+	<visible>False</visible>
     </behaviour>
 </game>

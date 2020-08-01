@@ -12,6 +12,9 @@ public class SaveComplete : MonoBehaviour
         DataCenter.Put("scene",SceneManager.GetActiveScene().name);
         DataCenter.Put("scenecode",GameConfig.RecordSceneToString());
         DataCenter.Put("mapdirection",GameConfig.Controller.GetComponent<RPGEvent>().Direction.ToString());
+        Vector3 pp = GameConfig.Controller.transform.position;
+        DataCenter.Put("mapx",pp.x.ToString());
+        DataCenter.Put("mapz",pp.z.ToString());
         DataCenter.Save();
     }
     void Complete(){
