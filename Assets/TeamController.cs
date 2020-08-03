@@ -58,6 +58,10 @@ public class TeamController : MonoBehaviour
     public static Teams Team = new Teams();
     static TeamController(){
         Team.Mem = new List<Member>();
+        Team.Mem.Add(new Member("世原·安诺"));
+        Team.Mem.Add(new Member("兮·御冯"));
+        Team.Mem.Add(new Member("雪郎·梦亭"));
+        Team.Mem.Add(new Member("素鱼·艾桑"));
     }
 
     

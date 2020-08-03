@@ -1916,6 +1916,10 @@ PrefabInstance:
       propertyPath: ShapeModule.m_MeshNormalOffset
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19864176, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
 --- !u!1 &1913042518

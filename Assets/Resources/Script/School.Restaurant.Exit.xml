@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
-    <behaviour action="touch" condition="[face]=FACE_DOWN">
+    <behaviour action="spy" condition="[face]=FACE_DOWN">
         <var tar="NOCOST">1</var>
-        <tp spot="tpspot1" face="FACE_DOWN">S.Out1</tp>
+        <tp spot="tpspot1" face="FACE_RIGHT">S.Garden1</tp>
     </behaviour>
 </game>

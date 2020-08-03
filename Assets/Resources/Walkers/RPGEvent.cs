@@ -15,6 +15,7 @@ public class RPGEvent : MonoBehaviour
     public bool IsController = false;   //是否为玩家控制器
     public float speed = 3;             //此为行走速度
     public float fps = 6;               //每秒行走图刷新次数
+    public int realfps = 0;
     public int Direction = 0;           //人物朝向
     public string character;            //使用的人物的行走图名称
     private SpriteRenderer s;           //控制对象图片
@@ -44,6 +45,29 @@ public class RPGEvent : MonoBehaviour
             pp.position = new Vector3(int.Parse(DataCenter.Get("mapx","0")),pp.position.y,int.Parse(DataCenter.Get("mapz","0")));
             s.sprite = walker[1 + 3 * Direction];
             CircleCanvas.SetActive(false);
+        }
+        if(IsController){
+            GameObject Player = GameObject.Find("Player");
+            GameConfig.PlayerState ps = new GameConfig.PlayerState();
+            ps.FPS = 1;
+            ps.pos = Player.transform.position;
+            for (int i = 0; i < 1000; i++)
+            {
+                GameConfig.StateFlow[i] = ps;
+            }
+            int index = 1;
+            foreach(TeamController.Member m in TeamController.Team.Mem){
+                if(m.Name != "世原·安诺"){
+                    GameObject fab = (GameObject)Resources.Load("Prefabs\\Follower");
+                    GameObject box = Instantiate(fab,new Vector3(0,0,0),Quaternion.identity);
+                    FollowerController fc = box.GetComponent<FollowerController>();
+                    fc.character = m.Name;
+                    fc.DelayStep = 20 * index;
+                    fc.Confirm();
+                    index++;
+                    box.SetActive(true);
+                }
+            }
         }
         //无论如何是否在目标地图，一旦已经加载地图，存档就不应该被二次还原
         GameConfig.Loaded = true;
@@ -258,11 +282,13 @@ public class RPGEvent : MonoBehaviour
         if(!HandMove){
             if(Origin.x != -1){
                 if(!DisableWalker) s.sprite = walker[1 + Direction * 3];
+                realfps = 1 + Direction * 3;
                 Origin.x = -1;
                 try{CircleCanvas.SetActive(false);}catch{}
             }
         }else{
             int index = (int)(Time.time * fps) % 3;
+            realfps = index + Direction * 3;
             if(!DisableWalker) s.sprite = walker[index + Direction * 3];
         }
 

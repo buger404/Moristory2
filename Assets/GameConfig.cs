@@ -6,6 +6,12 @@ using System.Xml;
 
 public class GameConfig
 {
+    public struct PlayerState{
+        public Vector3 pos;
+        public int FPS;
+    }
+    public static PlayerState[] StateFlow = new PlayerState[1000];
+    public static int StatePos = 0;
     public static GameObject Controller;
     public static int DayNight = 0;
     public static bool IsBlocking = false;
