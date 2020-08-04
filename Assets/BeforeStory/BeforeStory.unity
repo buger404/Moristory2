@@ -323,7 +323,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 112158, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
       propertyPath: m_Name
-      value: Snowy
+      value: SakuraFly
       objectReference: {fileID: 0}
     - target: {fileID: 480324, guid: 5badd1c20b11e485886819f781ece5c6, type: 3}
       propertyPath: m_LocalPosition.x

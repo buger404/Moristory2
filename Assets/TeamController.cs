@@ -48,6 +48,14 @@ public class TeamController : MonoBehaviour
                 MaxHP = 80; MaxMP = 90;Job = new JOB[]{JOB.Art,JOB.Recovery};
                 Magics = new string[] {"魈魆花舞","恶魔歌姬","光合作用","记忆碎片"};
             }
+            if(Role == "雪郎·梦亭"){
+                MaxHP = 70; MaxMP = 90;Job = new JOB[]{JOB.Master,JOB.Battle};
+                Magics = new string[] {"结点冰封","寒冰冲击","幽静能量","死亡呢喃"};
+            }
+            if(Role == "素鱼·艾桑"){
+                MaxHP = 90; MaxMP = 60;Job = new JOB[]{JOB.Art,JOB.Defence};
+                Magics = new string[] {"催眠咒语","睡梦气息","魈魆花舞","光能爆破"};
+            }
             HP = MaxHP;MP = MaxMP;
         }
     }
