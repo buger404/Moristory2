@@ -51,3 +51,7 @@ UI/设计：Error 404
 测试：Windows（优先），Android
 
 正式：Windows，Android，IOS，Web（主要） UWP，Linux，Switch+3ds（如果可以）
+
+# 世界地图
+
+![世界地图](map.png)

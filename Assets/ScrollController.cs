@@ -19,6 +19,7 @@ public class ScrollController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        return;
         float origin = scrollPosition.y;
         if (Input.touchCount > 0)
         {

@@ -42,19 +42,23 @@ public class TeamController : MonoBehaviour
             Name = Role;Magics = new string[] {"","","",""};
             if(Role == "世原·安诺"){
                 MaxHP = 100; MaxMP = 100;Job = new JOB[]{JOB.Academy,JOB.Normal};
-                Magics = new string[] {"能力学习","光能爆破","暗夜袭击","魔法分析"};
+                ATK = 100;DEF = 20;SPD = 100;
+                Magics = new string[] {"能力学习","光能爆破","魔法分析"};
             }
             if(Role == "兮·御冯"){
                 MaxHP = 80; MaxMP = 90;Job = new JOB[]{JOB.Art,JOB.Recovery};
-                Magics = new string[] {"魈魆花舞","恶魔歌姬","光合作用","记忆碎片"};
+                ATK = 80;DEF = 40;SPD = 90;
+                Magics = new string[] {"恶魔歌姬","光合作用","记忆碎片"};
             }
             if(Role == "雪郎·梦亭"){
                 MaxHP = 70; MaxMP = 90;Job = new JOB[]{JOB.Master,JOB.Battle};
-                Magics = new string[] {"结点冰封","寒冰冲击","幽静能量","死亡呢喃"};
+                ATK = 100;DEF = 0;SPD = 110;
+                Magics = new string[] {"结点冰封","寒冰冲击","幽静能量"};
             }
             if(Role == "素鱼·艾桑"){
                 MaxHP = 90; MaxMP = 60;Job = new JOB[]{JOB.Art,JOB.Defence};
-                Magics = new string[] {"催眠咒语","睡梦气息","魈魆花舞","光能爆破"};
+                ATK = 90;DEF = 30;SPD = 90;
+                Magics = new string[] {"催眠咒语","睡梦气息","魈魆花舞"};
             }
             HP = MaxHP;MP = MaxMP;
         }
