@@ -26,6 +26,9 @@ public class WalkingAnimate : MonoBehaviour
         walker = Resources.LoadAll<Sprite>("Walkers/" + character);
     }
 
+    public void UpdateWalker(){
+        walker = Resources.LoadAll<Sprite>("Walkers/" + character);
+    }
     // Update is called once per frame
     void Update()
     {

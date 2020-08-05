@@ -224,6 +224,11 @@ public class RPG : MonoBehaviour
         }
 
 
+        if(c.Name == "newfeature"){
+            Switcher.SwitchTo("GardenFight");
+        }
+
+
         //--存档操作-------------------------------------------------------
         //存入存档
         if(c.Name == "save"){

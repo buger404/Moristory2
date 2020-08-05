@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+	<fixface></fixface>
+        <chara>同学</chara>
+	<s>体验最新战斗系统！</s>
+        <newfeature></newfeature>
+    </behaviour>
+</game>

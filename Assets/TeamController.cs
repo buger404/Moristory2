@@ -29,8 +29,8 @@ public class TeamController : MonoBehaviour
     }
     [System.Serializable]
     public struct Member{
-        public int HP, MaxHP, MP, MaxMP;
-        public int ATK, DEF, SPD;
+        public float HP, MaxHP, MP, MaxMP;
+        public float ATK, DEF, SPD;
         public JOB[] Job;
         public string Name;
         public List<string> Equipments;

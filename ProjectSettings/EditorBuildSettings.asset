@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Maps/S.Garden1.unity
     guid: 8b50271ece19dd84ab4439ab74dd62c5
+  - enabled: 1
+    path: Assets/Battle/GardenFight.unity
+    guid: 6cd642a899a0dcd4e8e377f754df71c8
   m_configObjects: {}

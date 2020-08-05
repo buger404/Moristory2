@@ -18,22 +18,28 @@ public class TeamInfoController : MonoBehaviour
     private void Awake() {
         ani = this.GetComponent<Animator>();
         peer.Add(this);
+        HPBar = this.transform.Find("HP").GetComponent<RectTransform>();
+        HPMaxW = HPBar.sizeDelta.x;
     }
 
     public void UpdateInfo(){
         Name = this.transform.Find("Caption").GetComponent<Text>();
         HPT = this.transform.Find("Content").GetComponent<Text>();
-        Abi = GameObject.Find("Abilities").GetComponent<Text>();
+        try{Abi = GameObject.Find("Abilities").GetComponent<Text>();}catch{}
         Walking = this.transform.Find("Icon").GetComponent<WalkingAnimate>();
         HPBar = this.transform.Find("HP").GetComponent<RectTransform>();
         HPC = this.transform.Find("HP").GetComponent<Image>();
-        J1 = GameObject.Find("JobIcon1").GetComponent<Image>();
-        J2 = GameObject.Find("JobIcon2").GetComponent<Image>();
-        HPMaxW = HPBar.sizeDelta.x;
+        try{
+            J1 = GameObject.Find("JobIcon1").GetComponent<Image>();
+            J2 = GameObject.Find("JobIcon2").GetComponent<Image>();
+        }catch{
 
+        }
+        
         Name.text = BindMember.Name;
         HPT.text = BindMember.HP + " / " + BindMember.MaxHP;
         Walking.character = BindMember.Name;
+        Walking.UpdateWalker();
         HPBar.sizeDelta = new Vector2(BindMember.HP / BindMember.MaxHP * HPMaxW,HPBar.sizeDelta.y);
 
         float p = BindMember.HP / BindMember.MaxHP;
@@ -41,7 +47,7 @@ public class TeamInfoController : MonoBehaviour
         if(p >= 0.3) HPC.color = new Color(1f,15f / 255f,0f);
         if(p >= 0.6) HPC.color = new Color(0f,233f / 255f,118f / 255f);
 
-        if(last == null) Choose();
+        if(last == null && Abi != null) Choose();
     }
     private void OnDestroy() {
         peer.Remove(this);
@@ -82,7 +88,7 @@ public class TeamInfoController : MonoBehaviour
             box.SetActive(true);
             box.transform.localPosition = new Vector3(160,-80 - index * 45,0);
             index++;
-            box.GetComponent<SkillInfoController>().Bind = sk;
+            box.GetComponent<SkillInfoController>().BindS = sk;
             box.GetComponent<SkillInfoController>().UpdateInfo();
             Gos.Add(box);
         }
