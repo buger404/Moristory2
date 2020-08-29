@@ -167,7 +167,7 @@ public class RPGEvent : MonoBehaviour
             if(XTask == 0 && YTask == 0){Origin.x = -244;HandMove = false;}
             goto Moves;
         }
-        if(((Input.GetKey(KeyCode.X) == false && IsController) || HandMove) && SpeedUp){
+        if(((Input.GetKey(KeyCode.X) == false && IsController && Input.GetKey(KeyCode.RightShift) == false) || HandMove) && SpeedUp){
             fps /= 1.5f; speed /= 1.5f;
             SpeedUp = false;
         }

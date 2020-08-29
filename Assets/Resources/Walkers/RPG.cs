@@ -318,7 +318,7 @@ public class RPG : MonoBehaviour
         if(GameConfig.LastEvent.FindIndex(m => m == this) != -1){
             //Debug.Log(this.name + " attached to the spy event!");
             //支持的触发输入
-            if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Z)){
+            if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Z) || Input.GetKeyUp(KeyCode.Return)){
                 Begin("spy"); //调用spy behaviour
             }
         }

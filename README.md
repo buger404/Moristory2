@@ -25,15 +25,17 @@ Unity版本：`2019.3`                   Android 最低支持：`4.4.1`
 # 制作鸣谢 
 制作：Moristory II Develop Project
 
-UI/设计：Error 404 
+UI/设计：Error 404/Victoria. 
 
-人物形象：Error 404/困困困Y困死/小婷 
+人物形象：Victoria./Error 404/困困困Y困死/小婷 
 
 剧情创作：Error 404/困困困Y困死/WEY（按首字母排序）  
 
+美术：Victoria.
+
 战斗系统：王者铜
 
-线稿绘制/上色：困困困Y困死/Error 404 
+线稿绘制/上色：Victoria./困困困Y困死/Error 404 
 
 背景图：来自网络的免费渠道 
 

@@ -11,7 +11,8 @@ public class RPGCamera : MonoBehaviour
     void Start() {
 
     }
-    void Update()
+    
+    void FixedUpdate()
     {
         Vector3 te = transform.position;
         if(GameConfig.Controller == null){return;}
@@ -21,6 +22,8 @@ public class RPGCamera : MonoBehaviour
             transform.position = new Vector3(te.x + (r.x - te.x) / 10,
             te.y + (((r.y + 5f) - te.y) / 15), 
             te.z + ((r.z - (GameConfig.IsMsgProcess ? 5f : 7f)) - te.z) / 15);
+            /**transform.position = new Vector3(r.x,(r.y + 5f), 
+            te.z + ((r.z - (GameConfig.IsMsgProcess ? 5f : 7f)) - te.z) / 15);**/
             transform.localEulerAngles = new Vector3(ro.x + (50 - ro.x) / 25,ro.y + (0 - ro.y) / 25,ro.z);
         }
         //塞入玩家状态流

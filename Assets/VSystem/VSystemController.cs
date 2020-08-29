@@ -87,9 +87,10 @@ public class VSystemController : MonoBehaviour
             data.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
             gr.Raycast(data, results);
-
-            foreach(RaycastResult rr in results){
-                Carry(rr.gameObject.name,rr.gameObject);
+            if(results.Count == 1){
+                foreach(RaycastResult rr in results){
+                    Carry(rr.gameObject.name,rr.gameObject);
+                }
             }
         }
         if(Input.GetKeyUp(KeyCode.C)){

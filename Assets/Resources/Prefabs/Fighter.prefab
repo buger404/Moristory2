@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4944176442872705203}
   - component: {fileID: 4944176442872705205}
   m_Layer: 0
-  m_Name: Fighter1
+  m_Name: Fighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 5
   m_Sprite: {fileID: -8123920588257946386, guid: ab319a753ba0c804a8b3cdc4ce205f69,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,6 +98,7 @@ MonoBehaviour:
   fps: 6
   character: "\u96EA\u90CE\xB7\u68A6\u4EAD"
   IsEne: 0
+  IsYourTurn: 0
   State: 0
   BindMember:
     HP: 0

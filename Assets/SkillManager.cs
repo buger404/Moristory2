@@ -6,6 +6,12 @@ using UnityEngine.UI;
 public class SkillManager : MonoBehaviour
 {
     [System.Serializable]
+    public struct Buff{
+        public string Name;
+        public object Tag;
+        public int Round;
+    }
+    [System.Serializable]
     public struct Skill{
         public int MP;
         public float Strength;
@@ -19,10 +25,106 @@ public class SkillManager : MonoBehaviour
         }        
     }
     public static List<Skill> S = new List<Skill>();
+    public static BattleController AcB;
+    // F1：使用者，F2=被使用者
+    public static void ExtraSkill(string name,FighterController F1,FighterController F2){
+        if(name == "能力学习"){
+            F2.BindMember.buffs.Add(new Buff{Name = "能力学习", Round = 1, Tag = F1});
+            AcB.Msg.Add(F1.BindMember.Name + "开始专注学习对方的招式...");
+        }
+        if(name == "恶魔歌姬"){
+            if(Random.Range(1,100) <= 30){
+                F2.BindMember.buffs.Add(new Buff{Name = "害怕", Round = 1});
+                F2.State = FighterController.BattleState.BadHurt;
+                AcB.Msg.Add(F2.BindMember.Name + "害怕了！");
+                AcB.Rounds.Remove(F2);
+            }
+            if(Random.Range(1,100) <= 5){
+                F2.BindMember.HP = 0;
+                AcB.Msg.Add(F1.BindMember.Name + "魔法的致死效果奏效了！");
+            }
+        }
+        if(name == "结点冰封"){
+            if(Random.Range(1,100) <= 30){
+                F2.BindMember.buffs.Add(new Buff{Name = "冻伤", Round = 3});
+                F2.State = FighterController.BattleState.BadHurt;
+                AcB.Msg.Add(F2.BindMember.Name + "被冻伤了！");
+            }
+        }
+        if(name == "幽静能量"){
+            if(Random.Range(1,100) <= 30){
+                F2.BindMember.buffs.Add(new Buff{Name = "害怕", Round = 1});
+                F2.State = FighterController.BattleState.BadHurt;
+                AcB.Msg.Add(F2.BindMember.Name + "害怕了！");
+                AcB.Rounds.Remove(F2);
+            }
+        }
+        if(name == "睡梦气息"){
+            if(Random.Range(1,100) <= 30){
+                F2.BindMember.buffs.Add(new Buff{Name = "睡眠", Round = 2});
+                F2.State = FighterController.BattleState.Sleep;
+                AcB.Msg.Add(F2.BindMember.Name + "呼呼大睡起来了...");
+                AcB.Rounds.Remove(F2);
+            }
+        }
+        if(name == "魔法分析"){
+            F1.BindMember.buffs.Add(new Buff{Name = "回避", Round = 1, Tag = F1.BindMember.DEF});
+            F1.BindMember.DEF = 9999999f;
+            AcB.Msg.Add(F1.BindMember.Name + "看透了对方接下来的行动！");
+        }
+    }
+    // Time：0-所有回合开始 1-回合后 2-回合前
+    public static void BuffProcess(FighterController F1,int Time){
+        bool Worked = false;
+        for(int i = 0;i < F1.BindMember.buffs.Count;i++){
+            Buff b = F1.BindMember.buffs[i];
+            Worked = false;
+            if(b.Name == "能力学习" && Time == 0){
+                Worked = true;
+                FighterController F = (FighterController)b.Tag;
+                AcB.Msg.Add(F.BindMember.Name + "的能力学习起效果了！");
+                AcB.Msg.Add(F.BindMember.Name + "学会了" + F1.BindMember.LastSkill.Name + "！");
+                for(int j = 0;j < 3;j++){
+                    if(F.BindMember.Magics[j] == "能力学习"){
+                        F.BindMember.Magics[j] = F1.BindMember.LastSkill.Name;
+                    }
+                }
+            }
+            if(b.Name == "回避" && Time == 1){
+                Worked = true;
+                AcB.Msg.Add(F1.BindMember.Name + "撑过了这个回合！");
+                F1.BindMember.DEF = (float)b.Tag;
+            }
+            if(b.Name == "睡眠" && Time == 0){
+                Worked = true;
+                F1.State = FighterController.BattleState.Sleep;
+                AcB.Msg.Add(F1.BindMember.Name + "正睡得香甜...");
+                AcB.Rounds.Remove(F1);
+            }
+            if(b.Name == "害怕" && Time == 0){
+                Worked = true;
+                F1.State = FighterController.BattleState.BadHurt;
+                AcB.Msg.Add(F1.BindMember.Name + "被敌方震慑了，不能行动！");
+                AcB.Rounds.Remove(F1);
+            }
+            if(b.Name == "冻伤" && Time == 0){
+                Worked = true;
+                F1.State = FighterController.BattleState.BadHurt;
+                AcB.Msg.Add(F1.BindMember.Name + "冻伤的伤口发作了！");
+                float hp = F1.BindMember.HP;
+                F1.BindMember.HP *= 0.75f;
+                F1.BindMember.HP = Mathf.Ceil(F1.BindMember.HP);
+                AcB.Msg.Add(F1.BindMember.Name + "受到了" + Mathf.Floor(F1.BindMember.HP - hp) + "点伤害。");
+            }
+            if(Worked) b.Round--;
+            F1.BindMember.buffs[i] = b;
+        }
+        F1.BindMember.buffs.RemoveAll(m => m.Round <= 0);
+    }
     static SkillManager(){
         //Assets/Resources/Epic Toon FX/Prefabs/Combat/Nova/Lightning/NovaLightningBlue.prefab
         S.Add(new Skill("能力学习",5,0f,TeamController.JOB.Academy,
-        "复制对方下一回合的魔法","Combat\\Nova\\Lightning\\NovaLightningBlue"));
+        "复制对方下一回合的魔法\n然后替换该招式","Combat\\Nova\\Lightning\\NovaLightningBlue"));
         S.Add(new Skill("光能爆破",10,1.2f,TeamController.JOB.Master,
         "释放巨大的光束攻击对方","Combat/Explosions/LightningExplosion/LightningExplosionYellow"));
         S.Add(new Skill("魔法分析",5,0f,TeamController.JOB.Academy,
@@ -30,7 +132,7 @@ public class SkillManager : MonoBehaviour
         S.Add(new Skill("魈魆花舞",10,1.0f,TeamController.JOB.Master,
         "无数的花朵像幽灵一般舞动袭击对方","Combat/Magic/PillarBlast/MagicPillarBlastGreen"));
         S.Add(new Skill("恶魔歌姬",30,1.5f,TeamController.JOB.Monster,
-        "将巨大的魔法能量附加在歌声中\n可能导致对方害怕","Combat/Blood/Red/BloodExplosion"));
+        "将巨大的魔法能量附加在歌声中\n可能导致对方害怕,5%的概率致死","Combat/Blood/Red/BloodExplosion"));
         S.Add(new Skill("光合作用",10,-1f,TeamController.JOB.Master,
         "利用光能补充自身体力","Combat/Magic/Charge/MagicChargeYellow"));
         S.Add(new Skill("记忆碎片",50,0f,TeamController.JOB.Normal,
@@ -38,7 +140,7 @@ public class SkillManager : MonoBehaviour
         S.Add(new Skill("结点冰封",20,1.2f,TeamController.JOB.Master,
         "瞬间降低对方周围的温度，可能冻伤对方","Combat/Explosions/FrostExplosion/FrostExplosionBlue"));
         S.Add(new Skill("寒冰冲击",30,1.5f,TeamController.JOB.Battle,
-        "释放巨大的冰柱攻击对方","Combat/Nova/Frost/NovaFrost"));
+        "释放巨大的冰柱攻击对方，必定降雪","Combat/Nova/Frost/NovaFrost"));
         S.Add(new Skill("幽静能量",10,1.0f,TeamController.JOB.Master,
         "释放诡异的魔法能量，可能导致对方害怕","Combat/Muzzleflash/SoulMuzzle/SoulMuzzleCrimson"));
         S.Add(new Skill("催眠咒语",20,0.0f,TeamController.JOB.Master,

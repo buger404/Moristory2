@@ -18,7 +18,7 @@ public class BattleController : MonoBehaviour
     private List<FighterController> F1,F2;
     public List<string> Msg = new List<string>();
     public List<GameObject> Teams = new List<GameObject>();
-    private List<FighterController> Rounds = new List<FighterController>();
+    public List<FighterController> Rounds = new List<FighterController>();
     private bool LastShow = true;
     private float cox,coy,coz;
     private int BattleStep = 0,LastBattle;
@@ -28,6 +28,8 @@ public class BattleController : MonoBehaviour
     private GameObject SkObj;
     private float Injury,Source;
     private void Awake() {
+        SkillManager.AcB = this;
+
         Lights = Lighten.GetComponent<Light>();
 
         Vector3 v = GameObject.Find("Fighter1").transform.position;
@@ -43,6 +45,9 @@ public class BattleController : MonoBehaviour
             F2 = new List<FighterController>();
             GameObject fab = (GameObject)Resources.Load("Prefabs\\Fighter");
             GameObject fab2 = (GameObject)Resources.Load("Prefabs\\TeamInfo");
+            TeamController.Team.Mem.Clear();
+            TeamController.Team.Mem.Add(new TeamController.Member("世原·安诺"));
+            TeamController.Team.Mem.Add(new TeamController.Member("兮·御冯"));
             for(int i = 0;i < TeamController.Team.Mem.Count;i++){
                 TeamController.Member m = TeamController.Team.Mem[i];
                 GameObject box = 
@@ -63,6 +68,9 @@ public class BattleController : MonoBehaviour
                 box.GetComponent<TeamInfoController>().UpdateInfo();
                 box.SetActive(true);**/
             }
+            TeamController.Team.Mem.Clear();
+            TeamController.Team.Mem.Add(new TeamController.Member("雪郎·梦亭"));
+            TeamController.Team.Mem.Add(new TeamController.Member("素鱼·艾桑"));
             for(int i = 0;i < TeamController.Team.Mem.Count;i++){
                 TeamController.Member m = TeamController.Team.Mem[i];
                 GameObject box = 
@@ -101,6 +109,9 @@ public class BattleController : MonoBehaviour
             }
         }
         Rounds.Sort((m2,m1) => (m1.BindMember.SPD + Random.Range(-10,10)).CompareTo(m2.BindMember.SPD + Random.Range(-10,10)));
+        foreach(FighterController f in Rounds){
+            SkillManager.BuffProcess(f,0);
+        }
     }
 
     void EneUse(){
@@ -129,6 +140,8 @@ public class BattleController : MonoBehaviour
         ttick += Time.deltaTime;
 
         if(BattleStep == 3 && Msg.Count == 0){
+            Rounds[0].BindMember.LastSkill = lSk;
+
             Rounds[0].BindMember.MP -= lSk.MP;
             BattleStep = 4; ttick = 0;
             TeamInfoController tt = TarTeam.GetComponent<TeamInfoController>();
@@ -139,7 +152,7 @@ public class BattleController : MonoBehaviour
             tt.UpdateInfo();
 
             Injury = lSk.Strength * Rounds[0].BindMember.ATK;
-            if(lSk.Strength < 0) Injury /= 1.5f;
+            Injury /= 1.5f;
             if(lSk.Strength > 0) Injury -= tar.BindMember.DEF;
             Source = Injury;
             Injury *= TeamController.JC[(int)lSk.Job-1,(int)tar.BindMember.Job[0]-1];
@@ -148,10 +161,10 @@ public class BattleController : MonoBehaviour
             if(lSk.Strength >= 0) tar.State = FighterController.BattleState.Hurt;
             GameObject fab = (GameObject)Resources.Load("Epic Toon FX\\Prefabs\\" + lSk.Animate);
             SkObj = Instantiate(fab,
-            new Vector3(tar.transform.position.x,tar.transform.position.y - 1,tar.transform.position.z), 
+            new Vector3(tar.transform.position.x,tar.transform.position.y,tar.transform.position.z), 
             Quaternion.identity,this.transform.parent);
             SkObj.transform.localScale = new Vector3(2.5f,2.5f,2.5f);
-            SkObj.transform.localRotation = new Quaternion(-90f,0f,0f,0f);
+            SkObj.transform.localEulerAngles = new Vector3(-90f,0,0);
             SkObj.SetActive(true);
         }
 
@@ -179,11 +192,11 @@ public class BattleController : MonoBehaviour
                 tar.State = FighterController.BattleState.Die;
             } 
 
-            Rounds[0].State = FighterController.BattleState.Normal;
+            if(Rounds[0].State == FighterController.BattleState.Hurt) 
+                Rounds[0].State = FighterController.BattleState.Normal;
             BattleStep = 0; ttick = 0;
             try{Destroy(SkObj);}catch{}
-            Rounds.RemoveAt(0);
-
+            
             bool GameClosed = false;
             if(F1.FindIndex(m => m.BindMember.HP > 0) == -1) {
                 GameClosed = true;
@@ -204,7 +217,26 @@ public class BattleController : MonoBehaviour
                 Msg.Add("我方战胜了敌方！");
             }
             if(GameClosed) {Rounds.Clear(); return;}
-            if(Rounds.Count == 0) FetchRound();
+
+            float nHP = tar.BindMember.HP;
+            SkillManager.BuffProcess(tar,1);
+            if(tar.BindMember.HP - nHP != 0){
+                Debug.Log("追加回合");
+                BattleStep = 4; ttick = 0;
+                TeamInfoController tt = TarTeam.GetComponent<TeamInfoController>();
+                tt.BindMember = new TeamController.Member();
+                tt.BindMember.Name = tar.BindMember.Name;
+                tt.BindMember.HP = nHP;
+                tt.BindMember.MaxHP = tar.BindMember.MaxHP;
+                tt.UpdateInfo();
+                Injury = tar.BindMember.HP - nHP;
+                Source = Injury;
+            }else{
+                SkillManager.ExtraSkill(lSk.Name,Rounds[0],tar);
+                Rounds.RemoveAt(0);
+                if(Rounds.Count == 0) FetchRound();
+            }
+            
         }
 
         bool ttA = (BattleStep >= 4);

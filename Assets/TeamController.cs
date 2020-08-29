@@ -34,12 +34,17 @@ public class TeamController : MonoBehaviour
         public JOB[] Job;
         public string Name;
         public List<string> Equipments;
+        public List<SkillManager.Buff> buffs;
+        public SkillManager.Skill LastSkill;
         public string[] Magics;
         public Member(string Role){
             Equipments = new List<string>();
             MaxHP = 0; MaxMP = 0;Job = new JOB[]{JOB.Normal,JOB.Normal};
+            buffs = new List<SkillManager.Buff>();
+            LastSkill = new SkillManager.Skill();
             ATK = 0;DEF = 0;SPD = 0;
             Name = Role;Magics = new string[] {"","","",""};
+            LastSkill = new SkillManager.Skill();
             if(Role == "世原·安诺"){
                 MaxHP = 100; MaxMP = 100;Job = new JOB[]{JOB.Academy,JOB.Normal};
                 ATK = 100;DEF = 20;SPD = 100;

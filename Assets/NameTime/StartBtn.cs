@@ -19,6 +19,7 @@ public class StartBtn : MonoBehaviour
 
     private void OnMouseUp() {
         InputField t = GameObject.Find("NameBox").GetComponent<InputField>();
+        t.text = t.text.Replace(" ","").Replace("　","");
         if(t.text.Length != 4){
             MessageCreator.CreateMsg("名字输入错误","请输入4个字的名字哦，不能任性。");
         }else{

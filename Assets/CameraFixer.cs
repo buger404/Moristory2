@@ -10,12 +10,12 @@ public class CameraFixer : MonoBehaviour
     /// <summary>
     /// 开发屏幕的宽
     /// </summary>
-    public static float DevelopWidth = 1024f;
+    public static float DevelopWidth = 800f;
 
     /// <summary>
     /// 开发屏幕的长
     /// </summary>
-    public static float DevelopHeigh = 576f;
+    public static float DevelopHeigh = 450f;
 
     /// <summary>
     /// 开发高宽比
@@ -91,6 +91,10 @@ public class CameraFixer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float fs = (float)Screen.height / (float)Screen.width;
+        if(fs != ScreenRate){
+            ScreenRate = fs;
+            Start();
+        }
     }
 }
