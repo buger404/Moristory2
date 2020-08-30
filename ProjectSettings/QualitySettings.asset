@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 5
+  m_CurrentQuality: 4
   m_QualitySettings:
   - serializedVersion: 2
     name: Very Low
@@ -166,7 +166,7 @@ QualitySettings:
     name: Very High
     pixelLightCount: 3
     shadows: 0
-    shadowResolution: 2
+    shadowResolution: 1
     shadowProjection: 1
     shadowCascades: 2
     shadowDistance: 70
@@ -213,7 +213,7 @@ QualitySettings:
     skinWeights: 4
     textureQuality: 0
     anisotropicTextures: 0
-    antiAliasing: 8
+    antiAliasing: 4
     softParticles: 0
     softVegetation: 1
     realtimeReflectionProbes: 0
@@ -242,11 +242,11 @@ QualitySettings:
     PSM: 5
     PSP2: 2
     Stadia: 5
-    Standalone: 5
+    Standalone: 4
     Tizen: 2
     WebGL: 3
     WiiU: 5
-    Windows Store Apps: 5
+    Windows Store Apps: 4
     XboxOne: 5
     iPhone: 2
     tvOS: 2

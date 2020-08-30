@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="True">
+        <chara>旁白</chara>
+	<snd>Victory2</snd>
+	<wait>2</wait>
+        <s>捡到了1元钱！</s>
+        <visible>false</visible>
+    </behaviour>
+</game>

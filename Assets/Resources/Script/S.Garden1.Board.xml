@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+    <behaviour action="spy" condition="FACE=1">
+        <chara>旁白</chara>
+	<s>↑ 教学楼大厅</s>
+	<s>↓ 食堂</s>
+	<s>← 自由区域</s>
+	<s>→ 自由区域</s>
+    </behaviour>
+</game>

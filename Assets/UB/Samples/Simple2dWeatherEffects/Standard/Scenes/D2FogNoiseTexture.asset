@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
+  m_Name: D2FogNoiseTexture
+  m_EditorClassIdentifier: 
+  settings:
+  - {fileID: 114267644249551468}
+  - {fileID: 114197474432713920}
+--- !u!114 &114197474432713920
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe370d05ea0124eccae638c4b34c636e, type: 3}
+  m_Name: D2FogsNoiseTexPESecond
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  CameraSpeedMultiplier:
+    overrideState: 1
+    value: 0.2
+  Color:
+    overrideState: 1
+    value: {r: 0, g: 0, b: 0, a: 0.28235295}
+  Noise:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 524f825a31a4bf04db832318ea10c982, type: 3}
+    defaultState: 1
+  Size:
+    overrideState: 1
+    value: 0.02
+  HorizontalSpeed:
+    overrideState: 1
+    value: 0.01
+  VerticalSpeed:
+    overrideState: 1
+    value: 0
+  Density:
+    overrideState: 1
+    value: 0.78
+--- !u!114 &114267644249551468
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea94b342a20d0364e8e97d9da2bac04d, type: 3}
+  m_Name: D2FogsNoiseTexPE
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  CameraSpeedMultiplier:
+    overrideState: 1
+    value: 0.2
+  Color:
+    overrideState: 1
+    value: {r: 1, g: 1, b: 1, a: 0.28235295}
+  Noise:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 524f825a31a4bf04db832318ea10c982, type: 3}
+    defaultState: 1
+  Size:
+    overrideState: 1
+    value: 0.02
+  HorizontalSpeed:
+    overrideState: 1
+    value: 0.02
+  VerticalSpeed:
+    overrideState: 1
+    value: 0
+  Density:
+    overrideState: 1
+    value: 1.18

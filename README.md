@@ -33,7 +33,9 @@ UI/设计：Error 404/Victoria.
 
 美术：Victoria.
 
-战斗系统：王者铜
+战斗系统：王者铜/南笙
+
+玩法设计：南笙
 
 线稿绘制/上色：Victoria./困困困Y困死/Error 404 
 

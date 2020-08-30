@@ -137,6 +137,11 @@ public class RPGEvent : MonoBehaviour
 
     void FixedUpdate()
     {
+        /**面向摄像机
+        Vector3 crotate = Camera.main.transform.localEulerAngles;
+        Vector3 irotate = transform.localEulerAngles;
+        if(crotate != irotate) transform.localEulerAngles = crotate;**/
+
         bool HandMove = false;
         if(XTask != 0 || YTask != 0){
             //Debug.Log("attached " + this.gameObject.name);

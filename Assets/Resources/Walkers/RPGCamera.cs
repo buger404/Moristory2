@@ -5,6 +5,7 @@ using UnityEngine;
 public class RPGCamera : MonoBehaviour
 {
     GameObject Player;
+    public float minx = float.MinValue,minz = float.MinValue,maxx = float.MaxValue,maxz = float.MaxValue;
     private void Awake() {
         Player = GameObject.Find("Player");
     }
@@ -20,11 +21,16 @@ public class RPGCamera : MonoBehaviour
         Vector3 ro = transform.localEulerAngles;
         if(te.x != r.x || te.z != r.z){
             transform.position = new Vector3(te.x + (r.x - te.x) / 10,
-            te.y + (((r.y + 5f) - te.y) / 15), 
+            te.y + (((r.y + 1.5f + (GameConfig.IsMsgProcess ? -1.5f : 0f)) - te.y) / 15), 
             te.z + ((r.z - (GameConfig.IsMsgProcess ? 5f : 7f)) - te.z) / 15);
+            if(transform.position.x < minx) transform.position = new Vector3(minx,transform.position.y,transform.position.z);
+            if(transform.position.z < minz) transform.position = new Vector3(transform.position.x,transform.position.y,minz);
+            if(transform.position.x > maxx) transform.position = new Vector3(maxx,transform.position.y,transform.position.z);
+            if(transform.position.z > maxz) transform.position = new Vector3(transform.position.x,transform.position.y,maxz);
+
             /**transform.position = new Vector3(r.x,(r.y + 5f), 
             te.z + ((r.z - (GameConfig.IsMsgProcess ? 5f : 7f)) - te.z) / 15);**/
-            transform.localEulerAngles = new Vector3(ro.x + (50 - ro.x) / 25,ro.y + (0 - ro.y) / 25,ro.z);
+            transform.localEulerAngles = new Vector3(ro.x + (10 - ro.x) / 25,ro.y + (0 - ro.y) / 25,ro.z);
         }
         //塞入玩家状态流
         if(GameConfig.StateFlow[GameConfig.StatePos].pos != Player.transform.position){

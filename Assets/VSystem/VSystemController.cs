@@ -18,6 +18,7 @@ public class VSystemController : MonoBehaviour
         Carry(ExitBtn.name,null);
     }
     public void Carry(string name,GameObject goe){
+        Debug.Log(name);
         if(name == EnterBtn.name && GameConfig.IsBlocking == false){
             EnterBtn.SetActive(false);
             ExitBtn.SetActive(true);
