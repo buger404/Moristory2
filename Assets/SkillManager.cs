@@ -24,6 +24,8 @@ public class SkillManager : MonoBehaviour
             Name = N;Describe = Des;Animate = Ani;
         }        
     }
+    public static List<GameObject> FireworkPrefabs = new List<GameObject>();
+    public static List<GameObject> AniPrefabs = new List<GameObject>();
     public static List<Skill> S = new List<Skill>();
     public static BattleController AcB;
     // F1：使用者，F2=被使用者
@@ -148,8 +150,6 @@ public class SkillManager : MonoBehaviour
         S.Add(new Skill("睡梦气息",10,0.0f,TeamController.JOB.Master,
         "30%使对方陷入睡眠2回合","Combat/Muzzleflash/MysticMuzzle/MysticMuzzleWhite"));
         
-        
-    
     }
     
     public static int MinMP(string[] ma){
@@ -160,5 +160,55 @@ public class SkillManager : MonoBehaviour
         }
         return Min;
     }
-
+    public static GameObject Fire(string name,Vector3 p){
+        int index = FireworkPrefabs.FindIndex(m => m.name == name);
+        GameObject fab;
+        if(index == -1){
+            fab = (GameObject)Resources.Load("Firework\\Prefab\\" + name);
+            FireworkPrefabs.Add(fab);
+        }else{
+            fab = FireworkPrefabs[index];
+        }
+        GameObject obj = Instantiate(fab,p,Quaternion.identity);
+        obj.SetActive(true);
+        return obj;
+    }
+    public static Vector3 RandomVector(Vector3 or,float min,float max){
+        return new Vector3(or.x * Random.Range(min,max),or.y * Random.Range(min,max),or.z * Random.Range(min,max));
+    }
+    public static Vector3 RandomVector2(Vector3 or,float min,float max){
+        float p = Random.Range(min,max);
+        return new Vector3(or.x * p,or.y * p,or.z * p);
+    }
+    public static void PlaySkillAni(Vector3 p,string name){
+        int index = AniPrefabs.FindIndex(m => m.name == name);
+        GameObject fab;
+        if(index == -1){
+            fab = (GameObject)Resources.Load("Epic Toon FX\\Prefabs\\" + name);
+            AniPrefabs.Add(fab);
+        }else{
+            fab = AniPrefabs[index];
+        }
+        GameObject Obj = Instantiate(fab, p, Quaternion.identity);
+        Obj.SetActive(true);
+    }
+    public static void MakeFireworks(Skill ma,Vector3 p){
+        if(ma.Name == "光能爆破"){
+            int c = Random.Range(10,20);
+            float A = Random.Range(0,360);
+            for(int i = 0;i < c;i++){
+                GameObject f = Fire("Light",p);
+                f.transform.localScale = RandomVector2(f.transform.localScale,0.3f,0.8f);
+                SinFirework sf = f.GetComponent<SinFirework>();
+                sf.Speed = Random.Range(0.2f,0.6f);
+                sf.Angle = Random.Range(0,360);
+                sf.XD = (Random.Range(0f,1f) < 0.5f ? 1 : -1);
+                sf.YD = (Random.Range(0f,1f) < 0.5f ? 1 : -1);
+                sf.Life = Random.Range(0.05f,0.15f);
+                sf.BindS = ma;
+                sf.Owner = GameConfig.Controller;
+                PlaySkillAni(p,ma.Animate);
+            }
+        }
+    }
 }

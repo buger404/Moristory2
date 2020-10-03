@@ -36,7 +36,7 @@ MonoBehaviour:
     value: 0.2
   Color:
     overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 0.28235295}
+    value: {r: 0, g: 0, b: 0, a: 1}
   Noise:
     overrideState: 1
     value: {fileID: 2800000, guid: 524f825a31a4bf04db832318ea10c982, type: 3}
@@ -74,7 +74,7 @@ MonoBehaviour:
     value: 0.2
   Color:
     overrideState: 1
-    value: {r: 1, g: 1, b: 1, a: 0.28235295}
+    value: {r: 1, g: 1, b: 1, a: 1}
   Noise:
     overrideState: 1
     value: {fileID: 2800000, guid: 524f825a31a4bf04db832318ea10c982, type: 3}

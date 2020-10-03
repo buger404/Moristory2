@@ -88,7 +88,7 @@ public class VSystemController : MonoBehaviour
             data.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
             gr.Raycast(data, results);
-            if(results.Count == 1){
+            if(results.Count >= 1){
                 foreach(RaycastResult rr in results){
                     Carry(rr.gameObject.name,rr.gameObject);
                 }
