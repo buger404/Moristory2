@@ -47,6 +47,7 @@ public class RPGEvent : MonoBehaviour
             CircleCanvas.SetActive(false);
         }
         if(IsController){
+            GameConfig.Followers.Clear();
             GameObject Player = GameObject.Find("Player");
             GameConfig.PlayerState ps = new GameConfig.PlayerState();
             ps.FPS = 1;
@@ -71,6 +72,10 @@ public class RPGEvent : MonoBehaviour
         }
         //无论如何是否在目标地图，一旦已经加载地图，存档就不应该被二次还原
         GameConfig.Loaded = true;
+    }
+    public void Reload() {
+        walker = Resources.LoadAll<Sprite>("Walkers/" + character);
+        UpdateFace();
     }
     private void Awake() {
         s = this.gameObject.GetComponent<SpriteRenderer>();
@@ -172,7 +177,7 @@ public class RPGEvent : MonoBehaviour
             if(XTask == 0 && YTask == 0){Origin.x = -244;HandMove = false;}
             goto Moves;
         }
-        if(((Input.GetKey(KeyCode.X) == false && IsController && Input.GetKey(KeyCode.RightShift) == false) || HandMove) && SpeedUp){
+        if(((IsController && Input.GetKey(KeyCode.RightShift) == false && Input.GetKey(KeyCode.LeftShift) == false) || HandMove) && SpeedUp){
             fps /= 1.5f; speed /= 1.5f;
             SpeedUp = false;
         }
@@ -207,7 +212,7 @@ public class RPGEvent : MonoBehaviour
         //一步的坐标移动距离大约为1.5！
         Moves:
         if(IsController && !HandMove){
-            if(Input.GetKey(KeyCode.X) && SpeedUp == false){
+            if((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && SpeedUp == false){
                 fps *= 1.5f; speed *= 1.5f;
                 SpeedUp = true;
             }

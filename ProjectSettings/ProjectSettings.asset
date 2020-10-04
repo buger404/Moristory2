@@ -54,8 +54,8 @@ PlayerSettings:
   m_SloganImage: {fileID: 0}
   m_SloganHeight: 150
   m_HolographicTrackingLossScreen: {fileID: 0}
-  defaultScreenWidth: 800
-  defaultScreenHeight: 450
+  defaultScreenWidth: 973
+  defaultScreenHeight: 548
   defaultScreenWidthWeb: 800
   defaultScreenHeightWeb: 450
   m_StereoRenderingPath: 0

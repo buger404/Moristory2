@@ -10,6 +10,7 @@ public class FollowerController : MonoBehaviour
     private Sprite[] walker;            //行走图图片集
     private void Awake() {
         s = this.gameObject.GetComponent<SpriteRenderer>();
+        GameConfig.Followers.Add(this);
     }
     public void Confirm(){
         walker = Resources.LoadAll<Sprite>("Walkers/" + character);

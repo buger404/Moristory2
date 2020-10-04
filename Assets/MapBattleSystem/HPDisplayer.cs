@@ -37,13 +37,14 @@ public class HPDisplayer : MonoBehaviour
     }
 
     public static void CreateHPAnimate(Vector3 p,float n,int t){
-        string s = n.ToString();
+        string s = Mathf.Abs(n).ToString();
         float sx = p.x - (s.Length) * 0.35f / 2;
         Vector3 po = p;
         po.x = sx;
         float x = Random.Range(-0.15f,0.15f),
               y = Random.Range(0.13f,0.25f),
               sp = Random.Range(0.005f,0.013f);
+        if(n < 0) t = 3;
         GameObject fab = (GameObject)Resources.Load("Battle\\HPNum");
         GameObject Obj = Instantiate(fab, po, Quaternion.identity);
         Obj.GetComponent<HPDisplayer>().num = 10;

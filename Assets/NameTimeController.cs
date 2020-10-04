@@ -19,8 +19,8 @@ public class NameTimeController : MonoBehaviour
         TeamController.Team.Mem = new List<TeamController.Member>();
         TeamController.Team.Mem.Add(new TeamController.Member("世原·安诺"));
         TeamController.Team.Mem.Add(new TeamController.Member("兮·御冯"));
-        TeamController.Team.Mem.Add(new TeamController.Member("雪郎·梦亭"));
-        TeamController.Team.Mem.Add(new TeamController.Member("素鱼·艾桑"));
+        //TeamController.Team.Mem.Add(new TeamController.Member("雪郎·梦亭"));
+        //TeamController.Team.Mem.Add(new TeamController.Member("素鱼·艾桑"));
         Switcher.SwitchTo("NatingDaily");
     }
     // Start is called before the first frame update

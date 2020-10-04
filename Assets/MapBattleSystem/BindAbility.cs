@@ -34,9 +34,10 @@ public class BindAbility : MonoBehaviour
     }
     void Update()
     {
-        if(BindTeam > -1) return;
-
         if(Ability.HP < 0) Ability.HP = 0;
+        if(Ability.HP > Ability.MaxHP) Ability.HP = Ability.MaxHP;
+
+        if(BindTeam > -1) return;
         if(Ability.HP == 0 && Recovery == false) {
             HPBar.GetComponent<SpriteRenderer>().sprite = HPBar2;
             Recovery = true;

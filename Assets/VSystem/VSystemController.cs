@@ -94,7 +94,7 @@ public class VSystemController : MonoBehaviour
                 }
             }
         }
-        if(Input.GetKeyUp(KeyCode.C)){
+        if(Input.GetKeyUp(KeyCode.E)){
             Carry(EnterBtn.activeSelf ? EnterBtn.name : ExitBtn.name,null);
         }
     }

@@ -160,7 +160,7 @@ public class SkillManager : MonoBehaviour
         }
         return Min;
     }
-    public static GameObject Fire(string name,Vector3 p){
+    public static GameObject Fire(string name,Vector3 p,Skill ma,GameObject Owner){
         int index = FireworkPrefabs.FindIndex(m => m.name == name);
         GameObject fab;
         if(index == -1){
@@ -170,6 +170,8 @@ public class SkillManager : MonoBehaviour
             fab = FireworkPrefabs[index];
         }
         GameObject obj = Instantiate(fab,p,Quaternion.identity);
+        obj.GetComponent<Firework>().BindS = ma;
+        obj.GetComponent<Firework>().Owner = Owner;
         obj.SetActive(true);
         return obj;
     }
@@ -190,14 +192,16 @@ public class SkillManager : MonoBehaviour
             fab = AniPrefabs[index];
         }
         GameObject Obj = Instantiate(fab, p, Quaternion.identity);
+        Obj.transform.localEulerAngles = new Vector3(-90f,0,0);
         Obj.SetActive(true);
+        Destroy(Obj,4.0f);
     }
-    public static void MakeFireworks(Skill ma,Vector3 p){
+    public static void MakeFireworks(Skill ma,Vector3 p,GameObject Owner){
         if(ma.Name == "光能爆破"){
             int c = Random.Range(10,20);
             float A = Random.Range(0,360);
             for(int i = 0;i < c;i++){
-                GameObject f = Fire("Light",p);
+                GameObject f = Fire("Light",p,ma,Owner);
                 f.transform.localScale = RandomVector2(f.transform.localScale,0.3f,0.8f);
                 SinFirework sf = f.GetComponent<SinFirework>();
                 sf.Speed = Random.Range(0.2f,0.6f);
@@ -205,10 +209,21 @@ public class SkillManager : MonoBehaviour
                 sf.XD = (Random.Range(0f,1f) < 0.5f ? 1 : -1);
                 sf.YD = (Random.Range(0f,1f) < 0.5f ? 1 : -1);
                 sf.Life = Random.Range(0.05f,0.15f);
-                sf.BindS = ma;
-                sf.Owner = GameConfig.Controller;
-                PlaySkillAni(p,ma.Animate);
             }
         }
+        if(ma.Name == "恶魔歌姬"){
+            SoundPlayer.Play("Magic3");
+            Fire("SongFirework",p,ma,Owner);
+        }
+        if(ma.Name == "光合作用"){
+            Fire("Recovery",p,ma,Owner);
+        }
+        if(ma.Name == "能力学习"){
+            Fire("Refletor",p,ma,Owner);
+        }
+        if(ma.Name == "魔法分析"){
+            Fire("Voider",p,ma,Owner);
+        }
+        PlaySkillAni(p,ma.Animate);
     }
 }

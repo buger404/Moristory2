@@ -15,6 +15,12 @@ public class NPC : MonoBehaviour
     private Vector3 lp;
     private BindAbility ba;
     private bool RState = false;
+    public enum NPCType{
+        None = 0,
+        Tester = 1
+    }
+    public NPCType type = NPCType.None;
+    private float dtime = 0;
     private void Awake() {
         s = this.gameObject.GetComponent<SpriteRenderer>();
         if(character == ""){return;}
@@ -25,6 +31,22 @@ public class NPC : MonoBehaviour
 
     public void UpdateFace(){
         s.sprite = walker[1 + 3 * Direction];
+    }
+
+    private void Update() {
+        if(type == NPCType.Tester) TesterUpdate();
+    }
+
+    void TesterUpdate(){
+        dtime += Time.deltaTime;
+        if(dtime >= 1.5f){
+            dtime = 0;
+            string[] sk = new string[]{"恶魔歌姬","恶魔歌姬","恶魔歌姬","恶魔歌姬","魔法分析","能力学习","光能爆破","光能爆破","光能爆破","光能爆破","光能爆破","光能爆破","光合作用"};
+            SkillManager.Skill s = 
+            SkillManager.S.Find(m => m.Name == sk[Random.Range(0,sk.Length)]);
+            if(s.Name == null) return;
+            SkillManager.MakeFireworks(s,this.transform.localPosition,this.gameObject);
+        }
     }
 
     void FixedUpdate()

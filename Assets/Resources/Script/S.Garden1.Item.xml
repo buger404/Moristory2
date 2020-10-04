@@ -2,7 +2,7 @@
 <game>
     <behaviour action="spy" condition="True">
         <chara>旁白</chara>
-	<snd>Victory2</snd>
+	<snd>Item</snd>
 	<wait>2</wait>
         <s>捡到了1元钱！</s>
         <visible>false</visible>

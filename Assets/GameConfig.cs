@@ -17,6 +17,7 @@ public class GameConfig
     public static bool IsBlocking = false;
     public static bool WalkingTask = false;
     public static RPG BlockEvent;
+    public static List<FollowerController> Followers = new List<FollowerController>();
     public static DialogController ActiveDialog;
     public static SpyController ActiveSpy;
     public static List<RPG> LastEvent = new List<RPG>();
