@@ -14,7 +14,7 @@ public class SinFirework : Firework
     public override float AttackDeepth(){
         return sr.color.a * 0.25f;
     }
-    public void Update()
+    public void FixedUpdate()
     {
         Vector3 p = base.transform.localPosition;
         p.x += Speed * Mathf.Cos(Angle / 360) * XD; p.z += Speed * Mathf.Sin(Angle / 360) * YD;

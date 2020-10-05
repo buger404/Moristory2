@@ -16,6 +16,8 @@ public class GameConfig
     public static int DayNight = 0;
     public static bool IsBlocking = false;
     public static bool WalkingTask = false;
+    public static string ExS = "";
+    public static GameObject ExMObj;
     public static RPG BlockEvent;
     public static List<FollowerController> Followers = new List<FollowerController>();
     public static DialogController ActiveDialog;

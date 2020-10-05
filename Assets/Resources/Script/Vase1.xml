@@ -8,7 +8,7 @@
 	<snd>Sand</snd>
 	<wait>1</wait>
 	<s>你翻了翻花盆...</s>
-	<snd>Victory2</snd>
+	<snd>Item</snd>
 	<wait>2</wait>
         <s>找到了1元硬币！</s>
         <var tar="Vase1">1</var>
@@ -18,7 +18,7 @@
 	<snd>Sand</snd>
 	<wait>1</wait>
 	<s>你翻了翻花盆...</s>
-	<snd>Victory2</snd>
+	<snd>Item</snd>
 	<wait>2</wait>
         <s>这次你找到了一角钱硬币！</s>
         <var tar="Vase1">2</var>

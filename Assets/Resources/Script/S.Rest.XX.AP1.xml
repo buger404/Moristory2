@@ -10,75 +10,39 @@
 	<s>她将一罐冰橙汁贴到我脸上，也跟着我看起了新闻。</s>
 	<face tar="Player">FACE_RIGHT</face>
 	<chara>世原·安诺</chara>
-	<s>早啊，兮。我偶尔也会关注关注时事的。</s>
+	<s>早啊，兮。</s>
 	<chara>兮·御冯</chara>
-	<s>偶尔啊...</s>
 	<s>雪郎她就天天看新闻，天天看。</s>
-	<s>真的就是你问什么她都懂，在宿舍也一直在看新闻。</s>
 	<chara>世原·安诺</chara>
-	<s>这样啊。看不出来...</s>
+	<s>是这样吗？我没看出来她是个新闻爱好者。</s>
 	<chara>兮·御冯</chara>
-	<s>真的...！</s>
-	<chara>旁白</chara>
-	<s>她开始反复用食指搓自己的鼻子。</s>
-	<chara>兮·御冯</chara>
-	<s>你问布就知道了。</s>
-	<s>我跟你说，上次他俩聊时事真的是...</s>
+	<s>真的！</s>
+	<s>你问昴斯就知道了。我跟你说，上次他俩聊起时事简直热火朝天。</s>
 	<face>FACE_UP</face>
-	<s>像我这种就是两耳不闻窗外事的...</s>
-	<chara>旁白</chara>
-	<s>她眯起眼来，小声地念着什么。</s>
-	<chara>兮·御冯</chara>
-	<s>诶，世，你看那个。</s>
+	<s>不像我这种两耳不闻窗外事的……</s>
+	<s>欸，世，你看那个。</s>
 	<face tar="Player">FACE_UP</face>
 	<chara>世原·安诺</chara>
-	<s>哦，维克中学的法师节呀。</s>
+	<s>维克中学决定在法师节对外开放校园活动，娜亭日报将进行全程直播……</s>
 	<face tar="Player">FACE_RIGHT</face>
-	<s>到时一定很热闹...</s>
+	<s>到时一定会很热闹吧。</s>
 	<chara>兮·御冯</chara>
-	<s>那肯定了。法师节是我们学校最大的活动了。</s>
+	<s>肯定啊。法师节可是我们最盛大的节日了。</s>
 	<face>FACE_LEFT</face>
-	<s>你要走了吗？</s>
+	<s>你早餐买了吗？准备走了哦。</s>
 	<chara>世原·安诺</chara>
-	<s>可以啊。</s>
+	<s>啊，还没有，等我一下。</s>
 	<chara>兮·御冯</chara>
-	<s>你早餐买了吗？</s>
-	<chara>世原·安诺</chara>
-	<s>啊！差点忘了！</s>
-	<chara>兮·御冯</chara>
+	<s>快去快去。</s>
 	<face>FACE_UP</face>
-	<s>那我先等你一会儿吧。快去快去。</s>
 	<var tar="AP">1</var>
     </behaviour>
     <behaviour action="spy" condition="FACE=1 and [AP]=1">
 	<fixface></fixface>
         <chara>兮·御冯</chara>
-	<s>走走走！</s>
-	<snd>PinkGunShort</snd>
-	<wait>5</wait>
-        <s>♪三点钟方向有惊喜烟雾侵袭♪</s>
-	<chara>世原·安诺</chara>
-	<s>这是你作的新歌吗？</s>
-        <chara>兮·御冯</chara>
-	<s>嗯，是啊。</s>
-	<s>我打算在今晚万圣节晚会的时候唱。</s>
-	<s>昨晚就是练这个曲才没睡好...</s>
-	<snd>PinkGunShort2</snd>
-	<wait>3</wait>
-        <s>♪Scream it scream it♪</s>
-	<chara>世原·安诺</chara>
-	<s>我觉得挺好听的。</s>
-	<chara>旁白</chara>
-	<s>兮·御冯，维克中学A班班长，擅长音乐美术</s>
-	<s>同时还是著名网红歌手，学习成绩也名列前茅</s>
-        <chara>兮·御冯</chara>
-	<s>好听哦？那我就放心了。</s>
-	<chara>旁白</chara>
-	<s>她将双手交叉放在胸前轻轻舒了一口气</s>
-        <chara>兮·御冯</chara>
-	<s>出名之后压力也很大...</s>
-	<s>我现在都不知道该怎么编曲子了...</s>
-	<s>很怕新歌他们不喜欢啊然后就各种那种...唉...</s>
+	<s>好了？</s>
+	<s>那就走走走！</s>
+	<s>♪~</s>
 	<chara>旁白</chara>
 	<s>COMMING SOON</s>
 	<var tar="AP">2</var>

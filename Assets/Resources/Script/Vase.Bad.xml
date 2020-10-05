@@ -5,7 +5,7 @@
 	<snd>Sand</snd>
 	<wait>1</wait>
 	<s>你翻了翻花盆...</s>
-	<snd>Victory2</snd>
+	<snd>Item</snd>
         <s>找到了一条虫。</s>
         <s>你把它放走了。</s>
     </behaviour>

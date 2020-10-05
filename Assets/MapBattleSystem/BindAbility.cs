@@ -19,6 +19,7 @@ public class BindAbility : MonoBehaviour
         }
     }
     public void ProcessAttack(float deepth,SkillManager.Skill s,TeamController.Member m1){
+        if (Recovery) return;
         float Injury = s.Strength * m1.ATK;
         Injury /= 1.5f;
         if(s.Strength > 0) Injury -= Ability.DEF;
@@ -31,6 +32,7 @@ public class BindAbility : MonoBehaviour
         Ability.HP -= Injury;
         HPDisplayer.CreateHPAnimate(this.transform.localPosition,
             Mathf.Ceil(Injury), type);
+        if(Ability.HP <= 0) HPDisplayer.CreateKillAnimate(this.transform.localPosition);
     }
     void Update()
     {

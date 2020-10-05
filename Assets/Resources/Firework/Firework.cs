@@ -7,6 +7,7 @@ public class Firework : MonoBehaviour
     public string Mark;
     public GameObject Owner;
     public SkillManager.Skill BindS;
+    public bool NoDelete = false;
     public virtual void OnCollisionEnter(Collision other) {
         Process(other.gameObject);
     }
@@ -21,7 +22,7 @@ public class Firework : MonoBehaviour
             if(BindS.Strength > 0) SkillManager.PlaySkillAni(go.transform.position,BindS.Animate);
             go.GetComponent<BindAbility>().ProcessAttack
             (AttackDeepth(),BindS,Owner.GetComponent<BindAbility>().Ability);
-            if(BindS.Strength > 0) Destroy(this.gameObject);
+            if(BindS.Strength > 0 && NoDelete == false) Destroy(this.gameObject);
         }
     }
     public virtual float AttackDeepth(){

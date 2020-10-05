@@ -55,7 +55,6 @@ public class HPDisplayer : MonoBehaviour
         Obj.SetActive(true);
         po.x += 0.35f;
         for(int i = 0;i < s.Length;i++){
-            fab = (GameObject)Resources.Load("Battle\\HPNum");
             Obj = Instantiate(fab, po, Quaternion.identity);
             Obj.GetComponent<HPDisplayer>().num = int.Parse(s[i].ToString());
             Obj.GetComponent<HPDisplayer>().type = t;
@@ -65,5 +64,30 @@ public class HPDisplayer : MonoBehaviour
             Obj.SetActive(true);
             po.x += 0.35f;
         }
+    }
+
+    public static void CreateKillAnimate(Vector3 p){
+        float sx = p.x - 2 * 0.9f / 2;
+        Vector3 po = p;
+        po.x = sx;
+        float x = Random.Range(-0.15f,0.15f),
+              y = Random.Range(0.13f,0.25f),
+              sp = Random.Range(0.005f,0.013f);
+        GameObject fab = (GameObject)Resources.Load("Battle\\HPNum");
+        GameObject Obj = Instantiate(fab, po, Quaternion.identity);
+        Obj.GetComponent<HPDisplayer>().num = 0;
+        Obj.GetComponent<HPDisplayer>().type = 4;
+        Obj.GetComponent<HPDisplayer>().rx = x;
+        Obj.GetComponent<HPDisplayer>().ry = y;
+        Obj.GetComponent<HPDisplayer>().ss = sp;
+        Obj.SetActive(true);
+        po.x += 0.9f;
+        Obj = Instantiate(fab, po, Quaternion.identity);
+        Obj.GetComponent<HPDisplayer>().num = 1;
+        Obj.GetComponent<HPDisplayer>().type = 4;
+        Obj.GetComponent<HPDisplayer>().rx = x;
+        Obj.GetComponent<HPDisplayer>().ry = y;
+        Obj.GetComponent<HPDisplayer>().ss = sp;
+        Obj.SetActive(true);
     }
 }

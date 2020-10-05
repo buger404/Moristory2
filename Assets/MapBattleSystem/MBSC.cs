@@ -11,10 +11,12 @@ public class MBSC : MonoBehaviour
     public int ControlRole = 0;
     public Sprite HPBar1,HPBar2;
     public GameObject Skill1,Skill2,Skill3;
+    public GameObject ExBar,ExSkill;
     private RectTransform rect;
     private float MaxW;
     private TeamController.Member Ability1,Ability2;
     private BindAbility ba;
+    private string lSkill;
     void Awake()
     {
         Ability1 = TeamController.Team.Mem[0];
@@ -33,10 +35,20 @@ public class MBSC : MonoBehaviour
         ba.Ability = (ControlRole == 0) ? Ability1 : Ability2;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         HPText.text = "HP  " + Mathf.Ceil(ba.Ability.HP) + "/" + ba.Ability.MaxHP;
         rect.sizeDelta = new Vector2(ba.Ability.HP / ba.Ability.MaxHP * MaxW, rect.sizeDelta.y);
+
+        bool ExV = (GameConfig.ExS != "");
+        ExBar.SetActive(ExV); ExSkill.SetActive(ExV);
+        if(GameConfig.ExS != lSkill && ExV){
+            lSkill = GameConfig.ExS;
+            SkillManager.Skill s = SkillManager.S.Find(m => m.Name == GameConfig.ExS);
+            s.CD /= 5;
+            ExSkill.GetComponent<MSBC>().s = s;
+            ExSkill.GetComponent<MSBC>().ReLoad();
+        }
 
         //Role Switcher
         if(Input.GetKeyUp(KeyCode.Q)){

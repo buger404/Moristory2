@@ -26,6 +26,7 @@ public class RefletorFirework : Firework
             }else{
                 return;
             }
+            f.Owner = base.Owner;
             nodes = true;
         }
         if(nodes) {

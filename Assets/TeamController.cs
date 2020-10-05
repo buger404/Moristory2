@@ -48,12 +48,12 @@ public class TeamController : MonoBehaviour
             if(Role == "世原·安诺"){
                 MaxHP = 100; MaxMP = 100;Job = new JOB[]{JOB.Academy,JOB.Normal};
                 ATK = 100;DEF = 20;SPD = 100;
-                Magics = new string[] {"能力学习","光能爆破","魔法分析"};
+                Magics = new string[] {"能力学习","光能爆破","圣羽之刃"};
             }
             if(Role == "兮·御冯"){
                 MaxHP = 80; MaxMP = 90;Job = new JOB[]{JOB.Art,JOB.Recovery};
                 ATK = 80;DEF = 40;SPD = 90;
-                Magics = new string[] {"恶魔歌姬","光合作用","记忆碎片"};
+                Magics = new string[] {"恶魔歌姬","光合作用","魈魆花舞"};
             }
             if(Role == "雪郎·梦亭"){
                 MaxHP = 70; MaxMP = 90;Job = new JOB[]{JOB.Master,JOB.Battle};
