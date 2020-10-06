@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 //Map Battle System Controller
@@ -12,12 +13,13 @@ public class MBSC : MonoBehaviour
     public Sprite HPBar1,HPBar2;
     public GameObject Skill1,Skill2,Skill3;
     public GameObject ExBar,ExSkill;
+    public GameObject Switcher;
     private RectTransform rect;
     private float MaxW;
     private TeamController.Member Ability1,Ability2;
     private BindAbility ba;
     private string lSkill;
-    void Awake()
+    void Start()
     {
         Ability1 = TeamController.Team.Mem[0];
         Ability2 = TeamController.Team.Mem[1];
@@ -51,7 +53,7 @@ public class MBSC : MonoBehaviour
         }
 
         //Role Switcher
-        if(Input.GetKeyUp(KeyCode.Q)){
+        if(Input.GetKeyUp(KeyCode.Q) || GameConfig.IsTouched(Switcher)){
             ControlRole = (ControlRole == 0) ? 1 : 0;
             RPGEvent rpg = GameConfig.Controller.GetComponent<RPGEvent>();
             GameConfig.Followers[0].character = rpg.character;
@@ -63,6 +65,23 @@ public class MBSC : MonoBehaviour
             Reset();
             SkillManager.PlaySkillAni(GameConfig.Controller.transform.localPosition,
                                      "Interactive\\Stars\\StarExplosion");
+        }
+
+        //Touch Hander
+        foreach(Touch t in Input.touches){
+            if(t.phase == TouchPhase.Ended){
+                GraphicRaycaster gr = this.GetComponent<GraphicRaycaster>();
+                PointerEventData data = new PointerEventData(EventSystem.current);
+                data.pressPosition = t.position;
+                data.position = t.position;
+                List<RaycastResult> results = new List<RaycastResult>();
+                gr.Raycast(data, results);
+                
+                GameConfig.TouchAt.Clear();
+                foreach(RaycastResult rr in results){
+                    GameConfig.TouchAt.Add(rr.gameObject);
+                }
+            }
         }
     }
 }

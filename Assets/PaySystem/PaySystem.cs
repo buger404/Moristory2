@@ -144,7 +144,7 @@ public class PaySystem : MonoBehaviour
             data.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
             gr.Raycast(data, results);
-
+            
             foreach(RaycastResult rr in results){
                 Carry(rr.gameObject.name);
             }

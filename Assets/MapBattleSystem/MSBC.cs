@@ -32,6 +32,7 @@ public class MSBC : MonoBehaviour
         if(SkillIndex == 0 && Input.GetKeyUp(KeyCode.X)) Pressed = true;
         if(SkillIndex == 1 && Input.GetKeyUp(KeyCode.C)) Pressed = true;
         if(SkillIndex == 2 && Input.GetKeyUp(KeyCode.V)) Pressed = true;
+        if(GameConfig.IsTouched(this.gameObject)) Pressed = true;
         if(Pressed){
             if(GameConfig.ExS != ""){
                 GameConfig.ExS = s.Name;

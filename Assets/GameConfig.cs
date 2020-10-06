@@ -18,6 +18,7 @@ public class GameConfig
     public static bool WalkingTask = false;
     public static string ExS = "";
     public static GameObject ExMObj;
+    public static List<GameObject> TouchAt = new List<GameObject>();
     public static RPG BlockEvent;
     public static List<FollowerController> Followers = new List<FollowerController>();
     public static DialogController ActiveDialog;
@@ -39,6 +40,12 @@ public class GameConfig
     }
     static GameConfig(){
         
+    }
+    public static bool IsTouched(GameObject go){
+        int index = TouchAt.FindIndex(m => m.Equals(go));
+        if(index == -1) return false;
+        TouchAt.RemoveAt(index);
+        return true;
     }
     public static string RecordSceneToString(){
         string r = "";
