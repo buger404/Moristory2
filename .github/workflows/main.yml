@@ -21,7 +21,7 @@ jobs:
       # Cache
       - uses: actions/cache@v1.1.0
         with:
-          path: Moristory2/Library
+          path: Library
           key: Library-Moristory2-WebGL
 
       # Test
@@ -37,7 +37,7 @@ jobs:
         with:
           projectPath: Moristory2
           unityVersion: 2019.3.6f1
-          targetPlatform: WebGL
+          targetPlatform: StandaloneWindows64
 
       # Output
       - uses: actions/upload-artifact@v1
@@ -102,7 +102,7 @@ jobs:
       # Cache
       - uses: actions/cache@v1.1.0
         with:
-          path: Moristory2/Library
+          path: Library
           key: Library-Moristory2-${{ matrix.targetPlatform }}
           restore-keys: |
             Library-Moristory2-
@@ -133,7 +133,7 @@ jobs:
       # Cache
       - uses: actions/cache@v1.1.0
         with:
-          path: Moristory2/Library
+          path: Library
           key: Library-Moristory2-${{ matrix.targetPlatform }}
           restore-keys: |
             Library-Moristory2-
@@ -164,7 +164,7 @@ jobs:
       # Cache
       - uses: actions/cache@v1.1.0
         with:
-          path: Moristory2/Library
+          path: Library
           key: Library-Moristory2-${{ matrix.targetPlatform }}
           restore-keys: |
             Library-Moristory2-
@@ -198,10 +198,8 @@ jobs:
         unityVersion:
           - 2019.3.6f1
         targetPlatform:
-          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          - iOS # Build an iOS player.
+          - Android
           - WebGL # WebGL.
     steps:
       - uses: actions/checkout@v2
