@@ -53,6 +53,7 @@ public class NPC : MonoBehaviour
     }
 
     void ApproachNPC(){
+        if(GameConfig.IsBlocking) {BackwardNPC(); return;}
         Vector3 pp = GameConfig.Controller.transform.localPosition;
         Vector3 p = this.transform.localPosition;
         if(Mathf.Abs(pp.x - p.x) > 10 || Mathf.Abs(pp.z - p.z) > 10) return;

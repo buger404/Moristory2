@@ -39,9 +39,11 @@ public class BindAbility : MonoBehaviour
         if(Ability.HP < 0) Ability.HP = 0;
         if(Ability.HP > Ability.MaxHP) Ability.HP = Ability.MaxHP;
 
-        if(BindTeam > -1) return;
         if(Ability.HP == 0 && Recovery == false) {
-            HPBar.GetComponent<SpriteRenderer>().sprite = HPBar2;
+            if(BindTeam == -1) HPBar.GetComponent<SpriteRenderer>().sprite = HPBar2;
+            if(BindTeam > -1) {
+                GameConfig.IsBlocking = true;
+            }
             Recovery = true;
         }
 
@@ -52,11 +54,16 @@ public class BindAbility : MonoBehaviour
                 Ability.HP += 1;
             }
             if(Ability.HP / Ability.MaxHP >= 0.3f) {
-                HPBar.GetComponent<SpriteRenderer>().sprite = HPBar1;
+                if(BindTeam == -1) HPBar.GetComponent<SpriteRenderer>().sprite = HPBar1;
+                if(BindTeam > -1) {
+                    GameConfig.IsBlocking = false;
+                }
                 Recovery = false;
             }
         }
         
+        if(BindTeam > -1) return;
+
         float W = Ability.HP / Ability.MaxHP * MaxW;
         if(W != LastW){
             HPBar.transform.localScale = new Vector3(W,HPBar.transform.localScale.y,HPBar.transform.localScale.z);

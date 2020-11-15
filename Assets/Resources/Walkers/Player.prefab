@@ -97,13 +97,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd23029c2711e4eafe435419f65c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OriginTrick: 
   IsController: 1
   speed: 0.1
   fps: 6
+  realfps: 0
   Direction: 3
   character: "\u4E16\u539F\xB7\u5B89\u8BFA"
+  DisableWalker: 0
   XTask: 0
   YTask: 0
+  SpeedUp: 0
 --- !u!54 &1498810891142158571
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,6 +135,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.16175224
-  m_Height: 0.52369905
+  m_Height: 0.503699
   m_Direction: 1
   m_Center: {x: 0, y: -0.037642397, z: 0}

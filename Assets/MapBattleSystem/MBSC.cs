@@ -17,6 +17,7 @@ public class MBSC : MonoBehaviour
     private RectTransform rect;
     private float MaxW;
     private TeamController.Member Ability1,Ability2;
+    public GameObject DieScreen;
     private BindAbility ba;
     private string lSkill;
     void Start()
@@ -41,6 +42,10 @@ public class MBSC : MonoBehaviour
     {
         HPText.text = "HP  " + Mathf.Ceil(ba.Ability.HP) + "/" + ba.Ability.MaxHP;
         rect.sizeDelta = new Vector2(ba.Ability.HP / ba.Ability.MaxHP * MaxW, rect.sizeDelta.y);
+
+        //角色死亡处理
+        DieScreen.SetActive(ba.Recovery);
+        if(ba.Recovery) return;
 
         bool ExV = (GameConfig.ExS != "");
         ExBar.SetActive(ExV); ExSkill.SetActive(ExV);

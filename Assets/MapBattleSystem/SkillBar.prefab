@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 7474867248043803015}
   - component: {fileID: 7474867248043803013}
   - component: {fileID: 7474867248043803012}
+  - component: {fileID: 1257610532}
   m_Layer: 0
   m_Name: SkillBar
   m_TagString: Untagged
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e849b5a42d84d7745ad4152b315d8278, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6662a80fed430f14d8c7d4a5139aa21a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -146,6 +147,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!61 &1257610532
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474867248043803014}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 520, y: 130}
+  m_EdgeRadius: 0
 --- !u!1 &7474867248470143818
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,4 +375,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ba851018675c44f9bf124c20a6a5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillIndex: 0
+  SkillIndex: 2
+  s:
+    MP: 0
+    Strength: 0
+    Job: 0
+    Name: 
+    Describe: 
+    Animate: 
+    CD: 0
+    CDa: 0

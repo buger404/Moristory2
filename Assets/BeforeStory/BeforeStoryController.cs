@@ -25,16 +25,13 @@ public class BeforeStoryController : MonoBehaviour
     void Update()
     {
         string ly = "";
-        if(BGM.time >= 0.5) ly = "樱树之花终将坠地";
-        if(BGM.time >= 6.3) ly = "拾起回忆碎片";
-        if(BGM.time >= 9.0) ly = "同行的时光模糊撕裂";
-        if(BGM.time >= 13.5) ly = "昔日信誓旦旦的诺言";
-        if(BGM.time >= 16.5) ly = "鼓舞见证明日的黎明";
-        if(BGM.time >= 20.0) ly = "为何无法紧握我的手";
-        if(BGM.time >= 21.5) ly = "仅仅像";
-        if(BGM.time >= 22.5) ly = "普通的情侣一般";
-        if(BGM.time >= 26.0) ly = "樱树之花";
-        if(BGM.time >= 28.0) ly = "肆虐地舞落";
+        if(BGM.time >= 0.5) ly = "此刻 樱花翩然飞舞 树叶缓缓飘落地面";
+        if(BGM.time >= 6.3) ly = "这让我忆起当初";
+        if(BGM.time >= 9.0) ly = "那时你牵着我的手";
+        if(BGM.time >= 13.5) ly = "我们始终如一坚守的承诺";
+        if(BGM.time >= 16.5) ly = "让我更加坚定你我";
+        if(BGM.time >= 20.0) ly = "抱着我就像其他恋人一般";
+        if(BGM.time >= 26.0) ly = "此刻 樱花凄零飘落";
         if(BGM.time >= 31.0) ly = "";
         if(lyt.text != ly) lyt.text = ly;
         if(Input.GetMouseButtonUp(0)){
@@ -44,6 +41,7 @@ public class BeforeStoryController : MonoBehaviour
                     Debug.Log("Welcome~~~");
                     PlayerPrefs.SetString("Watched","√");
                     goto SkipOP;
+                    
                 }
             }else{
                 Debug.Log("Skip directly:" + BGM.isPlaying);

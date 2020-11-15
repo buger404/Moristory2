@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RPGCamera : MonoBehaviour
 {
+    private List<Renderer> HiddenObj = new List<Renderer>(); 
+    public List<GameObject> HiddenWhiteList = new List<GameObject>();
     GameObject Player;
     public float minx = float.MinValue,minz = float.MinValue,maxx = float.MaxValue,maxz = float.MaxValue;
     private void Awake() {
@@ -41,5 +43,43 @@ public class RPGCamera : MonoBehaviour
             ps.pos = Player.transform.position;
             GameConfig.StateFlow[GameConfig.StatePos] = ps;
         }
+
+        return;
+        //障碍物隐藏
+        RaycastHit[] hit;Renderer ren;  
+        hit = Physics.RaycastAll(Player.transform.position, transform.position);  
+        if (hit.Length > 0)  
+        {   
+            foreach (RaycastHit ra in hit)  
+            {  
+                if(!IsInWhiteList(ra.collider.gameObject)){
+                    ren = ra.collider.gameObject.GetComponent<Renderer>(); 
+                    if(ren != null){
+                        HiddenObj.Add(ren);  
+                        SetMaterialsAlpha(ren, 0.5f);  
+                    } 
+                }
+            }  
+        }
+        else  
+        {  
+            foreach (Renderer re in HiddenObj) SetMaterialsAlpha(re, 1f);  
+            HiddenObj.Clear();
+        }  
     }
+    public bool IsInWhiteList(GameObject go){
+        int parent = HiddenObj.FindIndex(m => m.transform == go.transform.parent);
+        int self = HiddenObj.FindIndex(m => m.transform == go.transform);
+        return parent != -1 || self != -1;
+    }
+    private void SetMaterialsAlpha(Renderer re, float a)  
+    {  
+        int materialsCount = re.materials.Length;  
+        for (int i = 0; i < materialsCount; i++)  
+        {  
+            Color color = re.materials[i].color;   
+            color.a = a;    
+            re.materials[i].SetColor("_Color", color);  
+        } 
+    } 
 }
