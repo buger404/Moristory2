@@ -1,4 +1,12 @@
 ﻿# Moristory2  
+ 
+ 
+ 
+ ⚠该项目已经重新企划：https://github.com/MorizeroDev/Starvior
+ ⚠本项目不再维护。
+ 
+ 
+ 
 一款rpg，可能集成多种类型小游戏的游戏。
 
 > Error 404 有生以来挖的最大坑，并下定决心填完它。
